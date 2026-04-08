@@ -10,7 +10,7 @@ paths:
 
 ollama:
   model: qwen2.5:14b
-  base_url: http://192.168.0.74:11434/
+  base_url: 
   request_timeout: 60
 
 openai:
@@ -39,11 +39,11 @@ logging:
 
 database:
   type: "mssql"
-  host: "192.168.0.11"
+  host: 
   port: 1433
-  database: "SVM3PRISM"
-  username: "prismadm"
-  password: "prism@2025"
+  database: 
+  username: 
+  password: 
   driver: "ODBC Driver 17 for SQL Server"
   encrypt: false
   trust_server_certificate: true
