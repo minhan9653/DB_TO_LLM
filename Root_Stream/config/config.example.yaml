@@ -1,0 +1,66 @@
+# Example configuration (placeholders only).
+# Copy this file to `config.yaml` and replace placeholder values or provide
+# the actual sensitive values via environment variables as noted below.
+
+# mode: natural_llm | prompt_llm | rag_prompt_llm | api_result
+mode: rag_prompt_llm
+llm_provider: ollama
+
+paths:
+  project_root: .
+  prompt_file: prompts/prompt_templates.yaml
+  log_file: data/logs/stream.log
+
+ollama:
+  model: "<OLLAMA_MODEL>"
+  # Use environment variable for base URL in production
+  base_url_env: "OLLAMA_BASE_URL"
+  request_timeout: 60
+
+openai:
+  model: "<OPENAI_MODEL>"
+  # store actual API key in environment variable referenced below
+  api_key_env: "OPENAI_API_KEY"
+  request_timeout: 60
+
+retrieval:
+  enabled: true
+  embedding_model: "<EMBEDDING_MODEL>"
+  chroma_path: ../Root_Ingest/data/chroma
+  collection_name: doc_chunks
+  top_k: 3
+
+prompts:
+  active_prompt: query_generation_prompt
+
+api:
+  endpoint: "https://example.com/query-source"
+  timeout: 10
+  method: POST
+  headers: {}
+
+logging:
+  level: INFO
+
+database:
+  # type example: mssql, postgres
+  type: "mssql"
+  # For sensitive host/port/credentials, use env names below
+  host_env: "DB_HOST"
+  port_env: "DB_PORT"
+  database: "<DB_NAME>"
+  username_env: "DB_USER"
+  password_env: "DB_PASSWORD"
+  driver: "<DB_DRIVER>"
+  encrypt: false
+  trust_server_certificate: true
+  timeout: 30
+
+sql:
+  allow_only_select: true
+  max_rows: 1000
+
+# Notes:
+# - Copy this file to Root_Stream/config/config.yaml and fill real values
+#   OR set the referenced environment variables (recommended for secrets).
+# - Keep actual credentials out of the repository.
