@@ -1,0 +1,289 @@
+[2026-04-06 11:15:43] [INFO] [ingest_pipeline.py:run_ingest_pipeline:35] 파이프라인 시작
+[2026-04-06 11:15:43] [INFO] [ingest_pipeline.py:run_ingest_pipeline:36] 입력 폴더: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\doc
+[2026-04-06 11:15:43] [INFO] [document_loader.py:collect_documents:21] 문서 수집 시작: doc_dir=C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\doc
+[2026-04-06 11:15:43] [INFO] [document_loader.py:collect_documents:35] 파일 처리 시작: ALL_LOG_TABLES_cleaned.sql
+[2026-04-06 11:15:43] [INFO] [document_loader.py:collect_documents:51] 파일 처리 완료: ALL_LOG_TABLES_cleaned.sql
+[2026-04-06 11:15:43] [INFO] [document_loader.py:collect_documents:35] 파일 처리 시작: semiconductor_log_tables_overview.docx
+[2026-04-06 11:15:43] [INFO] [document_loader.py:collect_documents:51] 파일 처리 완료: semiconductor_log_tables_overview.docx
+[2026-04-06 11:15:43] [INFO] [document_loader.py:collect_documents:53] 문서 수집 완료: 총 2건
+[2026-04-06 11:15:43] [INFO] [document_loader.py:save_documents_to_jsonl:59] 문서 메타데이터 저장 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\data\parsed\document_index.jsonl
+[2026-04-06 11:15:43] [INFO] [document_loader.py:save_documents_to_jsonl:64] 문서 메타데이터 저장 완료: 총 2건
+[2026-04-06 11:15:43] [INFO] [parser_service.py:parse_documents:26] 파싱 시작: 입력 문서 수=2
+[2026-04-06 11:15:43] [INFO] [parser_service.py:parse_documents:31] 파일 파싱 시작: ALL_LOG_TABLES_cleaned.sql
+[2026-04-06 11:15:43] [INFO] [parser_service.py:parse_documents:35] 파일 파싱 성공: ALL_LOG_TABLES_cleaned.sql
+[2026-04-06 11:15:43] [INFO] [parser_service.py:parse_documents:31] 파일 파싱 시작: semiconductor_log_tables_overview.docx
+[2026-04-06 11:15:43] [INFO] [parser_service.py:parse_documents:35] 파일 파싱 성공: semiconductor_log_tables_overview.docx
+[2026-04-06 11:15:43] [INFO] [parser_service.py:save_parsed_documents:78] 파싱 결과 저장 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\data\parsed\parsed_documents.jsonl
+[2026-04-06 11:15:43] [INFO] [parser_service.py:save_parsed_documents:83] 파싱 결과 저장 완료: 총 2건
+[2026-04-06 11:15:43] [INFO] [parser_service.py:parse_documents:41] 파싱 완료: 성공 문서 수=2, 실패 문서 수=0
+[2026-04-06 11:15:43] [INFO] [chunk_service.py:chunk_documents:25] 청킹 시작: 입력 문서 수=2, chunk_size=800, chunk_overlap=100
+[2026-04-06 11:15:43] [INFO] [chunk_service.py:chunk_documents:40] 문서 청킹 시작: document_id=644bd73a26fb279f
+[2026-04-06 11:15:43] [INFO] [chunk_service.py:chunk_documents:57] 문서 청킹 완료: document_id=644bd73a26fb279f, chunk_count=10
+[2026-04-06 11:15:43] [INFO] [chunk_service.py:chunk_documents:40] 문서 청킹 시작: document_id=95346266fae76b59
+[2026-04-06 11:15:43] [INFO] [chunk_service.py:chunk_documents:57] 문서 청킹 완료: document_id=95346266fae76b59, chunk_count=2
+[2026-04-06 11:15:43] [INFO] [chunk_service.py:save_chunks:91] 청킹 결과 저장 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\data\chunks\chunks.jsonl
+[2026-04-06 11:15:43] [INFO] [chunk_service.py:save_chunks:96] 청킹 결과 저장 완료: 총 12건
+[2026-04-06 11:15:43] [INFO] [chunk_service.py:chunk_documents:64] 청킹 완료: 총 청크 수=12
+[2026-04-06 11:15:43] [INFO] [embedding_service.py:create_embeddings:28] 임베딩 시작: chunk_count=12, model=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-06 11:15:43] [INFO] [embedding_service.py:_load_sentence_transformer:96] 임베딩 모델 로딩 시작: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-06 11:15:58] [ERROR] [embedding_service.py:_load_sentence_transformer:106] 임베딩 모델 로딩 실패: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+Traceback (most recent call last):
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\ingest\embedding_service.py", line 104, in _load_sentence_transformer
+    model = SentenceTransformer(model_name, device=device)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\sentence_transformers\SentenceTransformer.py", line 327, in __init__
+    modules, self.module_kwargs = self._load_sbert_model(
+                                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\sentence_transformers\SentenceTransformer.py", line 2323, in _load_sbert_model
+    module = module_class.load(
+             ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\sentence_transformers\models\Transformer.py", line 436, in load
+    return cls(model_name_or_path=model_name_or_path, **init_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\sentence_transformers\models\Transformer.py", line 120, in __init__
+    config, is_peft_model = self._load_config(model_name_or_path, cache_dir, backend, config_args)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\sentence_transformers\models\Transformer.py", line 171, in _load_config
+    find_adapter_config_file(
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\transformers\utils\peft_utils.py", line 84, in find_adapter_config_file
+    adapter_cached_filename = cached_file(
+                              ^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\transformers\utils\hub.py", line 278, in cached_file
+    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\transformers\utils\hub.py", line 512, in cached_files
+    raise e
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\transformers\utils\hub.py", line 422, in cached_files
+    hf_hub_download(
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\huggingface_hub\utils\_validators.py", line 88, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\huggingface_hub\file_download.py", line 995, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\huggingface_hub\file_download.py", line 1128, in _hf_hub_download_to_cache_dir
+    _get_metadata_or_catch_error(
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\huggingface_hub\file_download.py", line 1665, in _get_metadata_or_catch_error
+    metadata = get_hf_file_metadata(
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\huggingface_hub\utils\_validators.py", line 88, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\huggingface_hub\file_download.py", line 1587, in get_hf_file_metadata
+    response = _httpx_follow_relative_redirects_with_backoff(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\huggingface_hub\utils\_http.py", line 685, in _httpx_follow_relative_redirects_with_backoff
+    response = http_backoff(
+               ^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\huggingface_hub\utils\_http.py", line 559, in http_backoff
+    return next(
+           ^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\huggingface_hub\utils\_http.py", line 467, in _http_backoff_base
+    response = client.request(method=method, url=url, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx\_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx\_client.py", line 901, in send
+    raise RuntimeError("Cannot send a request, as the client has been closed.")
+RuntimeError: Cannot send a request, as the client has been closed.
+[2026-04-06 11:23:42] [INFO] [ingest_pipeline.py:run_ingest_pipeline:35] 파이프라인 시작
+[2026-04-06 11:23:42] [INFO] [ingest_pipeline.py:run_ingest_pipeline:36] 입력 폴더: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\doc
+[2026-04-06 11:23:42] [INFO] [document_loader.py:collect_documents:21] 문서 수집 시작: doc_dir=C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\doc
+[2026-04-06 11:23:42] [INFO] [document_loader.py:collect_documents:35] 파일 처리 시작: ALL_LOG_TABLES_cleaned.sql
+[2026-04-06 11:23:42] [INFO] [document_loader.py:collect_documents:51] 파일 처리 완료: ALL_LOG_TABLES_cleaned.sql
+[2026-04-06 11:23:42] [INFO] [document_loader.py:collect_documents:35] 파일 처리 시작: semiconductor_log_tables_overview.docx
+[2026-04-06 11:23:42] [INFO] [document_loader.py:collect_documents:51] 파일 처리 완료: semiconductor_log_tables_overview.docx
+[2026-04-06 11:23:42] [INFO] [document_loader.py:collect_documents:53] 문서 수집 완료: 총 2건
+[2026-04-06 11:23:42] [INFO] [document_loader.py:save_documents_to_jsonl:59] 문서 메타데이터 저장 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\data\parsed\document_index.jsonl
+[2026-04-06 11:23:42] [INFO] [document_loader.py:save_documents_to_jsonl:64] 문서 메타데이터 저장 완료: 총 2건
+[2026-04-06 11:23:42] [INFO] [parser_service.py:parse_documents:26] 파싱 시작: 입력 문서 수=2
+[2026-04-06 11:23:42] [INFO] [parser_service.py:parse_documents:31] 파일 파싱 시작: ALL_LOG_TABLES_cleaned.sql
+[2026-04-06 11:23:42] [INFO] [parser_service.py:parse_documents:35] 파일 파싱 성공: ALL_LOG_TABLES_cleaned.sql
+[2026-04-06 11:23:42] [INFO] [parser_service.py:parse_documents:31] 파일 파싱 시작: semiconductor_log_tables_overview.docx
+[2026-04-06 11:23:42] [INFO] [parser_service.py:parse_documents:35] 파일 파싱 성공: semiconductor_log_tables_overview.docx
+[2026-04-06 11:23:42] [INFO] [parser_service.py:save_parsed_documents:78] 파싱 결과 저장 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\data\parsed\parsed_documents.jsonl
+[2026-04-06 11:23:42] [INFO] [parser_service.py:save_parsed_documents:83] 파싱 결과 저장 완료: 총 2건
+[2026-04-06 11:23:42] [INFO] [parser_service.py:parse_documents:41] 파싱 완료: 성공 문서 수=2, 실패 문서 수=0
+[2026-04-06 11:23:42] [INFO] [chunk_service.py:chunk_documents:25] 청킹 시작: 입력 문서 수=2, chunk_size=800, chunk_overlap=100
+[2026-04-06 11:23:42] [INFO] [chunk_service.py:chunk_documents:40] 문서 청킹 시작: document_id=644bd73a26fb279f
+[2026-04-06 11:23:42] [INFO] [chunk_service.py:chunk_documents:57] 문서 청킹 완료: document_id=644bd73a26fb279f, chunk_count=10
+[2026-04-06 11:23:42] [INFO] [chunk_service.py:chunk_documents:40] 문서 청킹 시작: document_id=95346266fae76b59
+[2026-04-06 11:23:42] [INFO] [chunk_service.py:chunk_documents:57] 문서 청킹 완료: document_id=95346266fae76b59, chunk_count=2
+[2026-04-06 11:23:42] [INFO] [chunk_service.py:save_chunks:91] 청킹 결과 저장 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\data\chunks\chunks.jsonl
+[2026-04-06 11:23:42] [INFO] [chunk_service.py:save_chunks:96] 청킹 결과 저장 완료: 총 12건
+[2026-04-06 11:23:42] [INFO] [chunk_service.py:chunk_documents:64] 청킹 완료: 총 청크 수=12
+[2026-04-06 11:23:42] [INFO] [embedding_service.py:create_embeddings:28] 임베딩 시작: chunk_count=12, model=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-06 11:23:42] [INFO] [embedding_service.py:_load_sentence_transformer:96] 임베딩 모델 로딩 시작: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-06 11:23:51] [ERROR] [embedding_service.py:_load_sentence_transformer:106] 임베딩 모델 로딩 실패: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+Traceback (most recent call last):
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\ingest\embedding_service.py", line 104, in _load_sentence_transformer
+    model = SentenceTransformer(model_name, device=device)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\sentence_transformers\SentenceTransformer.py", line 327, in __init__
+    modules, self.module_kwargs = self._load_sbert_model(
+                                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\sentence_transformers\SentenceTransformer.py", line 2323, in _load_sbert_model
+    module = module_class.load(
+             ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\sentence_transformers\models\Transformer.py", line 436, in load
+    return cls(model_name_or_path=model_name_or_path, **init_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\sentence_transformers\models\Transformer.py", line 120, in __init__
+    config, is_peft_model = self._load_config(model_name_or_path, cache_dir, backend, config_args)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\sentence_transformers\models\Transformer.py", line 171, in _load_config
+    find_adapter_config_file(
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\transformers\utils\peft_utils.py", line 84, in find_adapter_config_file
+    adapter_cached_filename = cached_file(
+                              ^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\transformers\utils\hub.py", line 278, in cached_file
+    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\transformers\utils\hub.py", line 512, in cached_files
+    raise e
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\transformers\utils\hub.py", line 422, in cached_files
+    hf_hub_download(
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\huggingface_hub\utils\_validators.py", line 88, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\huggingface_hub\file_download.py", line 995, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\huggingface_hub\file_download.py", line 1128, in _hf_hub_download_to_cache_dir
+    _get_metadata_or_catch_error(
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\huggingface_hub\file_download.py", line 1665, in _get_metadata_or_catch_error
+    metadata = get_hf_file_metadata(
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\huggingface_hub\utils\_validators.py", line 88, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\huggingface_hub\file_download.py", line 1587, in get_hf_file_metadata
+    response = _httpx_follow_relative_redirects_with_backoff(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\huggingface_hub\utils\_http.py", line 685, in _httpx_follow_relative_redirects_with_backoff
+    response = http_backoff(
+               ^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\huggingface_hub\utils\_http.py", line 559, in http_backoff
+    return next(
+           ^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\huggingface_hub\utils\_http.py", line 467, in _http_backoff_base
+    response = client.request(method=method, url=url, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx\_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx\_client.py", line 901, in send
+    raise RuntimeError("Cannot send a request, as the client has been closed.")
+RuntimeError: Cannot send a request, as the client has been closed.
+[2026-04-06 14:57:52] [INFO] [ingest_pipeline.py:run_ingest_pipeline:38] 파이프라인 시작
+[2026-04-06 14:57:52] [INFO] [ingest_pipeline.py:run_ingest_pipeline:39] 입력 폴더: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\doc
+[2026-04-06 14:57:52] [INFO] [ingest_pipeline.py:run_ingest_pipeline:40] Selected parser: docling
+[2026-04-06 14:57:52] [INFO] [document_loader.py:collect_documents:21] 문서 수집 시작: doc_dir=C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\doc
+[2026-04-06 14:57:52] [INFO] [document_loader.py:collect_documents:35] 파일 처리 시작: ALL_LOG_TABLES_cleaned.sql
+[2026-04-06 14:57:52] [INFO] [document_loader.py:collect_documents:51] 파일 처리 완료: ALL_LOG_TABLES_cleaned.sql
+[2026-04-06 14:57:52] [INFO] [document_loader.py:collect_documents:35] 파일 처리 시작: semiconductor_log_tables_overview.docx
+[2026-04-06 14:57:52] [INFO] [document_loader.py:collect_documents:51] 파일 처리 완료: semiconductor_log_tables_overview.docx
+[2026-04-06 14:57:52] [INFO] [document_loader.py:collect_documents:53] 문서 수집 완료: 총 2건
+[2026-04-06 14:57:52] [INFO] [document_loader.py:save_documents_to_jsonl:59] 문서 메타데이터 저장 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\data\parsed\document_index.jsonl
+[2026-04-06 14:57:52] [INFO] [document_loader.py:save_documents_to_jsonl:64] 문서 메타데이터 저장 완료: 총 2건
+[2026-04-06 14:57:52] [INFO] [parser_service.py:parse_documents:34] 파싱 시작: parser=docling, available=docling, marker, unstructured, input_documents=2
+[2026-04-06 14:57:52] [INFO] [parser_service.py:parse_documents:39] 파일 파싱 시작: parser=docling, file=ALL_LOG_TABLES_cleaned.sql
+[2026-04-06 14:57:52] [INFO] [parser_service.py:parse_documents:43] 파일 파싱 성공: parser=docling, file=ALL_LOG_TABLES_cleaned.sql
+[2026-04-06 14:57:52] [INFO] [parser_service.py:parse_documents:39] 파일 파싱 시작: parser=docling, file=semiconductor_log_tables_overview.docx
+[2026-04-06 14:57:52] [ERROR] [parser_service.py:parse_documents:45] 파일 파싱 실패: parser=docling, file=semiconductor_log_tables_overview.docx
+Traceback (most recent call last):
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\ingest\parsers\docling_parser.py", line 46, in _get_converter
+    from docling.document_converter import DocumentConverter
+ModuleNotFoundError: No module named 'docling'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\ingest\parser_service.py", line 41, in parse_documents
+    parsed_doc = parser.parse(document)
+                 ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\ingest\parsers\base.py", line 29, in parse
+    raw_text = self.extract_text(document=document, source_path=source_path)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\ingest\parsers\docling_parser.py", line 31, in extract_text
+    return self._parse_with_docling(source_path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\ingest\parsers\docling_parser.py", line 34, in _parse_with_docling
+    converter = self._get_converter()
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\ingest\parsers\docling_parser.py", line 48, in _get_converter
+    raise ImportError("docling parser를 사용하려면 docling 패키지를 설치하세요.") from error
+ImportError: docling parser를 사용하려면 docling 패키지를 설치하세요.
+[2026-04-06 14:57:52] [INFO] [parser_service.py:save_parsed_documents:60] 파싱 결과 저장 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\data\parsed\parsed_documents.jsonl
+[2026-04-06 14:57:52] [INFO] [parser_service.py:save_parsed_documents:65] 파싱 결과 저장 완료: total=1
+[2026-04-06 14:57:52] [INFO] [parser_service.py:parse_documents:49] 파싱 완료: parser=docling, success_documents=1, failed_documents=1
+[2026-04-06 14:57:52] [INFO] [chunk_service.py:chunk_documents:25] 청킹 시작: 입력 문서 수=1, chunk_size=800, chunk_overlap=100
+[2026-04-06 14:57:52] [INFO] [chunk_service.py:chunk_documents:40] 문서 청킹 시작: document_id=644bd73a26fb279f
+[2026-04-06 14:57:52] [INFO] [chunk_service.py:chunk_documents:57] 문서 청킹 완료: document_id=644bd73a26fb279f, chunk_count=10
+[2026-04-06 14:57:52] [INFO] [chunk_service.py:save_chunks:91] 청킹 결과 저장 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\data\chunks\chunks.jsonl
+[2026-04-06 14:57:52] [INFO] [chunk_service.py:save_chunks:96] 청킹 결과 저장 완료: 총 10건
+[2026-04-06 14:57:52] [INFO] [chunk_service.py:chunk_documents:64] 청킹 완료: 총 청크 수=10
+[2026-04-06 14:57:52] [INFO] [embedding_service.py:create_embeddings:28] 임베딩 시작: chunk_count=10, model=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-06 14:57:52] [INFO] [embedding_service.py:_load_sentence_transformer:96] 임베딩 모델 로딩 시작: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-06 14:58:46] [ERROR] [embedding_service.py:_load_sentence_transformer:106] 임베딩 모델 로딩 실패: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+Traceback (most recent call last):
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\ingest\embedding_service.py", line 104, in _load_sentence_transformer
+    model = SentenceTransformer(model_name, device=device)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\sentence_transformers\SentenceTransformer.py", line 327, in __init__
+    modules, self.module_kwargs = self._load_sbert_model(
+                                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\sentence_transformers\SentenceTransformer.py", line 2323, in _load_sbert_model
+    module = module_class.load(
+             ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\sentence_transformers\models\Transformer.py", line 436, in load
+    return cls(model_name_or_path=model_name_or_path, **init_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\sentence_transformers\models\Transformer.py", line 120, in __init__
+    config, is_peft_model = self._load_config(model_name_or_path, cache_dir, backend, config_args)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\sentence_transformers\models\Transformer.py", line 171, in _load_config
+    find_adapter_config_file(
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\transformers\utils\peft_utils.py", line 84, in find_adapter_config_file
+    adapter_cached_filename = cached_file(
+                              ^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\transformers\utils\hub.py", line 278, in cached_file
+    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\transformers\utils\hub.py", line 512, in cached_files
+    raise e
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\transformers\utils\hub.py", line 422, in cached_files
+    hf_hub_download(
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\huggingface_hub\utils\_validators.py", line 88, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\huggingface_hub\file_download.py", line 995, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\huggingface_hub\file_download.py", line 1128, in _hf_hub_download_to_cache_dir
+    _get_metadata_or_catch_error(
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\huggingface_hub\file_download.py", line 1665, in _get_metadata_or_catch_error
+    metadata = get_hf_file_metadata(
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\huggingface_hub\utils\_validators.py", line 88, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\huggingface_hub\file_download.py", line 1587, in get_hf_file_metadata
+    response = _httpx_follow_relative_redirects_with_backoff(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\huggingface_hub\utils\_http.py", line 685, in _httpx_follow_relative_redirects_with_backoff
+    response = http_backoff(
+               ^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\huggingface_hub\utils\_http.py", line 559, in http_backoff
+    return next(
+           ^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\huggingface_hub\utils\_http.py", line 467, in _http_backoff_base
+    response = client.request(method=method, url=url, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx\_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\김민한\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx\_client.py", line 901, in send
+    raise RuntimeError("Cannot send a request, as the client has been closed.")
+RuntimeError: Cannot send a request, as the client has been closed.

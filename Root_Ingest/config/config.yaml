@@ -1,0 +1,48 @@
+﻿project:
+  name: db_to_llm_ingest
+
+paths:
+  project_root: .
+  doc_dir: doc
+  parsed_dir: data/parsed
+  chunks_dir: data/chunks
+  embeddings_dir: data/embeddings
+  chroma_dir: data/chroma
+  log_file: data/logs/ingest.log
+
+document_loader:
+  supported_extensions:
+    - .sql
+    - .docx
+    - .pdf
+    - .md
+    - .txt
+
+parsing:
+  parser: docling # docling | marker | unstructured
+  options:
+    extract_tables: true
+    extract_images: false
+    language: ko
+    text_encodings:
+      - utf-8
+      - utf-8-sig
+      - cp949
+      - euc-kr
+
+chunking:
+  chunk_size: 800
+  chunk_overlap: 100
+
+embedding:
+  model_name: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+  batch_size: 16
+  normalize_embeddings: true
+  device:
+
+vector_store:
+  collection_name: doc_chunks
+  batch_size: 100
+
+logging:
+  level: INFO

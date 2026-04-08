@@ -1,0 +1,52 @@
+mode: rag_prompt_llm
+llm_provider: ollama
+
+paths:
+  project_root: .
+  prompt_file: prompts/prompt_templates.yaml
+  log_file: data/logs/stream.log
+
+ollama:
+  model: qwen2.5:14b
+  base_url: http://192.168.0.74:11434/
+  request_timeout: 60
+
+openai:
+  model: gpt-4.1-mini
+  api_key: ""
+  request_timeout: 60
+
+retrieval:
+  enabled: true
+  embedding_model: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+  chroma_path: ../Root_Ingest/data/chroma
+  collection_name: doc_chunks
+  top_k: 3
+
+prompts:
+  active_prompt: query_generation_prompt
+
+api:
+  endpoint: https://example.com/query-source
+  timeout: 10
+  method: POST
+  headers: {}
+
+logging:
+  level: INFO
+
+database:
+  type: "mssql"
+  host: "192.168.0.11"
+  port: 1433
+  database: "SVM3PRISM"
+  username: "prismadm"
+  password: "admin"
+  driver: "ODBC Driver 17 for SQL Server"
+  encrypt: false
+  trust_server_certificate: true
+  timeout: 30
+
+sql:
+  allow_only_select: true
+  max_rows: 1000

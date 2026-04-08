@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug STREAM",
+      "type": "python",
+      "request": "launch",
+      "module": "Root_Stream.main",
+      "cwd": "${workspaceFolder}",
+      "args": [
+        "--execute-sql",
+        "--question",
+        "최근 30일 동안 각 설비별 첫 오류 발생 시각과 마지막 오류 발생 시각, 그리고 총 오류 건수를 함께 보여줘."
+      ],
+      "console": "integratedTerminal",
+      "justMyCode": true
+    }
+  ]
+}

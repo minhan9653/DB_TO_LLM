@@ -1,0 +1,1599 @@
+[2026-04-06 15:52:47] [INFO] [prompt_manager.py:_load_prompts:27] 프롬프트 파일 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\prompts\prompt_templates.yaml
+[2026-04-06 15:52:47] [INFO] [prompt_manager.py:_load_prompts:39] 프롬프트 파일 로드 완료: prompt_count=4
+[2026-04-06 16:02:37] [INFO] [prompt_manager.py:_load_prompts:27] 프롬프트 파일 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\prompts\prompt_templates.yaml
+[2026-04-06 16:02:37] [INFO] [prompt_manager.py:_load_prompts:39] 프롬프트 파일 로드 완료: prompt_count=4
+[2026-04-06 16:02:37] [INFO] [stream_orchestrator.py:run_request:42] STREAM 실행 시작: mode=natural_llm
+[2026-04-06 16:02:37] [INFO] [mode_natural_llm.py:run_natural_llm_mode:26] mode 실행 시작: natural_llm
+[2026-04-06 16:02:37] [INFO] [ollama_client.py:generate:47] Ollama 호출 시작: model=qwen2.5:1.5b, endpoint=http://localhost:11434/api/chat
+[2026-04-06 16:02:47] [INFO] [ollama_client.py:generate:79] Ollama 호출 완료: output_length=69
+[2026-04-06 16:02:47] [INFO] [mode_natural_llm.py:run_natural_llm_mode:44] mode 실행 완료: natural_llm
+[2026-04-06 16:02:47] [INFO] [stream_orchestrator.py:run_request:81] STREAM 실행 완료: mode=natural_llm
+[2026-04-07 11:09:22] [INFO] [prompt_manager.py:_load_prompts:57] 프롬프트 파일 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\prompts\prompt_templates.yaml
+[2026-04-07 11:09:22] [INFO] [prompt_manager.py:_load_prompts:70] 프롬프트 파일 로드 완료: prompt_count=4
+[2026-04-07 11:09:22] [INFO] [stream_orchestrator.py:run_request:110] STREAM 실행 시작: mode=natural_llm
+[2026-04-07 11:09:22] [INFO] [mode_natural_llm.py:run_natural_llm_mode:65] mode 실행 시작: natural_llm
+[2026-04-07 11:09:22] [INFO] [ollama_client.py:generate:122] Ollama 호출 시작: model=qwen2.5:14b, endpoint=http://192.168.0.74:11434/api/chat
+[2026-04-07 11:09:26] [INFO] [ollama_client.py:generate:170] Ollama 호출 완료: output_length=81
+[2026-04-07 11:09:26] [INFO] [mode_natural_llm.py:run_natural_llm_mode:97] mode 실행 완료: natural_llm
+[2026-04-07 11:09:26] [INFO] [stream_orchestrator.py:run_request:175] STREAM 실행 완료: mode=natural_llm
+[2026-04-07 11:09:31] [INFO] [prompt_manager.py:_load_prompts:57] 프롬프트 파일 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\prompts\prompt_templates.yaml
+[2026-04-07 11:09:31] [INFO] [prompt_manager.py:_load_prompts:70] 프롬프트 파일 로드 완료: prompt_count=4
+[2026-04-07 11:09:31] [INFO] [stream_orchestrator.py:run_request:110] STREAM 실행 시작: mode=natural_llm
+[2026-04-07 11:09:31] [INFO] [mode_natural_llm.py:run_natural_llm_mode:65] mode 실행 시작: natural_llm
+[2026-04-07 11:09:31] [INFO] [ollama_client.py:generate:122] Ollama 호출 시작: model=qwen2.5:14b, endpoint=http://192.168.0.74:11434/api/chat
+[2026-04-07 11:09:33] [INFO] [ollama_client.py:generate:170] Ollama 호출 완료: output_length=81
+[2026-04-07 11:09:33] [INFO] [mode_natural_llm.py:run_natural_llm_mode:97] mode 실행 완료: natural_llm
+[2026-04-07 11:09:33] [INFO] [stream_orchestrator.py:run_request:175] STREAM 실행 완료: mode=natural_llm
+[2026-04-07 13:10:26] [INFO] [prompt_manager.py:_load_prompts:57] 프롬프트 파일 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\prompts\prompt_templates.yaml
+[2026-04-07 13:10:26] [INFO] [prompt_manager.py:_load_prompts:70] 프롬프트 파일 로드 완료: prompt_count=4
+[2026-04-07 13:13:06] [INFO] [stream_orchestrator.py:run_request:110] STREAM 실행 시작: mode=natural_llm
+[2026-04-07 13:14:24] [INFO] [mode_natural_llm.py:run_natural_llm_mode:65] mode 실행 시작: natural_llm
+[2026-04-07 13:14:30] [INFO] [ollama_client.py:generate:122] Ollama 호출 시작: model=qwen2.5:14b, endpoint=http://192.168.0.74:11434/api/chat
+[2026-04-07 13:14:33] [INFO] [ollama_client.py:generate:170] Ollama 호출 완료: output_length=81
+[2026-04-07 13:14:55] [INFO] [mode_natural_llm.py:run_natural_llm_mode:97] mode 실행 완료: natural_llm
+[2026-04-07 13:14:57] [INFO] [stream_orchestrator.py:run_request:175] STREAM 실행 완료: mode=natural_llm
+[2026-04-07 13:23:10] [INFO] [prompt_manager.py:_load_prompts:57] 프롬프트 파일 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\prompts\prompt_templates.yaml
+[2026-04-07 13:23:10] [INFO] [prompt_manager.py:_load_prompts:70] 프롬프트 파일 로드 완료: prompt_count=4
+[2026-04-07 13:23:11] [INFO] [stream_orchestrator.py:run_request:110] STREAM 실행 시작: mode=natural_llm
+[2026-04-07 13:23:11] [INFO] [mode_natural_llm.py:run_natural_llm_mode:65] mode 실행 시작: natural_llm
+[2026-04-07 13:23:11] [INFO] [ollama_client.py:generate:122] Ollama 호출 시작: model=qwen2.5:14b, endpoint=http://192.168.0.74:11434/api/chat
+[2026-04-07 13:23:15] [INFO] [ollama_client.py:generate:170] Ollama 호출 완료: output_length=81
+[2026-04-07 13:23:15] [INFO] [mode_natural_llm.py:run_natural_llm_mode:97] mode 실행 완료: natural_llm
+[2026-04-07 13:23:15] [INFO] [stream_orchestrator.py:run_request:175] STREAM 실행 완료: mode=natural_llm
+[2026-04-07 13:41:27] [INFO] [prompt_manager.py:_load_prompts:57] 프롬프트 파일 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\prompts\prompt_templates.yaml
+[2026-04-07 13:41:27] [INFO] [prompt_manager.py:_load_prompts:70] 프롬프트 파일 로드 완료: prompt_count=4
+[2026-04-07 13:52:52] [INFO] [prompt_manager.py:_load_prompts:57] 프롬프트 파일 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\prompts\prompt_templates.yaml
+[2026-04-07 13:52:53] [INFO] [prompt_manager.py:_load_prompts:70] 프롬프트 파일 로드 완료: prompt_count=4
+[2026-04-07 13:53:08] [INFO] [stream_orchestrator.py:run_request:110] STREAM 실행 시작: mode=rag_prompt_llm
+[2026-04-07 13:53:42] [INFO] [mode_rag_prompt_llm.py:run_rag_prompt_llm_mode:76] mode 실행 시작: rag_prompt_llm
+[2026-04-07 13:55:23] [INFO] [embedding_service.py:_get_model:69] 임베딩 모델 로드 시작: model=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-07 13:55:29] [INFO] [embedding_service.py:_get_model:73] 임베딩 모델 로드 완료: model=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-07 13:55:29] [INFO] [embedding_service.py:embed_query:97] 질의 임베딩 시작: text_length=58
+[2026-04-07 13:56:44] [INFO] [chroma_retriever.py:_get_collection:79] Chroma 컬렉션 연결 시작: path=C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\data\chroma, collection=doc_chunks
+[2026-04-07 13:57:25] [INFO] [chroma_retriever.py:retrieve:121] RAG 검색 시작: top_k=3
+[2026-04-07 13:58:28] [INFO] [chroma_retriever.py:retrieve:165] RAG 검색 완료: result_count=3, sample_ids=644bd73a26fb279f_chunk_0006, 644bd73a26fb279f_chunk_0009, 644bd73a26fb279f_chunk_0003
+[2026-04-07 14:00:29] [INFO] [ollama_client.py:generate:122] Ollama 호출 시작: model=qwen2.5:14b, endpoint=http://192.168.0.74:11434/api/chat
+[2026-04-07 14:00:57] [INFO] [ollama_client.py:generate:170] Ollama 호출 완료: output_length=70
+[2026-04-07 14:01:30] [INFO] [mode_rag_prompt_llm.py:run_rag_prompt_llm_mode:166] mode 실행 완료: rag_prompt_llm
+[2026-04-07 14:01:32] [INFO] [stream_orchestrator.py:run_request:175] STREAM 실행 완료: mode=rag_prompt_llm
+[2026-04-07 15:10:30] [INFO] [prompt_manager.py:_load_prompts:57] 프롬프트 파일 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\prompts\prompt_templates.yaml
+[2026-04-07 15:10:30] [INFO] [prompt_manager.py:_load_prompts:70] 프롬프트 파일 로드 완료: prompt_count=4
+[2026-04-07 15:10:30] [INFO] [stream_orchestrator.py:run_request:110] STREAM 실행 시작: mode=rag_prompt_llm
+[2026-04-07 15:10:30] [INFO] [mode_rag_prompt_llm.py:run_rag_prompt_llm_mode:76] mode 실행 시작: rag_prompt_llm
+[2026-04-07 15:11:00] [INFO] [embedding_service.py:_get_model:69] 임베딩 모델 로드 시작: model=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-07 15:11:05] [INFO] [embedding_service.py:_get_model:73] 임베딩 모델 로드 완료: model=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-07 15:11:05] [INFO] [embedding_service.py:embed_query:97] 질의 임베딩 시작: text_length=58
+[2026-04-07 15:11:10] [INFO] [chroma_retriever.py:_get_collection:79] Chroma 컬렉션 연결 시작: path=C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\data\chroma, collection=doc_chunks
+[2026-04-07 15:11:11] [INFO] [chroma_retriever.py:retrieve:121] RAG 검색 시작: top_k=3
+[2026-04-07 15:11:11] [INFO] [chroma_retriever.py:retrieve:165] RAG 검색 완료: result_count=3, sample_ids=644bd73a26fb279f_chunk_0006, 644bd73a26fb279f_chunk_0009, 644bd73a26fb279f_chunk_0003
+[2026-04-07 15:11:11] [INFO] [ollama_client.py:generate:122] Ollama 호출 시작: model=qwen2.5:14b, endpoint=http://192.168.0.74:11434/api/chat
+[2026-04-07 15:11:15] [INFO] [ollama_client.py:generate:170] Ollama 호출 완료: output_length=70
+[2026-04-07 15:11:15] [INFO] [mode_rag_prompt_llm.py:run_rag_prompt_llm_mode:166] mode 실행 완료: rag_prompt_llm
+[2026-04-07 15:11:15] [INFO] [stream_orchestrator.py:run_request:175] STREAM 실행 완료: mode=rag_prompt_llm
+[2026-04-07 15:11:18] [INFO] [main.py:main:104] SQL 생성 완료
+[2026-04-07 15:11:19] [INFO] [main.py:main:105] ```sql
+SELECT TOP 50 *
+FROM EVENT_LOG_DATA
+ORDER BY EVENTTIME DESC
+```
+[2026-04-07 15:13:17] [INFO] [prompt_manager.py:_load_prompts:57] 프롬프트 파일 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\prompts\prompt_templates.yaml
+[2026-04-07 15:13:17] [INFO] [prompt_manager.py:_load_prompts:70] 프롬프트 파일 로드 완료: prompt_count=4
+[2026-04-07 15:13:17] [INFO] [stream_orchestrator.py:run_request:110] STREAM 실행 시작: mode=rag_prompt_llm
+[2026-04-07 15:13:17] [INFO] [mode_rag_prompt_llm.py:run_rag_prompt_llm_mode:76] mode 실행 시작: rag_prompt_llm
+[2026-04-07 15:13:37] [INFO] [embedding_service.py:_get_model:69] 임베딩 모델 로드 시작: model=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-07 15:13:42] [INFO] [embedding_service.py:_get_model:73] 임베딩 모델 로드 완료: model=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-07 15:13:42] [INFO] [embedding_service.py:embed_query:97] 질의 임베딩 시작: text_length=58
+[2026-04-07 15:13:46] [INFO] [chroma_retriever.py:_get_collection:79] Chroma 컬렉션 연결 시작: path=C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\data\chroma, collection=doc_chunks
+[2026-04-07 15:13:46] [INFO] [chroma_retriever.py:retrieve:121] RAG 검색 시작: top_k=3
+[2026-04-07 15:13:46] [INFO] [chroma_retriever.py:retrieve:165] RAG 검색 완료: result_count=3, sample_ids=644bd73a26fb279f_chunk_0006, 644bd73a26fb279f_chunk_0009, 644bd73a26fb279f_chunk_0003
+[2026-04-07 15:13:46] [INFO] [ollama_client.py:generate:122] Ollama 호출 시작: model=qwen2.5:14b, endpoint=http://192.168.0.74:11434/api/chat
+[2026-04-07 15:13:48] [INFO] [ollama_client.py:generate:170] Ollama 호출 완료: output_length=70
+[2026-04-07 15:13:48] [INFO] [mode_rag_prompt_llm.py:run_rag_prompt_llm_mode:166] mode 실행 완료: rag_prompt_llm
+[2026-04-07 15:13:48] [INFO] [stream_orchestrator.py:run_request:175] STREAM 실행 완료: mode=rag_prompt_llm
+[2026-04-07 15:13:48] [INFO] [main.py:main:176] SQL 생성 완료
+[2026-04-07 15:13:48] [INFO] [main.py:main:177] ```sql
+SELECT TOP 50 *
+FROM EVENT_LOG_DATA
+ORDER BY EVENTTIME DESC
+```
+[2026-04-07 15:15:51] [INFO] [prompt_manager.py:_load_prompts:57] 프롬프트 파일 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\prompts\prompt_templates.yaml
+[2026-04-07 15:15:51] [INFO] [prompt_manager.py:_load_prompts:70] 프롬프트 파일 로드 완료: prompt_count=4
+[2026-04-07 15:15:51] [INFO] [stream_orchestrator.py:run_request:110] STREAM 실행 시작: mode=rag_prompt_llm
+[2026-04-07 15:15:51] [INFO] [mode_rag_prompt_llm.py:run_rag_prompt_llm_mode:76] mode 실행 시작: rag_prompt_llm
+[2026-04-07 15:16:12] [INFO] [embedding_service.py:_get_model:69] 임베딩 모델 로드 시작: model=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-07 15:16:17] [INFO] [embedding_service.py:_get_model:73] 임베딩 모델 로드 완료: model=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-07 15:16:17] [INFO] [embedding_service.py:embed_query:97] 질의 임베딩 시작: text_length=58
+[2026-04-07 15:16:21] [INFO] [chroma_retriever.py:_get_collection:79] Chroma 컬렉션 연결 시작: path=C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\data\chroma, collection=doc_chunks
+[2026-04-07 15:16:22] [INFO] [chroma_retriever.py:retrieve:121] RAG 검색 시작: top_k=3
+[2026-04-07 15:16:22] [INFO] [chroma_retriever.py:retrieve:165] RAG 검색 완료: result_count=3, sample_ids=644bd73a26fb279f_chunk_0006, 644bd73a26fb279f_chunk_0009, 644bd73a26fb279f_chunk_0003
+[2026-04-07 15:16:22] [INFO] [ollama_client.py:generate:122] Ollama 호출 시작: model=qwen2.5:14b, endpoint=http://192.168.0.74:11434/api/chat
+[2026-04-07 15:16:23] [INFO] [ollama_client.py:generate:170] Ollama 호출 완료: output_length=70
+[2026-04-07 15:16:23] [INFO] [mode_rag_prompt_llm.py:run_rag_prompt_llm_mode:166] mode 실행 완료: rag_prompt_llm
+[2026-04-07 15:16:23] [INFO] [stream_orchestrator.py:run_request:175] STREAM 실행 완료: mode=rag_prompt_llm
+[2026-04-07 15:16:23] [INFO] [main.py:main:175] SQL 생성 완료
+[2026-04-07 15:16:23] [INFO] [main.py:main:176] ```sql
+SELECT TOP 50 *
+FROM EVENT_LOG_DATA
+ORDER BY EVENTTIME DESC
+```
+[2026-04-07 15:17:52] [INFO] [prompt_manager.py:_load_prompts:57] 프롬프트 파일 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\prompts\prompt_templates.yaml
+[2026-04-07 15:17:52] [INFO] [prompt_manager.py:_load_prompts:70] 프롬프트 파일 로드 완료: prompt_count=4
+[2026-04-07 15:17:52] [INFO] [stream_orchestrator.py:run_request:110] STREAM 실행 시작: mode=rag_prompt_llm
+[2026-04-07 15:17:52] [INFO] [mode_rag_prompt_llm.py:run_rag_prompt_llm_mode:76] mode 실행 시작: rag_prompt_llm
+[2026-04-07 15:18:15] [INFO] [embedding_service.py:_get_model:69] 임베딩 모델 로드 시작: model=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-07 15:18:22] [INFO] [embedding_service.py:_get_model:73] 임베딩 모델 로드 완료: model=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-07 15:18:22] [INFO] [embedding_service.py:embed_query:97] 질의 임베딩 시작: text_length=58
+[2026-04-07 15:18:29] [INFO] [chroma_retriever.py:_get_collection:79] Chroma 컬렉션 연결 시작: path=C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\data\chroma, collection=doc_chunks
+[2026-04-07 15:18:30] [INFO] [chroma_retriever.py:retrieve:121] RAG 검색 시작: top_k=3
+[2026-04-07 15:18:30] [INFO] [chroma_retriever.py:retrieve:165] RAG 검색 완료: result_count=3, sample_ids=644bd73a26fb279f_chunk_0006, 644bd73a26fb279f_chunk_0009, 644bd73a26fb279f_chunk_0003
+[2026-04-07 15:18:30] [INFO] [ollama_client.py:generate:122] Ollama 호출 시작: model=qwen2.5:14b, endpoint=http://192.168.0.74:11434/api/chat
+[2026-04-07 15:18:31] [INFO] [ollama_client.py:generate:170] Ollama 호출 완료: output_length=70
+[2026-04-07 15:18:31] [INFO] [mode_rag_prompt_llm.py:run_rag_prompt_llm_mode:166] mode 실행 완료: rag_prompt_llm
+[2026-04-07 15:18:31] [INFO] [stream_orchestrator.py:run_request:175] STREAM 실행 완료: mode=rag_prompt_llm
+[2026-04-07 15:18:31] [INFO] [main.py:main:175] SQL 생성 완료
+[2026-04-07 15:18:31] [INFO] [main.py:main:176] ```sql
+SELECT TOP 50 *
+FROM EVENT_LOG_DATA
+ORDER BY EVENTTIME DESC
+```
+[2026-04-07 15:22:01] [INFO] [prompt_manager.py:_load_prompts:57] 프롬프트 파일 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\prompts\prompt_templates.yaml
+[2026-04-07 15:22:01] [INFO] [prompt_manager.py:_load_prompts:70] 프롬프트 파일 로드 완료: prompt_count=4
+[2026-04-07 15:22:01] [INFO] [stream_orchestrator.py:run_request:110] STREAM 실행 시작: mode=rag_prompt_llm
+[2026-04-07 15:22:01] [INFO] [mode_rag_prompt_llm.py:run_rag_prompt_llm_mode:76] mode 실행 시작: rag_prompt_llm
+[2026-04-07 15:22:22] [INFO] [embedding_service.py:_get_model:69] 임베딩 모델 로드 시작: model=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-07 15:22:27] [INFO] [embedding_service.py:_get_model:73] 임베딩 모델 로드 완료: model=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-07 15:22:27] [INFO] [embedding_service.py:embed_query:97] 질의 임베딩 시작: text_length=58
+[2026-04-07 15:22:31] [INFO] [chroma_retriever.py:_get_collection:79] Chroma 컬렉션 연결 시작: path=C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\data\chroma, collection=doc_chunks
+[2026-04-07 15:22:32] [INFO] [chroma_retriever.py:retrieve:121] RAG 검색 시작: top_k=3
+[2026-04-07 15:22:32] [INFO] [chroma_retriever.py:retrieve:165] RAG 검색 완료: result_count=3, sample_ids=644bd73a26fb279f_chunk_0006, 644bd73a26fb279f_chunk_0009, 644bd73a26fb279f_chunk_0003
+[2026-04-07 15:22:32] [INFO] [ollama_client.py:generate:122] Ollama 호출 시작: model=qwen2.5:14b, endpoint=http://192.168.0.74:11434/api/chat
+[2026-04-07 15:22:33] [INFO] [ollama_client.py:generate:170] Ollama 호출 완료: output_length=70
+[2026-04-07 15:22:33] [INFO] [mode_rag_prompt_llm.py:run_rag_prompt_llm_mode:166] mode 실행 완료: rag_prompt_llm
+[2026-04-07 15:22:33] [INFO] [stream_orchestrator.py:run_request:175] STREAM 실행 완료: mode=rag_prompt_llm
+[2026-04-07 15:22:33] [INFO] [main.py:main:183] SQL 생성 완료
+[2026-04-07 15:22:33] [INFO] [main.py:main:184] ```sql
+SELECT TOP 50 *
+FROM EVENT_LOG_DATA
+ORDER BY EVENTTIME DESC
+```
+[2026-04-07 15:22:33] [INFO] [main.py:_append_sql_execution_result:66] SQL 실행 미사용(--execute-sql 미지정): 생성 결과만 출력합니다.
+[2026-04-07 15:23:01] [INFO] [main.py:_render_execution_preview:117] MSSQL 실행 프리뷰 스킵: execution_result가 없습니다.
+[2026-04-07 15:25:26] [INFO] [prompt_manager.py:_load_prompts:57] 프롬프트 파일 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\prompts\prompt_templates.yaml
+[2026-04-07 15:25:26] [INFO] [prompt_manager.py:_load_prompts:70] 프롬프트 파일 로드 완료: prompt_count=4
+[2026-04-07 15:25:26] [INFO] [stream_orchestrator.py:run_request:110] STREAM 실행 시작: mode=rag_prompt_llm
+[2026-04-07 15:25:26] [INFO] [mode_rag_prompt_llm.py:run_rag_prompt_llm_mode:76] mode 실행 시작: rag_prompt_llm
+[2026-04-07 15:25:47] [INFO] [embedding_service.py:_get_model:69] 임베딩 모델 로드 시작: model=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-07 15:25:52] [INFO] [embedding_service.py:_get_model:73] 임베딩 모델 로드 완료: model=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-07 15:25:52] [INFO] [embedding_service.py:embed_query:97] 질의 임베딩 시작: text_length=58
+[2026-04-07 15:25:56] [INFO] [chroma_retriever.py:_get_collection:79] Chroma 컬렉션 연결 시작: path=C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\data\chroma, collection=doc_chunks
+[2026-04-07 15:25:56] [INFO] [chroma_retriever.py:retrieve:121] RAG 검색 시작: top_k=3
+[2026-04-07 15:25:56] [INFO] [chroma_retriever.py:retrieve:165] RAG 검색 완료: result_count=3, sample_ids=644bd73a26fb279f_chunk_0006, 644bd73a26fb279f_chunk_0009, 644bd73a26fb279f_chunk_0003
+[2026-04-07 15:25:56] [INFO] [ollama_client.py:generate:122] Ollama 호출 시작: model=qwen2.5:14b, endpoint=http://192.168.0.74:11434/api/chat
+[2026-04-07 15:25:57] [INFO] [ollama_client.py:generate:170] Ollama 호출 완료: output_length=70
+[2026-04-07 15:25:57] [INFO] [mode_rag_prompt_llm.py:run_rag_prompt_llm_mode:166] mode 실행 완료: rag_prompt_llm
+[2026-04-07 15:25:57] [INFO] [stream_orchestrator.py:run_request:175] STREAM 실행 완료: mode=rag_prompt_llm
+[2026-04-07 15:25:57] [INFO] [main.py:main:183] SQL 생성 완료
+[2026-04-07 15:25:57] [INFO] [main.py:main:184] ```sql
+SELECT TOP 50 *
+FROM EVENT_LOG_DATA
+ORDER BY EVENTTIME DESC
+```
+[2026-04-07 15:25:57] [INFO] [main.py:_append_sql_execution_result:73] 생성 SQL 실행 시작
+[2026-04-07 15:26:05] [INFO] [config_loader.py:load_config:38] 설정 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\config\config.yaml
+[2026-04-07 15:26:05] [INFO] [config_loader.py:load_config:51] 설정 로드 완료
+[2026-04-07 15:26:05] [INFO] [sql_executor_service.py:from_config:59] SQL 실행 서비스 생성 완료: allow_only_select=True, max_rows=1000
+[2026-04-07 15:26:05] [INFO] [sql_execution_integration.py:run_generated_sql_with_executor:44] 생성 SQL 실행 연결 시작
+[2026-04-07 15:26:05] [INFO] [sql_executor_service.py:run_query:81] SQL 실행 요청 수신
+[2026-04-07 15:26:05] [INFO] [sql_guard.py:validate_query_sql:59] SQL 검증 시작
+[2026-04-07 15:28:28] [INFO] [prompt_manager.py:_load_prompts:57] 프롬프트 파일 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\prompts\prompt_templates.yaml
+[2026-04-07 15:28:28] [INFO] [prompt_manager.py:_load_prompts:70] 프롬프트 파일 로드 완료: prompt_count=4
+[2026-04-07 15:28:28] [INFO] [stream_orchestrator.py:run_request:110] STREAM 실행 시작: mode=rag_prompt_llm
+[2026-04-07 15:28:28] [INFO] [mode_rag_prompt_llm.py:run_rag_prompt_llm_mode:76] mode 실행 시작: rag_prompt_llm
+[2026-04-07 15:28:51] [INFO] [embedding_service.py:_get_model:69] 임베딩 모델 로드 시작: model=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-07 15:28:57] [INFO] [embedding_service.py:_get_model:73] 임베딩 모델 로드 완료: model=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-07 15:28:57] [INFO] [embedding_service.py:embed_query:97] 질의 임베딩 시작: text_length=58
+[2026-04-07 15:29:01] [INFO] [chroma_retriever.py:_get_collection:79] Chroma 컬렉션 연결 시작: path=C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\data\chroma, collection=doc_chunks
+[2026-04-07 15:29:02] [INFO] [chroma_retriever.py:retrieve:121] RAG 검색 시작: top_k=3
+[2026-04-07 15:29:02] [INFO] [chroma_retriever.py:retrieve:165] RAG 검색 완료: result_count=3, sample_ids=644bd73a26fb279f_chunk_0006, 644bd73a26fb279f_chunk_0009, 644bd73a26fb279f_chunk_0003
+[2026-04-07 15:29:02] [INFO] [ollama_client.py:generate:122] Ollama 호출 시작: model=qwen2.5:14b, endpoint=http://192.168.0.74:11434/api/chat
+[2026-04-07 15:29:03] [INFO] [ollama_client.py:generate:170] Ollama 호출 완료: output_length=70
+[2026-04-07 15:29:03] [INFO] [mode_rag_prompt_llm.py:run_rag_prompt_llm_mode:166] mode 실행 완료: rag_prompt_llm
+[2026-04-07 15:29:03] [INFO] [stream_orchestrator.py:run_request:175] STREAM 실행 완료: mode=rag_prompt_llm
+[2026-04-07 15:29:03] [INFO] [main.py:main:183] SQL 생성 완료
+[2026-04-07 15:29:03] [INFO] [main.py:main:184] ```sql
+SELECT TOP 50 *
+FROM EVENT_LOG_DATA
+ORDER BY EVENTTIME DESC
+```
+[2026-04-07 15:29:03] [INFO] [main.py:_append_sql_execution_result:73] 생성 SQL 실행 시작
+[2026-04-07 15:29:04] [INFO] [config_loader.py:load_config:38] 설정 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\config\config.yaml
+[2026-04-07 15:29:04] [INFO] [config_loader.py:load_config:51] 설정 로드 완료
+[2026-04-07 15:29:04] [INFO] [sql_executor_service.py:from_config:59] SQL 실행 서비스 생성 완료: allow_only_select=True, max_rows=1000
+[2026-04-07 15:29:04] [INFO] [sql_execution_integration.py:run_generated_sql_with_executor:44] 생성 SQL 실행 연결 시작
+[2026-04-07 15:29:04] [INFO] [sql_executor_service.py:run_query:81] SQL 실행 요청 수신
+[2026-04-07 15:29:04] [INFO] [sql_guard.py:validate_query_sql:59] SQL 검증 시작
+[2026-04-07 15:29:04] [INFO] [sql_guard.py:_normalize_sql_text:98] SQL 코드블록 래퍼를 제거하고 검증을 진행합니다.
+[2026-04-07 15:29:04] [INFO] [sql_guard.py:validate_query_sql:73] SQL 검증 완료
+[2026-04-07 15:29:04] [INFO] [sql_executor_service.py:run_query:83] MSSQL 조회 실행 시작
+[2026-04-07 15:29:04] [INFO] [mssql_client.py:execute_query:110] MSSQL 조회 시작: host=192.168.0.11, database=SVM3PRISM
+[2026-04-07 15:29:09] [INFO] [mssql_client.py:execute_query:119] MSSQL 조회 완료: row_count=50
+[2026-04-07 15:29:09] [INFO] [sql_executor_service.py:run_query:86] SQL 실행 완료: row_count=50
+[2026-04-07 15:29:09] [INFO] [sql_execution_integration.py:run_generated_sql_with_executor:46] 생성 SQL 실행 연결 완료: row_count=50
+[2026-04-07 15:29:09] [INFO] [mssql_client.py:close:128] MSSQL 엔진 자원 해제 완료
+[2026-04-07 15:29:09] [INFO] [main.py:_append_sql_execution_result:90] 생성 SQL 실행 완료: row_count=50
+[2026-04-07 15:29:18] [INFO] [main.py:_render_execution_preview:169] 
+===== MSSQL Execution Preview =====
+row_count=50, preview_rows=20
+EQPID    | MODULEID           | EVENTTIME                  | UNIT      | STEP | GLASSID       | GLASSID2 | LOTID        | HOSTPPID        | EQPPPID | EVENTID | COL1          | COL2         | COL3         | COL4 | COL5 | FILENAME                                | CREATETIME                
+---------+--------------------+----------------------------+-----------+------+---------------+----------+--------------+-----------------+---------+---------+---------------+--------------+--------------+------+------+-----------------------------------------+---------------------------
+S1JOA04G | S1JOA04G_NURA      | 2026-04-07 15:28:39.206000 | NURA_LD01 | 00BC | S1EF2S56KX2VM |          | S1EF2S56L3FR | PP_3201_EF2_BML | EF2_BML | CEID_17 | COMPONENT_OUT | NURA_LD01    | NURA_UD01    |      |      | T-S1JOA04G_NURA-20260407152854.csv      | 2026-04-07 15:28:59.307918
+S1JOA04G | S1JOA04G_NURA      | 2026-04-07 15:28:39.206000 | NURA_UD01 | 00BC | S1EF2S56KX2VM |          | S1EF2S56L3FR | PP_3201_EF2_BML | EF2_BML | CEID_16 | COMPONENT_IN  | NURA_LD01    | NURA_UD01    |      |      | T-S1JOA04G_NURA-20260407152854.csv      | 2026-04-07 15:28:59.307918
+S1JOA04G | S1JOA04G_NURA      | 2026-04-07 15:28:32.461000 | NURA_LD01 | 00BC | S1EF2S56KX2VM |          | S1EF2S56L3FR | PP_3201_EF2_BML | EF2_BML | CEID_16 | COMPONENT_IN  | NHTU_HB01    | NURA_LD01    |      |      | T-S1JOA04G_NURA-20260407152854.csv      | 2026-04-07 15:28:59.307918
+S1JOA04G | S1JOA04G_NURA      | 2026-04-07 15:28:26.491000 | NURA      | 00BC | S1EF2S56KX2VM |          | S1EF2S56L3FR | PP_3201_EF2_BML | EF2_BML | CEID_51 | IDLE          | EXECUTING    |              |      |      | T-S1JOA04G_NURA-20260407152854.csv      | 2026-04-07 15:28:59.307918
+S1JOA01D | S1JOA01D_NHTU_XB01 | 2026-04-07 15:28:23.681000 | XB01_TM01 | 00BC | S1B51D55083CL |          | S1B51D552TMD | PP_3201_EF2_BML | 31      | CEID_17 | COMPONENT_OUT | XB01_TM01#02 | XB01_BF01    |      |      | T-S1JOA01D_NHTU_XB01-20260407152902.csv | 2026-04-07 15:29:07.661352
+S1JOA01D | S1JOA01D_NHTU_XB01 | 2026-04-07 15:28:21.976000 | XB01_BF01 |      |               |          |              |                 |         | CEID_51 | IDLE          | EXECUTE      |              |      |      | T-S1JOA01D_NHTU_XB01-20260407152902.csv | 2026-04-07 15:29:07.661352
+S1JOA01D | S1JOA01D_NHTU_XB01 | 2026-04-07 15:28:21.972000 | XB01_TM01 |      |               |          |              |                 |         | CEID_51 | EXECUTE       | IDLE         |              |      |      | T-S1JOA01D_NHTU_XB01-20260407152902.csv | 2026-04-07 15:29:07.661352
+S1JOA08J | S1JOA08J_NHTU_XB01 | 2026-04-07 15:28:21.878000 | XB01_TM01 | 00BC | S1B51D55062R2 |          | S1B51D551YIA | PP_3201_EF2_BML | 31      | CEID_17 | COMPONENT_OUT | XB01_TM01#02 | XB01_BF01    |      |      | T-S1JOA08J_NHTU_XB01-20260407152858.csv | 2026-04-07 15:29:03.116814
+S1JOA08J | S1JOA08J_NHTU_XB01 | 2026-04-07 15:28:20.200000 | XB01_BF01 |      |               |          |              |                 |         | CEID_51 | IDLE          | EXECUTE      |              |      |      | T-S1JOA08J_NHTU_XB01-20260407152858.csv | 2026-04-07 15:29:03.116814
+S1JOA08J | S1JOA08J_NHTU_XB01 | 2026-04-07 15:28:20.197000 | XB01_TM01 |      |               |          |              |                 |         | CEID_51 | EXECUTE       | IDLE         |              |      |      | T-S1JOA08J_NHTU_XB01-20260407152858.csv | 2026-04-07 15:29:03.116814
+S1JOA01D | S1JOA01D_NHTU_XB01 | 2026-04-07 15:28:15.884000 | XB01_BF01 | 00BC | S1B51D55083CL |          | S1B51D552TMD | PP_3201_EF2_BML | 31      | CEID_16 | COMPONENT_IN  | XB01_TM01    | XB01_BF01#01 |      |      | T-S1JOA01D_NHTU_XB01-20260407152902.csv | 2026-04-07 15:29:07.661352
+S1JOA01D | S1JOA01D_NHTU_XB01 | 2026-04-07 15:28:15.614000 | XB01_TM01 |      |               |          |              |                 |         | CEID_51 | IDLE          | EXECUTE      |              |      |      | T-S1JOA01D_NHTU_XB01-20260407152902.csv | 2026-04-07 15:29:07.661352
+S1JOA08J | S1JOA08J_NHTU_XB01 | 2026-04-07 15:28:14.233000 | XB01_BF01 | 00BC | S1B51D55062R2 |          | S1B51D551YIA | PP_3201_EF2_BML | 31      | CEID_16 | COMPONENT_IN  | XB01_TM01    | XB01_BF01#01 |      |      | T-S1JOA08J_NHTU_XB01-20260407152858.csv | 2026-04-07 15:29:03.116814
+S1JOA08J | S1JOA08J_NHTU_XB01 | 2026-04-07 15:28:13.978000 | XB01_TM01 |      |               |          |              |                 |         | CEID_51 | IDLE          | EXECUTE      |              |      |      | T-S1JOA08J_NHTU_XB01-20260407152858.csv | 2026-04-07 15:29:03.116814
+S1JOA06J | S1JOA06J_NHTU_XB01 | 2026-04-07 15:28:12.735000 | XB01_TM01 | 00BC | S1B51D55083CZ |          | S1B51D552TMJ | PP_3201_EF2_BML | 31      | CEID_17 | COMPONENT_OUT | XB01_TM01#02 | XB01_BF01    |      |      | T-S1JOA06J_NHTU_XB01-20260407152847.csv | 2026-04-07 15:28:52.169724
+S1JOA06J | S1JOA06J_NHTU_XB01 | 2026-04-07 15:28:11.144000 | XB01_BF01 |      |               |          |              |                 |         | CEID_51 | IDLE          | EXECUTE      |              |      |      | T-S1JOA06J_NHTU_XB01-20260407152847.csv | 2026-04-07 15:28:52.169724
+S1JOA06J | S1JOA06J_NHTU_XB01 | 2026-04-07 15:28:11.140000 | XB01_TM01 |      |               |          |              |                 |         | CEID_51 | EXECUTE       | IDLE         |              |      |      | T-S1JOA06J_NHTU_XB01-20260407152847.csv | 2026-04-07 15:28:52.169724
+S1JOA01D | S1JOA01D_NHTU_XB01 | 2026-04-07 15:28:10.992000 | XB01_TM01 | 00BC | S1B51D55083CL |          | S1B51D552TMD | PP_3201_EF2_BML | 31      | CEID_16 | COMPONENT_IN  | WC01_EX01    | XB01_TM01#02 |      |      | T-S1JOA01D_NHTU_XB01-20260407152902.csv | 2026-04-07 15:29:07.661352
+S1JOA08J | S1JOA08J_NHTU_XB01 | 2026-04-07 15:28:09.028000 | XB01_TM01 | 00BC | S1B51D55062R2 |          | S1B51D551YIA | PP_3201_EF2_BML | 31      | CEID_16 | COMPONENT_IN  | WC01_EX01    | XB01_TM01#02 |      |      | T-S1JOA08J_NHTU_XB01-20260407152858.csv | 2026-04-07 15:29:03.116814
+S1JOA04G | S1JOA04G_NHTU_XB01 | 2026-04-07 15:28:08.280000 | XB01_TM01 | 00BC | S1B51D55083BT |          | S1B51D552TM1 | PP_3201_EF2_BML | 31      | CEID_17 | COMPONENT_OUT | XB01_TM01#02 | XB01_BF01    |      |      | T-S1JOA04G_NHTU_XB01-20260407152843.csv | 2026-04-07 15:28:48.352448
+... (remaining 30 rows omitted)
+[2026-04-07 15:34:14] [INFO] [prompt_manager.py:_load_prompts:57] 프롬프트 파일 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\prompts\prompt_templates.yaml
+[2026-04-07 15:34:14] [INFO] [prompt_manager.py:_load_prompts:70] 프롬프트 파일 로드 완료: prompt_count=4
+[2026-04-07 15:34:14] [INFO] [stream_orchestrator.py:run_request:110] STREAM 실행 시작: mode=rag_prompt_llm
+[2026-04-07 15:34:14] [INFO] [mode_rag_prompt_llm.py:run_rag_prompt_llm_mode:76] mode 실행 시작: rag_prompt_llm
+[2026-04-07 15:34:35] [INFO] [embedding_service.py:_get_model:69] 임베딩 모델 로드 시작: model=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-07 15:34:40] [INFO] [embedding_service.py:_get_model:73] 임베딩 모델 로드 완료: model=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-07 15:34:40] [INFO] [embedding_service.py:embed_query:97] 질의 임베딩 시작: text_length=58
+[2026-04-07 15:34:44] [INFO] [chroma_retriever.py:_get_collection:79] Chroma 컬렉션 연결 시작: path=C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\data\chroma, collection=doc_chunks
+[2026-04-07 15:34:45] [INFO] [chroma_retriever.py:retrieve:121] RAG 검색 시작: top_k=3
+[2026-04-07 15:34:45] [INFO] [chroma_retriever.py:retrieve:165] RAG 검색 완료: result_count=3, sample_ids=644bd73a26fb279f_chunk_0006, 644bd73a26fb279f_chunk_0009, 644bd73a26fb279f_chunk_0003
+[2026-04-07 15:34:45] [INFO] [ollama_client.py:generate:122] Ollama 호출 시작: model=qwen2.5:14b, endpoint=http://192.168.0.74:11434/api/chat
+[2026-04-07 15:34:49] [INFO] [ollama_client.py:generate:170] Ollama 호출 완료: output_length=70
+[2026-04-07 15:34:49] [INFO] [mode_rag_prompt_llm.py:run_rag_prompt_llm_mode:166] mode 실행 완료: rag_prompt_llm
+[2026-04-07 15:34:49] [INFO] [stream_orchestrator.py:run_request:175] STREAM 실행 완료: mode=rag_prompt_llm
+[2026-04-07 15:34:49] [INFO] [main.py:main:59] SQL 생성 완료
+[2026-04-07 15:34:49] [INFO] [main.py:main:60] ```sql
+SELECT TOP 50 *
+FROM EVENT_LOG_DATA
+ORDER BY EVENTTIME DESC
+```
+[2026-04-07 15:34:49] [INFO] [sql_execution_hook.py:append_sql_execution_result:46] 생성 SQL 실행 시작
+[2026-04-07 15:34:50] [INFO] [config_loader.py:load_config:38] 설정 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\config\config.yaml
+[2026-04-07 15:34:50] [INFO] [config_loader.py:load_config:51] 설정 로드 완료
+[2026-04-07 15:34:50] [INFO] [sql_executor_service.py:from_config:59] SQL 실행 서비스 생성 완료: allow_only_select=True, max_rows=1000
+[2026-04-07 15:34:50] [INFO] [sql_execution_integration.py:run_generated_sql_with_executor:44] 생성 SQL 실행 연결 시작
+[2026-04-07 15:34:50] [INFO] [sql_executor_service.py:run_query:81] SQL 실행 요청 수신
+[2026-04-07 15:34:50] [INFO] [sql_guard.py:validate_query_sql:59] SQL 검증 시작
+[2026-04-07 15:34:50] [INFO] [sql_guard.py:_normalize_sql_text:98] SQL 코드블록 래퍼를 제거하고 검증을 진행합니다.
+[2026-04-07 15:34:50] [INFO] [sql_guard.py:validate_query_sql:73] SQL 검증 완료
+[2026-04-07 15:34:50] [INFO] [sql_executor_service.py:run_query:83] MSSQL 조회 실행 시작
+[2026-04-07 15:34:50] [INFO] [mssql_client.py:execute_query:110] MSSQL 조회 시작: host=192.168.0.11, database=SVM3PRISM
+[2026-04-07 15:34:55] [INFO] [mssql_client.py:execute_query:119] MSSQL 조회 완료: row_count=50
+[2026-04-07 15:34:55] [INFO] [sql_executor_service.py:run_query:86] SQL 실행 완료: row_count=50
+[2026-04-07 15:34:55] [INFO] [sql_execution_integration.py:run_generated_sql_with_executor:46] 생성 SQL 실행 연결 완료: row_count=50
+[2026-04-07 15:34:55] [INFO] [mssql_client.py:close:128] MSSQL 엔진 자원 해제 완료
+[2026-04-07 15:34:55] [INFO] [sql_execution_hook.py:append_sql_execution_result:63] 생성 SQL 실행 완료: row_count=50
+[2026-04-07 15:34:55] [INFO] [sql_execution_output.py:render_execution_preview:104] 
+===== MSSQL Execution Preview =====
+row_count=50, preview_rows=20
+EQPID    | MODULEID           | EVENTTIME                  | UNIT      | STEP | GLASSID       | GLASSID2 | LOTID        | HOSTPPID        | EQPPPID | EVENTID | COL1          | COL2         | COL3         | COL4 | COL5 | FILENAME                                | CREATETIME                
+---------+--------------------+----------------------------+-----------+------+---------------+----------+--------------+-----------------+---------+---------+---------------+--------------+--------------+------+------+-----------------------------------------+---------------------------
+S1JOA06Z | S1JOA06Z_NHTU_XB01 | 2026-04-07 15:34:03.440000 | XB01_TM01 | 00BC | S1B51D55083CS |          | S1B51D552TMG | PP_3201_EF2_BML | 31      | CEID_17 | COMPONENT_OUT | XB01_TM01#02 | XB01_BF01    |      |      | T-S1JOA06Z_NHTU_XB01-20260407153438.csv | 2026-04-07 15:34:43.755853
+S1JOA02E | S1JOA02E_NHTU_XB01 | 2026-04-07 15:34:02.715000 | XB01_TM01 | 00BC | S1B51D55083D6 |          | S1B51D552TMM | PP_3201_EF2_BML | 31      | CEID_17 | COMPONENT_OUT | XB01_TM01#02 | XB01_BF01    |      |      | T-S1JOA02E_NHTU_XB01-20260407153437.csv | 2026-04-07 15:34:42.790268
+S1JOA06Z | S1JOA06Z_NHTU_XB01 | 2026-04-07 15:34:02.067000 | XB01_BF01 |      |               |          |              |                 |         | CEID_51 | IDLE          | EXECUTE      |              |      |      | T-S1JOA06Z_NHTU_XB01-20260407153438.csv | 2026-04-07 15:34:43.755853
+S1JOA06Z | S1JOA06Z_NHTU_XB01 | 2026-04-07 15:34:02.065000 | XB01_TM01 |      |               |          |              |                 |         | CEID_51 | EXECUTE       | IDLE         |              |      |      | T-S1JOA06Z_NHTU_XB01-20260407153438.csv | 2026-04-07 15:34:43.755853
+S1JOA02E | S1JOA02E_NHTU_XB01 | 2026-04-07 15:34:01.225000 | XB01_BF01 |      |               |          |              |                 |         | CEID_51 | IDLE          | EXECUTE      |              |      |      | T-S1JOA02E_NHTU_XB01-20260407153437.csv | 2026-04-07 15:34:42.790268
+S1JOA02E | S1JOA02E_NHTU_XB01 | 2026-04-07 15:34:01.221000 | XB01_TM01 |      |               |          |              |                 |         | CEID_51 | EXECUTE       | IDLE         |              |      |      | T-S1JOA02E_NHTU_XB01-20260407153437.csv | 2026-04-07 15:34:42.790268
+S1JOA06Z | S1JOA06Z_NHTU_XB01 | 2026-04-07 15:33:56.898000 | XB01_BF01 | 00BC | S1B51D55083CS |          | S1B51D552TMG | PP_3201_EF2_BML | 31      | CEID_16 | COMPONENT_IN  | XB01_TM01    | XB01_BF01#01 |      |      | T-S1JOA06Z_NHTU_XB01-20260407153438.csv | 2026-04-07 15:34:43.755853
+S1JOA06Z | S1JOA06Z_NHTU_XB01 | 2026-04-07 15:33:56.660000 | XB01_TM01 |      |               |          |              |                 |         | CEID_51 | IDLE          | EXECUTE      |              |      |      | T-S1JOA06Z_NHTU_XB01-20260407153438.csv | 2026-04-07 15:34:43.755853
+S1JOA01D | S1JOA01D_NHTU_XB01 | 2026-04-07 15:33:56.347000 | XB01_TM01 | 00BC | S1B51D55083CZ |          | S1B51D552TMJ | PP_3201_EF2_BML | 31      | CEID_17 | COMPONENT_OUT | XB01_TM01#02 | XB01_BF01    |      |      | T-S1JOA01D_NHTU_XB01-20260407153430.csv | 2026-04-07 15:34:35.206026
+S1JOA02E | S1JOA02E_NHTU_XB01 | 2026-04-07 15:33:55.224000 | XB01_BF01 | 00BC | S1B51D55083D6 |          | S1B51D552TMM | PP_3201_EF2_BML | 31      | CEID_16 | COMPONENT_IN  | XB01_TM01    | XB01_BF01#01 |      |      | T-S1JOA02E_NHTU_XB01-20260407153437.csv | 2026-04-07 15:34:42.790268
+S1JOA02E | S1JOA02E_NHTU_XB01 | 2026-04-07 15:33:54.997000 | XB01_TM01 |      |               |          |              |                 |         | CEID_51 | IDLE          | EXECUTE      |              |      |      | T-S1JOA02E_NHTU_XB01-20260407153437.csv | 2026-04-07 15:34:42.790268
+S1JOA01D | S1JOA01D_NHTU_XB01 | 2026-04-07 15:33:54.667000 | XB01_BF01 |      |               |          |              |                 |         | CEID_51 | IDLE          | EXECUTE      |              |      |      | T-S1JOA01D_NHTU_XB01-20260407153430.csv | 2026-04-07 15:34:35.206026
+S1JOA01D | S1JOA01D_NHTU_XB01 | 2026-04-07 15:33:54.662000 | XB01_TM01 |      |               |          |              |                 |         | CEID_51 | EXECUTE       | IDLE         |              |      |      | T-S1JOA01D_NHTU_XB01-20260407153430.csv | 2026-04-07 15:34:35.206026
+S1JOA06Z | S1JOA06Z_NHTU_XB01 | 2026-04-07 15:33:51.763000 | XB01_TM01 | 00BC | S1B51D55083CS |          | S1B51D552TMG | PP_3201_EF2_BML | 31      | CEID_16 | COMPONENT_IN  | WC01_EX01    | XB01_TM01#02 |      |      | T-S1JOA06Z_NHTU_XB01-20260407153438.csv | 2026-04-07 15:34:43.755853
+S1JOA08J | S1JOA08J_NHTU_XB01 | 2026-04-07 15:33:51.698000 | XB01_TM01 | 00BC | S1B51D55062RG |          | S1B51D551YIG | PP_3201_EF2_BML | 31      | CEID_17 | COMPONENT_OUT | XB01_TM01#02 | XB01_BF01    |      |      | T-S1JOA08J_NHTU_XB01-20260407153428.csv | 2026-04-07 15:34:33.365506
+S1JOA02E | S1JOA02E_NHTU_XB01 | 2026-04-07 15:33:50.595000 | XB01_TM01 | 00BC | S1B51D55083D6 |          | S1B51D552TMM | PP_3201_EF2_BML | 31      | CEID_16 | COMPONENT_IN  | WC01_EX01    | XB01_TM01#02 |      |      | T-S1JOA02E_NHTU_XB01-20260407153437.csv | 2026-04-07 15:34:42.790268
+S1JOA08J | S1JOA08J_NHTU_XB01 | 2026-04-07 15:33:50.362000 | XB01_BF01 |      |               |          |              |                 |         | CEID_51 | IDLE          | EXECUTE      |              |      |      | T-S1JOA08J_NHTU_XB01-20260407153428.csv | 2026-04-07 15:34:33.365506
+S1JOA08J | S1JOA08J_NHTU_XB01 | 2026-04-07 15:33:50.360000 | XB01_TM01 |      |               |          |              |                 |         | CEID_51 | EXECUTE       | IDLE         |              |      |      | T-S1JOA08J_NHTU_XB01-20260407153428.csv | 2026-04-07 15:34:33.365506
+S1JOA01D | S1JOA01D_NHTU_XB01 | 2026-04-07 15:33:49.396000 | XB01_BF01 | 00BC | S1B51D55083CZ |          | S1B51D552TMJ | PP_3201_EF2_BML | 31      | CEID_16 | COMPONENT_IN  | XB01_TM01    | XB01_BF01#01 |      |      | T-S1JOA01D_NHTU_XB01-20260407153430.csv | 2026-04-07 15:34:35.206026
+S1JOA01D | S1JOA01D_NHTU_XB01 | 2026-04-07 15:33:49.165000 | XB01_TM01 |      |               |          |              |                 |         | CEID_51 | IDLE          | EXECUTE      |              |      |      | T-S1JOA01D_NHTU_XB01-20260407153430.csv | 2026-04-07 15:34:35.206026
+... (remaining 30 rows omitted)
+[2026-04-07 15:51:21] [INFO] [prompt_manager.py:_load_prompts:57] 프롬프트 파일 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\prompts\prompt_templates.yaml
+[2026-04-07 15:51:21] [INFO] [prompt_manager.py:_load_prompts:70] 프롬프트 파일 로드 완료: prompt_count=4
+[2026-04-07 15:51:21] [INFO] [stream_orchestrator.py:run_request:110] STREAM 실행 시작: mode=rag_prompt_llm
+[2026-04-07 15:51:21] [INFO] [mode_rag_prompt_llm.py:run_rag_prompt_llm_mode:76] mode 실행 시작: rag_prompt_llm
+[2026-04-07 15:51:46] [INFO] [embedding_service.py:_get_model:69] 임베딩 모델 로드 시작: model=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-07 15:51:51] [INFO] [embedding_service.py:_get_model:73] 임베딩 모델 로드 완료: model=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-07 15:51:51] [INFO] [embedding_service.py:embed_query:97] 질의 임베딩 시작: text_length=56
+[2026-04-07 15:51:56] [INFO] [chroma_retriever.py:_get_collection:79] Chroma 컬렉션 연결 시작: path=C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\data\chroma, collection=doc_chunks
+[2026-04-07 15:51:56] [INFO] [chroma_retriever.py:retrieve:121] RAG 검색 시작: top_k=3
+[2026-04-07 15:51:56] [INFO] [chroma_retriever.py:retrieve:165] RAG 검색 완료: result_count=3, sample_ids=644bd73a26fb279f_chunk_0006, 644bd73a26fb279f_chunk_0002, 644bd73a26fb279f_chunk_0003
+[2026-04-07 15:51:56] [INFO] [ollama_client.py:generate:122] Ollama 호출 시작: model=qwen2.5:14b, endpoint=http://192.168.0.74:11434/api/chat
+[2026-04-07 15:52:02] [INFO] [ollama_client.py:generate:170] Ollama 호출 완료: output_length=196
+[2026-04-07 15:52:02] [INFO] [mode_rag_prompt_llm.py:run_rag_prompt_llm_mode:166] mode 실행 완료: rag_prompt_llm
+[2026-04-07 15:52:02] [INFO] [stream_orchestrator.py:run_request:175] STREAM 실행 완료: mode=rag_prompt_llm
+[2026-04-07 15:52:02] [INFO] [main.py:main:59] SQL 생성 완료
+[2026-04-07 15:52:02] [INFO] [main.py:main:60] ```sql
+SELECT EQPID, COUNT(*) AS ErrorCount
+FROM dbo.ERROR_LOG_DATA
+WHERE EVENTTIME >= DATEADD(DAY, -7, GETDATE())
+GROUP BY EQPID
+ORDER BY ErrorCount DESC
+OFFSET 0 ROWS FETCH NEXT 10 ROWS ONLY
+```
+[2026-04-07 15:52:02] [INFO] [sql_execution_hook.py:append_sql_execution_result:46] 생성 SQL 실행 시작
+[2026-04-07 15:52:03] [INFO] [config_loader.py:load_config:38] 설정 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\config\config.yaml
+[2026-04-07 15:52:03] [INFO] [config_loader.py:load_config:51] 설정 로드 완료
+[2026-04-07 15:52:03] [INFO] [sql_executor_service.py:from_config:59] SQL 실행 서비스 생성 완료: allow_only_select=True, max_rows=1000
+[2026-04-07 15:52:03] [INFO] [sql_execution_integration.py:run_generated_sql_with_executor:44] 생성 SQL 실행 연결 시작
+[2026-04-07 15:52:03] [INFO] [sql_executor_service.py:run_query:81] SQL 실행 요청 수신
+[2026-04-07 15:52:03] [INFO] [sql_guard.py:validate_query_sql:59] SQL 검증 시작
+[2026-04-07 15:52:03] [INFO] [sql_guard.py:_normalize_sql_text:98] SQL 코드블록 래퍼를 제거하고 검증을 진행합니다.
+[2026-04-07 15:52:03] [INFO] [sql_guard.py:validate_query_sql:73] SQL 검증 완료
+[2026-04-07 15:52:03] [INFO] [sql_executor_service.py:run_query:83] MSSQL 조회 실행 시작
+[2026-04-07 15:52:03] [INFO] [mssql_client.py:execute_query:110] MSSQL 조회 시작: host=192.168.0.11, database=SVM3PRISM
+[2026-04-07 15:52:04] [INFO] [mssql_client.py:execute_query:119] MSSQL 조회 완료: row_count=0
+[2026-04-07 15:52:04] [INFO] [sql_executor_service.py:run_query:86] SQL 실행 완료: row_count=0
+[2026-04-07 15:52:04] [INFO] [sql_execution_integration.py:run_generated_sql_with_executor:46] 생성 SQL 실행 연결 완료: row_count=0
+[2026-04-07 15:52:04] [INFO] [mssql_client.py:close:128] MSSQL 엔진 자원 해제 완료
+[2026-04-07 15:52:04] [INFO] [sql_execution_hook.py:append_sql_execution_result:63] 생성 SQL 실행 완료: row_count=0
+[2026-04-07 15:52:04] [INFO] [sql_execution_output.py:render_execution_preview:75] 
+===== MSSQL Execution Preview =====
+row_count=0, preview_rows=0
+(empty result)
+[2026-04-07 15:53:42] [INFO] [prompt_manager.py:_load_prompts:57] 프롬프트 파일 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\prompts\prompt_templates.yaml
+[2026-04-07 15:53:42] [INFO] [prompt_manager.py:_load_prompts:70] 프롬프트 파일 로드 완료: prompt_count=4
+[2026-04-07 15:53:42] [INFO] [stream_orchestrator.py:run_request:110] STREAM 실행 시작: mode=rag_prompt_llm
+[2026-04-07 15:53:42] [INFO] [mode_rag_prompt_llm.py:run_rag_prompt_llm_mode:76] mode 실행 시작: rag_prompt_llm
+[2026-04-07 15:54:03] [INFO] [embedding_service.py:_get_model:69] 임베딩 모델 로드 시작: model=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-07 15:54:09] [INFO] [embedding_service.py:_get_model:73] 임베딩 모델 로드 완료: model=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-07 15:54:09] [INFO] [embedding_service.py:embed_query:97] 질의 임베딩 시작: text_length=36
+[2026-04-07 15:54:13] [INFO] [chroma_retriever.py:_get_collection:79] Chroma 컬렉션 연결 시작: path=C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\data\chroma, collection=doc_chunks
+[2026-04-07 15:54:13] [INFO] [chroma_retriever.py:retrieve:121] RAG 검색 시작: top_k=3
+[2026-04-07 15:54:13] [INFO] [chroma_retriever.py:retrieve:165] RAG 검색 완료: result_count=3, sample_ids=644bd73a26fb279f_chunk_0002, 644bd73a26fb279f_chunk_0009, 644bd73a26fb279f_chunk_0007
+[2026-04-07 15:54:13] [INFO] [ollama_client.py:generate:122] Ollama 호출 시작: model=qwen2.5:14b, endpoint=http://192.168.0.74:11434/api/chat
+[2026-04-07 15:54:18] [INFO] [ollama_client.py:generate:170] Ollama 호출 완료: output_length=260
+[2026-04-07 15:54:18] [INFO] [mode_rag_prompt_llm.py:run_rag_prompt_llm_mode:166] mode 실행 완료: rag_prompt_llm
+[2026-04-07 15:54:18] [INFO] [stream_orchestrator.py:run_request:175] STREAM 실행 완료: mode=rag_prompt_llm
+[2026-04-07 15:54:18] [INFO] [main.py:main:59] SQL 생성 완료
+[2026-04-07 15:54:18] [INFO] [main.py:main:60] ```sql
+SELECT DISTINCT w.EQPID
+FROM dbo.WARNING_LOG_DATA w
+LEFT JOIN (
+    SELECT EQPID FROM dbo.ERROR_LOG_DATA WHERE CREATETIME >= DATEADD(DAY, -30, GETDATE())
+) e ON w.EQPID = e.EQPID
+WHERE w.CREATETIME >= DATEADD(DAY, -30, GETDATE()) AND e.EQPID IS NULL
+```
+[2026-04-07 15:54:18] [INFO] [sql_execution_hook.py:append_sql_execution_result:46] 생성 SQL 실행 시작
+[2026-04-07 15:54:19] [INFO] [config_loader.py:load_config:38] 설정 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\config\config.yaml
+[2026-04-07 15:54:19] [INFO] [config_loader.py:load_config:51] 설정 로드 완료
+[2026-04-07 15:54:19] [INFO] [sql_executor_service.py:from_config:59] SQL 실행 서비스 생성 완료: allow_only_select=True, max_rows=1000
+[2026-04-07 15:54:19] [INFO] [sql_execution_integration.py:run_generated_sql_with_executor:44] 생성 SQL 실행 연결 시작
+[2026-04-07 15:54:19] [INFO] [sql_executor_service.py:run_query:81] SQL 실행 요청 수신
+[2026-04-07 15:54:19] [INFO] [sql_guard.py:validate_query_sql:59] SQL 검증 시작
+[2026-04-07 15:54:19] [INFO] [sql_guard.py:_normalize_sql_text:98] SQL 코드블록 래퍼를 제거하고 검증을 진행합니다.
+[2026-04-07 15:54:19] [INFO] [sql_guard.py:validate_query_sql:73] SQL 검증 완료
+[2026-04-07 15:54:19] [INFO] [sql_executor_service.py:run_query:83] MSSQL 조회 실행 시작
+[2026-04-07 15:54:19] [INFO] [mssql_client.py:execute_query:110] MSSQL 조회 시작: host=192.168.0.11, database=SVM3PRISM
+[2026-04-07 15:54:20] [INFO] [mssql_client.py:execute_query:119] MSSQL 조회 완료: row_count=11
+[2026-04-07 15:54:20] [INFO] [sql_executor_service.py:run_query:86] SQL 실행 완료: row_count=11
+[2026-04-07 15:54:20] [INFO] [sql_execution_integration.py:run_generated_sql_with_executor:46] 생성 SQL 실행 연결 완료: row_count=11
+[2026-04-07 15:54:20] [INFO] [mssql_client.py:close:128] MSSQL 엔진 자원 해제 완료
+[2026-04-07 15:54:20] [INFO] [sql_execution_hook.py:append_sql_execution_result:63] 생성 SQL 실행 완료: row_count=11
+[2026-04-07 15:54:20] [INFO] [sql_execution_output.py:render_execution_preview:104] 
+===== MSSQL Execution Preview =====
+row_count=11, preview_rows=11
+EQPID   
+--------
+LA01    
+S1JOA06Z
+S1TURKEY
+S1JOA07I
+S1JOA02E
+S1JOA04G
+S1JOA09K
+S1JOA01D
+LA02    
+S1JOA03F
+S1JOA05H
+[2026-04-07 15:55:20] [INFO] [prompt_manager.py:_load_prompts:57] 프롬프트 파일 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\prompts\prompt_templates.yaml
+[2026-04-07 15:55:20] [INFO] [prompt_manager.py:_load_prompts:70] 프롬프트 파일 로드 완료: prompt_count=4
+[2026-04-07 15:55:20] [INFO] [stream_orchestrator.py:run_request:110] STREAM 실행 시작: mode=rag_prompt_llm
+[2026-04-07 15:55:20] [INFO] [mode_rag_prompt_llm.py:run_rag_prompt_llm_mode:76] mode 실행 시작: rag_prompt_llm
+[2026-04-07 15:55:41] [INFO] [embedding_service.py:_get_model:69] 임베딩 모델 로드 시작: model=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-07 15:56:10] [INFO] [embedding_service.py:_get_model:73] 임베딩 모델 로드 완료: model=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-07 15:56:10] [INFO] [embedding_service.py:embed_query:97] 질의 임베딩 시작: text_length=55
+[2026-04-07 15:56:14] [INFO] [chroma_retriever.py:_get_collection:79] Chroma 컬렉션 연결 시작: path=C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\data\chroma, collection=doc_chunks
+[2026-04-07 15:56:14] [INFO] [chroma_retriever.py:retrieve:121] RAG 검색 시작: top_k=3
+[2026-04-07 15:56:14] [INFO] [chroma_retriever.py:retrieve:165] RAG 검색 완료: result_count=3, sample_ids=644bd73a26fb279f_chunk_0002, 644bd73a26fb279f_chunk_0009, 644bd73a26fb279f_chunk_0006
+[2026-04-07 15:56:14] [INFO] [ollama_client.py:generate:122] Ollama 호출 시작: model=qwen2.5:14b, endpoint=http://192.168.0.74:11434/api/chat
+[2026-04-07 15:56:26] [INFO] [ollama_client.py:generate:170] Ollama 호출 완료: output_length=770
+[2026-04-07 15:56:26] [INFO] [mode_rag_prompt_llm.py:run_rag_prompt_llm_mode:166] mode 실행 완료: rag_prompt_llm
+[2026-04-07 15:56:26] [INFO] [stream_orchestrator.py:run_request:175] STREAM 실행 완료: mode=rag_prompt_llm
+[2026-04-07 15:56:26] [INFO] [main.py:main:59] SQL 생성 완료
+[2026-04-07 15:56:26] [INFO] [main.py:main:60] ```sql
+SELECT 
+    eqp.EQPID,
+    COUNT(CASE WHEN log.ACTION = 'ERROR' THEN 1 END) AS error_count,
+    COUNT(CASE WHEN log.ACTION = 'WARNING' THEN 1 END) AS warning_count,
+    (COUNT(CASE WHEN log.ACTION = 'ERROR' THEN 1 END) * 100.0 / (COUNT(CASE WHEN log.ACTION = 'ERROR' THEN 1 ELSE NULL END) + COUNT(CASE WHEN log.ACTION = 'WARNING' THEN 1 ELSE NULL END))) AS error_percentage,
+    (COUNT(CASE WHEN log.ACTION = 'WARNING' THEN 1 END) * 100.0 / (COUNT(CASE WHEN log.ACTION = 'ERROR' THEN 1 ELSE NULL END) + COUNT(CASE WHEN log.ACTION = 'WARNING' THEN 1 ELSE NULL END))) AS warning_percentage
+FROM 
+    ERROR_LOG_DATA eqp
+JOIN 
+    WARNING_LOG_DATA log
+ON 
+    eqp.EQPID = log.EQPID
+WHERE 
+    log.EVENTTIME >= DATEADD(DAY, -30, GETDATE())
+GROUP BY 
+    eqp.EQPID;
+```
+[2026-04-07 15:56:26] [INFO] [sql_execution_hook.py:append_sql_execution_result:46] 생성 SQL 실행 시작
+[2026-04-07 15:56:28] [INFO] [config_loader.py:load_config:38] 설정 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\config\config.yaml
+[2026-04-07 15:56:28] [INFO] [config_loader.py:load_config:51] 설정 로드 완료
+[2026-04-07 15:56:28] [INFO] [sql_executor_service.py:from_config:59] SQL 실행 서비스 생성 완료: allow_only_select=True, max_rows=1000
+[2026-04-07 15:56:28] [INFO] [sql_execution_integration.py:run_generated_sql_with_executor:44] 생성 SQL 실행 연결 시작
+[2026-04-07 15:56:28] [INFO] [sql_executor_service.py:run_query:81] SQL 실행 요청 수신
+[2026-04-07 15:56:28] [INFO] [sql_guard.py:validate_query_sql:59] SQL 검증 시작
+[2026-04-07 15:56:28] [INFO] [sql_guard.py:_normalize_sql_text:98] SQL 코드블록 래퍼를 제거하고 검증을 진행합니다.
+[2026-04-07 15:56:28] [INFO] [sql_guard.py:validate_query_sql:73] SQL 검증 완료
+[2026-04-07 15:56:28] [INFO] [sql_executor_service.py:run_query:83] MSSQL 조회 실행 시작
+[2026-04-07 15:56:28] [INFO] [mssql_client.py:execute_query:110] MSSQL 조회 시작: host=192.168.0.11, database=SVM3PRISM
+[2026-04-07 15:56:28] [ERROR] [mssql_client.py:execute_query:116] MSSQL 조회 실패
+Traceback (most recent call last):
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.DataError: ('22012', '[22012] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]0으로 나누기 오류가 발생했습니다. (8134) (SQLExecDirectW); [22012] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]경고: 집계 또는 다른 SET 작업에 의해 Null 값이 제거되었습니다. (8153)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\services\sql\mssql_client.py", line 114, in execute_query
+    dataframe = pd.read_sql_query(sql=text(sql), con=connection)
+  File "C:\chat\Lib\site-packages\pandas\io\sql.py", line 528, in read_sql_query
+    return pandas_sql.read_query(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        sql,
+        ^^^^
+    ...<6 lines>...
+        dtype_backend=dtype_backend,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\pandas\io\sql.py", line 1848, in read_query
+    result = self.execute(sql, params)
+  File "C:\chat\Lib\site-packages\pandas\io\sql.py", line 1672, in execute
+    return self.con.execute(sql, *args)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\chat\Lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.DataError: (pyodbc.DataError) ('22012', '[22012] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]0으로 나누기 오류가 발생했습니다. (8134) (SQLExecDirectW); [22012] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]경고: 집계 또는 다른 SET 작업에 의해 Null 값이 제거되었습니다. (8153)')
+[SQL: SELECT 
+    eqp.EQPID,
+    COUNT(CASE WHEN log.ACTION = 'ERROR' THEN 1 END) AS error_count,
+    COUNT(CASE WHEN log.ACTION = 'WARNING' THEN 1 END) AS warning_count,
+    (COUNT(CASE WHEN log.ACTION = 'ERROR' THEN 1 END) * 100.0 / (COUNT(CASE WHEN log.ACTION = 'ERROR' THEN 1 ELSE NULL END) + COUNT(CASE WHEN log.ACTION = 'WARNING' THEN 1 ELSE NULL END))) AS error_percentage,
+    (COUNT(CASE WHEN log.ACTION = 'WARNING' THEN 1 END) * 100.0 / (COUNT(CASE WHEN log.ACTION = 'ERROR' THEN 1 ELSE NULL END) + COUNT(CASE WHEN log.ACTION = 'WARNING' THEN 1 ELSE NULL END))) AS warning_percentage
+FROM 
+    ERROR_LOG_DATA eqp
+JOIN 
+    WARNING_LOG_DATA log
+ON 
+    eqp.EQPID = log.EQPID
+WHERE 
+    log.EVENTTIME >= DATEADD(DAY, -30, GETDATE())
+GROUP BY 
+    eqp.EQPID]
+(Background on this error at: https://sqlalche.me/e/20/9h9h)
+[2026-04-07 15:56:28] [INFO] [mssql_client.py:close:128] MSSQL 엔진 자원 해제 완료
+[2026-04-07 15:59:28] [INFO] [prompt_manager.py:_load_prompts:57] 프롬프트 파일 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\prompts\prompt_templates.yaml
+[2026-04-07 15:59:28] [INFO] [prompt_manager.py:_load_prompts:70] 프롬프트 파일 로드 완료: prompt_count=4
+[2026-04-07 15:59:28] [INFO] [stream_orchestrator.py:run_request:110] STREAM 실행 시작: mode=rag_prompt_llm
+[2026-04-07 15:59:28] [INFO] [mode_rag_prompt_llm.py:run_rag_prompt_llm_mode:76] mode 실행 시작: rag_prompt_llm
+[2026-04-07 15:59:51] [INFO] [embedding_service.py:_get_model:69] 임베딩 모델 로드 시작: model=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-07 15:59:57] [INFO] [embedding_service.py:_get_model:73] 임베딩 모델 로드 완료: model=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-07 15:59:57] [INFO] [embedding_service.py:embed_query:97] 질의 임베딩 시작: text_length=55
+[2026-04-07 16:00:01] [INFO] [chroma_retriever.py:_get_collection:79] Chroma 컬렉션 연결 시작: path=C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\data\chroma, collection=doc_chunks
+[2026-04-07 16:00:01] [INFO] [chroma_retriever.py:retrieve:121] RAG 검색 시작: top_k=3
+[2026-04-07 16:00:01] [INFO] [chroma_retriever.py:retrieve:165] RAG 검색 완료: result_count=3, sample_ids=644bd73a26fb279f_chunk_0002, 644bd73a26fb279f_chunk_0009, 644bd73a26fb279f_chunk_0006
+[2026-04-07 16:00:01] [INFO] [ollama_client.py:generate:122] Ollama 호출 시작: model=qwen2.5:14b, endpoint=http://192.168.0.74:11434/api/chat
+[2026-04-07 16:00:12] [INFO] [ollama_client.py:generate:170] Ollama 호출 완료: output_length=770
+[2026-04-07 16:00:12] [INFO] [mode_rag_prompt_llm.py:run_rag_prompt_llm_mode:166] mode 실행 완료: rag_prompt_llm
+[2026-04-07 16:00:12] [INFO] [stream_orchestrator.py:run_request:175] STREAM 실행 완료: mode=rag_prompt_llm
+[2026-04-07 16:00:12] [INFO] [main.py:main:59] SQL 생성 완료
+[2026-04-07 16:00:12] [INFO] [main.py:main:60] ```sql
+SELECT 
+    eqp.EQPID,
+    COUNT(CASE WHEN log.ACTION = 'ERROR' THEN 1 END) AS error_count,
+    COUNT(CASE WHEN log.ACTION = 'WARNING' THEN 1 END) AS warning_count,
+    (COUNT(CASE WHEN log.ACTION = 'ERROR' THEN 1 END) * 100.0 / (COUNT(CASE WHEN log.ACTION = 'ERROR' THEN 1 ELSE NULL END) + COUNT(CASE WHEN log.ACTION = 'WARNING' THEN 1 ELSE NULL END))) AS error_percentage,
+    (COUNT(CASE WHEN log.ACTION = 'WARNING' THEN 1 END) * 100.0 / (COUNT(CASE WHEN log.ACTION = 'ERROR' THEN 1 ELSE NULL END) + COUNT(CASE WHEN log.ACTION = 'WARNING' THEN 1 ELSE NULL END))) AS warning_percentage
+FROM 
+    ERROR_LOG_DATA eqp
+JOIN 
+    WARNING_LOG_DATA log
+ON 
+    eqp.EQPID = log.EQPID
+WHERE 
+    log.EVENTTIME >= DATEADD(DAY, -30, GETDATE())
+GROUP BY 
+    eqp.EQPID;
+```
+[2026-04-07 16:00:12] [INFO] [sql_execution_hook.py:append_sql_execution_result:46] 생성 SQL 실행 시작
+[2026-04-07 16:00:14] [INFO] [config_loader.py:load_config:38] 설정 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\config\config.yaml
+[2026-04-07 16:00:14] [INFO] [config_loader.py:load_config:51] 설정 로드 완료
+[2026-04-07 16:00:14] [INFO] [sql_executor_service.py:from_config:59] SQL 실행 서비스 생성 완료: allow_only_select=True, max_rows=1000
+[2026-04-07 16:00:14] [INFO] [sql_execution_integration.py:run_generated_sql_with_executor:44] 생성 SQL 실행 연결 시작
+[2026-04-07 16:00:14] [INFO] [sql_executor_service.py:run_query:81] SQL 실행 요청 수신
+[2026-04-07 16:00:14] [INFO] [sql_guard.py:validate_query_sql:59] SQL 검증 시작
+[2026-04-07 16:00:14] [INFO] [sql_guard.py:_normalize_sql_text:98] SQL 코드블록 래퍼를 제거하고 검증을 진행합니다.
+[2026-04-07 16:00:14] [INFO] [sql_guard.py:validate_query_sql:73] SQL 검증 완료
+[2026-04-07 16:00:14] [INFO] [sql_executor_service.py:run_query:83] MSSQL 조회 실행 시작
+[2026-04-07 16:00:14] [INFO] [mssql_client.py:execute_query:110] MSSQL 조회 시작: host=192.168.0.11, database=SVM3PRISM
+[2026-04-07 16:00:15] [ERROR] [mssql_client.py:execute_query:116] MSSQL 조회 실패
+Traceback (most recent call last):
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.DataError: ('22012', '[22012] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]0으로 나누기 오류가 발생했습니다. (8134) (SQLExecDirectW); [22012] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]경고: 집계 또는 다른 SET 작업에 의해 Null 값이 제거되었습니다. (8153)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\services\sql\mssql_client.py", line 114, in execute_query
+    dataframe = pd.read_sql_query(sql=text(sql), con=connection)
+  File "C:\chat\Lib\site-packages\pandas\io\sql.py", line 528, in read_sql_query
+    return pandas_sql.read_query(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        sql,
+        ^^^^
+    ...<6 lines>...
+        dtype_backend=dtype_backend,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\pandas\io\sql.py", line 1848, in read_query
+    result = self.execute(sql, params)
+  File "C:\chat\Lib\site-packages\pandas\io\sql.py", line 1672, in execute
+    return self.con.execute(sql, *args)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\chat\Lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.DataError: (pyodbc.DataError) ('22012', '[22012] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]0으로 나누기 오류가 발생했습니다. (8134) (SQLExecDirectW); [22012] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]경고: 집계 또는 다른 SET 작업에 의해 Null 값이 제거되었습니다. (8153)')
+[SQL: SELECT 
+    eqp.EQPID,
+    COUNT(CASE WHEN log.ACTION = 'ERROR' THEN 1 END) AS error_count,
+    COUNT(CASE WHEN log.ACTION = 'WARNING' THEN 1 END) AS warning_count,
+    (COUNT(CASE WHEN log.ACTION = 'ERROR' THEN 1 END) * 100.0 / (COUNT(CASE WHEN log.ACTION = 'ERROR' THEN 1 ELSE NULL END) + COUNT(CASE WHEN log.ACTION = 'WARNING' THEN 1 ELSE NULL END))) AS error_percentage,
+    (COUNT(CASE WHEN log.ACTION = 'WARNING' THEN 1 END) * 100.0 / (COUNT(CASE WHEN log.ACTION = 'ERROR' THEN 1 ELSE NULL END) + COUNT(CASE WHEN log.ACTION = 'WARNING' THEN 1 ELSE NULL END))) AS warning_percentage
+FROM 
+    ERROR_LOG_DATA eqp
+JOIN 
+    WARNING_LOG_DATA log
+ON 
+    eqp.EQPID = log.EQPID
+WHERE 
+    log.EVENTTIME >= DATEADD(DAY, -30, GETDATE())
+GROUP BY 
+    eqp.EQPID]
+(Background on this error at: https://sqlalche.me/e/20/9h9h)
+[2026-04-07 16:00:15] [INFO] [mssql_client.py:close:128] MSSQL 엔진 자원 해제 완료
+[2026-04-07 16:00:15] [ERROR] [sql_execution_hook.py:append_sql_execution_result:70] 생성 SQL 실행 실패
+Traceback (most recent call last):
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.DataError: ('22012', '[22012] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]0으로 나누기 오류가 발생했습니다. (8134) (SQLExecDirectW); [22012] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]경고: 집계 또는 다른 SET 작업에 의해 Null 값이 제거되었습니다. (8153)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\services\sql\mssql_client.py", line 114, in execute_query
+    dataframe = pd.read_sql_query(sql=text(sql), con=connection)
+  File "C:\chat\Lib\site-packages\pandas\io\sql.py", line 528, in read_sql_query
+    return pandas_sql.read_query(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        sql,
+        ^^^^
+    ...<6 lines>...
+        dtype_backend=dtype_backend,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\pandas\io\sql.py", line 1848, in read_query
+    result = self.execute(sql, params)
+  File "C:\chat\Lib\site-packages\pandas\io\sql.py", line 1672, in execute
+    return self.con.execute(sql, *args)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\chat\Lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.DataError: (pyodbc.DataError) ('22012', '[22012] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]0으로 나누기 오류가 발생했습니다. (8134) (SQLExecDirectW); [22012] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]경고: 집계 또는 다른 SET 작업에 의해 Null 값이 제거되었습니다. (8153)')
+[SQL: SELECT 
+    eqp.EQPID,
+    COUNT(CASE WHEN log.ACTION = 'ERROR' THEN 1 END) AS error_count,
+    COUNT(CASE WHEN log.ACTION = 'WARNING' THEN 1 END) AS warning_count,
+    (COUNT(CASE WHEN log.ACTION = 'ERROR' THEN 1 END) * 100.0 / (COUNT(CASE WHEN log.ACTION = 'ERROR' THEN 1 ELSE NULL END) + COUNT(CASE WHEN log.ACTION = 'WARNING' THEN 1 ELSE NULL END))) AS error_percentage,
+    (COUNT(CASE WHEN log.ACTION = 'WARNING' THEN 1 END) * 100.0 / (COUNT(CASE WHEN log.ACTION = 'ERROR' THEN 1 ELSE NULL END) + COUNT(CASE WHEN log.ACTION = 'WARNING' THEN 1 ELSE NULL END))) AS warning_percentage
+FROM 
+    ERROR_LOG_DATA eqp
+JOIN 
+    WARNING_LOG_DATA log
+ON 
+    eqp.EQPID = log.EQPID
+WHERE 
+    log.EVENTTIME >= DATEADD(DAY, -30, GETDATE())
+GROUP BY 
+    eqp.EQPID]
+(Background on this error at: https://sqlalche.me/e/20/9h9h)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\services\sql\sql_execution_hook.py", line 63, in append_sql_execution_result
+    dataframe = run_generated_sql_with_config_path(
+        generated_sql=generated_sql,
+        config_path=config_path,
+    )
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\services\sql\sql_execution_integration.py", line 104, in run_generated_sql_with_config_path
+    return run_generated_sql_with_executor(generated_sql=generated_sql, executor=executor)
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\services\sql\sql_execution_integration.py", line 45, in run_generated_sql_with_executor
+    dataframe = executor.run_query(generated_sql)
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\services\sql\sql_executor_service.py", line 84, in run_query
+    dataframe = self.mssql_client.execute_query(validated_sql)
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\services\sql\mssql_client.py", line 117, in execute_query
+    raise RuntimeError("MSSQL 조회 실행 중 오류가 발생했습니다.") from error
+RuntimeError: MSSQL 조회 실행 중 오류가 발생했습니다.
+[2026-04-07 16:00:15] [INFO] [sql_execution_output.py:render_execution_preview:71] 
+===== MSSQL Execution Preview =====
+row_count=0, preview_rows=0
+(no columns)
+[2026-04-07 16:19:23] [INFO] [prompt_manager.py:_load_prompts:57] 프롬프트 파일 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\prompts\prompt_templates.yaml
+[2026-04-07 16:19:23] [INFO] [prompt_manager.py:_load_prompts:70] 프롬프트 파일 로드 완료: prompt_count=4
+[2026-04-07 16:19:23] [INFO] [stream_orchestrator.py:run_request:110] STREAM 실행 시작: mode=rag_prompt_llm
+[2026-04-07 16:19:23] [INFO] [mode_rag_prompt_llm.py:run_rag_prompt_llm_mode:76] mode 실행 시작: rag_prompt_llm
+[2026-04-07 16:19:45] [INFO] [embedding_service.py:_get_model:69] 임베딩 모델 로드 시작: model=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-07 16:19:50] [INFO] [embedding_service.py:_get_model:73] 임베딩 모델 로드 완료: model=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-07 16:19:50] [INFO] [embedding_service.py:embed_query:97] 질의 임베딩 시작: text_length=66
+[2026-04-07 16:19:54] [INFO] [chroma_retriever.py:_get_collection:79] Chroma 컬렉션 연결 시작: path=C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\data\chroma, collection=doc_chunks
+[2026-04-07 16:19:54] [INFO] [chroma_retriever.py:retrieve:121] RAG 검색 시작: top_k=3
+[2026-04-07 16:19:54] [INFO] [chroma_retriever.py:retrieve:165] RAG 검색 완료: result_count=3, sample_ids=644bd73a26fb279f_chunk_0002, 644bd73a26fb279f_chunk_0009, 644bd73a26fb279f_chunk_0006
+[2026-04-07 16:19:54] [INFO] [ollama_client.py:generate:122] Ollama 호출 시작: model=qwen2.5:14b, endpoint=http://192.168.0.74:11434/api/chat
+[2026-04-07 16:20:04] [INFO] [ollama_client.py:generate:170] Ollama 호출 완료: output_length=487
+[2026-04-07 16:20:04] [INFO] [mode_rag_prompt_llm.py:run_rag_prompt_llm_mode:166] mode 실행 완료: rag_prompt_llm
+[2026-04-07 16:20:04] [INFO] [stream_orchestrator.py:run_request:175] STREAM 실행 완료: mode=rag_prompt_llm
+[2026-04-07 16:20:04] [INFO] [main.py:main:59] SQL 생성 완료
+[2026-04-07 16:20:04] [INFO] [main.py:main:60] ```sql
+SELECT TOP 10 
+    eqp.EQPID,
+    COUNT(eqp.EVENTTIME) AS ErrorCount,
+    SUBSTRING(
+        (
+            SELECT TOP 1 ALARMID 
+            FROM ERROR_LOG_DATA eld 
+            WHERE eld.EQPID = eqp.EQPID 
+            GROUP BY ELDD.ALARMID 
+            ORDER BY COUNT(ELDD.EVENTTIME) DESC
+        ), 1, 200
+    ) AS MostCommonAlarmCode
+FROM 
+    ERROR_LOG_DATA eqp
+WHERE 
+    eqp.EVENTTIME >= DATEADD(DAY, -30, GETDATE())
+GROUP BY 
+    eqp.EQPID
+ORDER BY 
+    ErrorCount DESC
+```
+[2026-04-07 16:20:04] [INFO] [sql_execution_hook.py:append_sql_execution_result:46] 생성 SQL 실행 시작
+[2026-04-07 16:20:05] [INFO] [config_loader.py:load_config:38] 설정 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\config\config.yaml
+[2026-04-07 16:20:06] [INFO] [config_loader.py:load_config:51] 설정 로드 완료
+[2026-04-07 16:20:06] [INFO] [sql_executor_service.py:from_config:59] SQL 실행 서비스 생성 완료: allow_only_select=True, max_rows=1000
+[2026-04-07 16:20:06] [INFO] [sql_execution_integration.py:run_generated_sql_with_executor:44] 생성 SQL 실행 연결 시작
+[2026-04-07 16:20:06] [INFO] [sql_executor_service.py:run_query:81] SQL 실행 요청 수신
+[2026-04-07 16:20:06] [INFO] [sql_guard.py:validate_query_sql:59] SQL 검증 시작
+[2026-04-07 16:20:06] [INFO] [sql_guard.py:_normalize_sql_text:98] SQL 코드블록 래퍼를 제거하고 검증을 진행합니다.
+[2026-04-07 16:20:06] [INFO] [sql_guard.py:validate_query_sql:73] SQL 검증 완료
+[2026-04-07 16:20:06] [INFO] [sql_executor_service.py:run_query:83] MSSQL 조회 실행 시작
+[2026-04-07 16:20:06] [INFO] [mssql_client.py:execute_query:110] MSSQL 조회 시작: host=192.168.0.11, database=SVM3PRISM
+[2026-04-07 16:20:06] [ERROR] [mssql_client.py:execute_query:116] MSSQL 조회 실패
+Traceback (most recent call last):
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42000', '[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]여러 부분으로 구성된 식별자 "ELDD.ALARMID"은(는) 바인딩할 수 없습니다. (4104) (SQLExecDirectW); [42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]여러 부분으로 구성된 식별자 "ELDD.EVENTTIME"은(는) 바인딩할 수 없습니다. (4104)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\services\sql\mssql_client.py", line 114, in execute_query
+    dataframe = pd.read_sql_query(sql=text(sql), con=connection)
+  File "C:\chat\Lib\site-packages\pandas\io\sql.py", line 528, in read_sql_query
+    return pandas_sql.read_query(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        sql,
+        ^^^^
+    ...<6 lines>...
+        dtype_backend=dtype_backend,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\pandas\io\sql.py", line 1848, in read_query
+    result = self.execute(sql, params)
+  File "C:\chat\Lib\site-packages\pandas\io\sql.py", line 1672, in execute
+    return self.con.execute(sql, *args)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\chat\Lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.ProgrammingError: (pyodbc.ProgrammingError) ('42000', '[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]여러 부분으로 구성된 식별자 "ELDD.ALARMID"은(는) 바인딩할 수 없습니다. (4104) (SQLExecDirectW); [42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]여러 부분으로 구성된 식별자 "ELDD.EVENTTIME"은(는) 바인딩할 수 없습니다. (4104)')
+[SQL: SELECT TOP 10 
+    eqp.EQPID,
+    COUNT(eqp.EVENTTIME) AS ErrorCount,
+    SUBSTRING(
+        (
+            SELECT TOP 1 ALARMID 
+            FROM ERROR_LOG_DATA eld 
+            WHERE eld.EQPID = eqp.EQPID 
+            GROUP BY ELDD.ALARMID 
+            ORDER BY COUNT(ELDD.EVENTTIME) DESC
+        ), 1, 200
+    ) AS MostCommonAlarmCode
+FROM 
+    ERROR_LOG_DATA eqp
+WHERE 
+    eqp.EVENTTIME >= DATEADD(DAY, -30, GETDATE())
+GROUP BY 
+    eqp.EQPID
+ORDER BY 
+    ErrorCount DESC]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+[2026-04-07 16:20:06] [INFO] [mssql_client.py:close:128] MSSQL 엔진 자원 해제 완료
+[2026-04-07 16:20:06] [ERROR] [sql_execution_hook.py:append_sql_execution_result:70] 생성 SQL 실행 실패
+Traceback (most recent call last):
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42000', '[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]여러 부분으로 구성된 식별자 "ELDD.ALARMID"은(는) 바인딩할 수 없습니다. (4104) (SQLExecDirectW); [42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]여러 부분으로 구성된 식별자 "ELDD.EVENTTIME"은(는) 바인딩할 수 없습니다. (4104)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\services\sql\mssql_client.py", line 114, in execute_query
+    dataframe = pd.read_sql_query(sql=text(sql), con=connection)
+  File "C:\chat\Lib\site-packages\pandas\io\sql.py", line 528, in read_sql_query
+    return pandas_sql.read_query(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        sql,
+        ^^^^
+    ...<6 lines>...
+        dtype_backend=dtype_backend,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\pandas\io\sql.py", line 1848, in read_query
+    result = self.execute(sql, params)
+  File "C:\chat\Lib\site-packages\pandas\io\sql.py", line 1672, in execute
+    return self.con.execute(sql, *args)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\chat\Lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.ProgrammingError: (pyodbc.ProgrammingError) ('42000', '[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]여러 부분으로 구성된 식별자 "ELDD.ALARMID"은(는) 바인딩할 수 없습니다. (4104) (SQLExecDirectW); [42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]여러 부분으로 구성된 식별자 "ELDD.EVENTTIME"은(는) 바인딩할 수 없습니다. (4104)')
+[SQL: SELECT TOP 10 
+    eqp.EQPID,
+    COUNT(eqp.EVENTTIME) AS ErrorCount,
+    SUBSTRING(
+        (
+            SELECT TOP 1 ALARMID 
+            FROM ERROR_LOG_DATA eld 
+            WHERE eld.EQPID = eqp.EQPID 
+            GROUP BY ELDD.ALARMID 
+            ORDER BY COUNT(ELDD.EVENTTIME) DESC
+        ), 1, 200
+    ) AS MostCommonAlarmCode
+FROM 
+    ERROR_LOG_DATA eqp
+WHERE 
+    eqp.EVENTTIME >= DATEADD(DAY, -30, GETDATE())
+GROUP BY 
+    eqp.EQPID
+ORDER BY 
+    ErrorCount DESC]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\services\sql\sql_execution_hook.py", line 63, in append_sql_execution_result
+    dataframe = run_generated_sql_with_config_path(
+        generated_sql=generated_sql,
+        config_path=config_path,
+    )
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\services\sql\sql_execution_integration.py", line 104, in run_generated_sql_with_config_path
+    return run_generated_sql_with_executor(generated_sql=generated_sql, executor=executor)
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\services\sql\sql_execution_integration.py", line 45, in run_generated_sql_with_executor
+    dataframe = executor.run_query(generated_sql)
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\services\sql\sql_executor_service.py", line 84, in run_query
+    dataframe = self.mssql_client.execute_query(validated_sql)
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\services\sql\mssql_client.py", line 117, in execute_query
+    raise RuntimeError("MSSQL 조회 실행 중 오류가 발생했습니다.") from error
+RuntimeError: MSSQL 조회 실행 중 오류가 발생했습니다.
+[2026-04-07 16:20:06] [INFO] [sql_execution_output.py:render_execution_preview:71] 
+===== MSSQL Execution Preview =====
+row_count=0, preview_rows=0
+(no columns)
+[2026-04-07 16:27:13] [INFO] [prompt_manager.py:_load_prompts:57] 프롬프트 파일 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\prompts\prompt_templates.yaml
+[2026-04-07 16:27:13] [INFO] [prompt_manager.py:_load_prompts:70] 프롬프트 파일 로드 완료: prompt_count=4
+[2026-04-07 16:27:13] [INFO] [stream_orchestrator.py:run_request:110] STREAM 실행 시작: mode=rag_prompt_llm
+[2026-04-07 16:27:13] [INFO] [mode_rag_prompt_llm.py:run_rag_prompt_llm_mode:76] mode 실행 시작: rag_prompt_llm
+[2026-04-07 16:27:34] [INFO] [embedding_service.py:_get_model:69] 임베딩 모델 로드 시작: model=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-07 16:27:39] [INFO] [embedding_service.py:_get_model:73] 임베딩 모델 로드 완료: model=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-07 16:27:39] [INFO] [embedding_service.py:embed_query:97] 질의 임베딩 시작: text_length=62
+[2026-04-07 16:27:42] [INFO] [chroma_retriever.py:_get_collection:79] Chroma 컬렉션 연결 시작: path=C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\data\chroma, collection=doc_chunks
+[2026-04-07 16:27:43] [INFO] [chroma_retriever.py:retrieve:121] RAG 검색 시작: top_k=3
+[2026-04-07 16:27:43] [INFO] [chroma_retriever.py:retrieve:165] RAG 검색 완료: result_count=3, sample_ids=644bd73a26fb279f_chunk_0002, 644bd73a26fb279f_chunk_0006, 644bd73a26fb279f_chunk_0009
+[2026-04-07 16:27:43] [INFO] [ollama_client.py:generate:122] Ollama 호출 시작: model=qwen2.5:14b, endpoint=http://192.168.0.74:11434/api/chat
+[2026-04-07 16:27:50] [INFO] [ollama_client.py:generate:170] Ollama 호출 완료: output_length=261
+[2026-04-07 16:27:50] [INFO] [mode_rag_prompt_llm.py:run_rag_prompt_llm_mode:166] mode 실행 완료: rag_prompt_llm
+[2026-04-07 16:27:50] [INFO] [stream_orchestrator.py:run_request:175] STREAM 실행 완료: mode=rag_prompt_llm
+[2026-04-07 16:27:50] [INFO] [main.py:main:59] SQL 생성 완료
+[2026-04-07 16:27:50] [INFO] [main.py:main:60] ```sql
+SELECT 
+    EQPID,
+    MIN(EVENTTIME) AS FIRST_ERROR_TIME,
+    MAX(EVENTTIME) AS LAST_ERROR_TIME,
+    COUNT(*) AS ERROR_COUNT
+FROM 
+    EVENT_LOG_DATA
+WHERE 
+    ACTION = 'ERROR' AND 
+    EVENTTIME >= DATEADD(DAY, -30, GETDATE())
+GROUP BY 
+    EQPID;
+```
+[2026-04-07 16:27:50] [INFO] [sql_execution_hook.py:append_sql_execution_result:46] 생성 SQL 실행 시작
+[2026-04-07 16:27:51] [INFO] [config_loader.py:load_config:38] 설정 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\config\config.yaml
+[2026-04-07 16:27:51] [INFO] [config_loader.py:load_config:51] 설정 로드 완료
+[2026-04-07 16:27:51] [INFO] [sql_executor_service.py:from_config:59] SQL 실행 서비스 생성 완료: allow_only_select=True, max_rows=1000
+[2026-04-07 16:27:51] [INFO] [sql_execution_integration.py:run_generated_sql_with_executor:44] 생성 SQL 실행 연결 시작
+[2026-04-07 16:27:51] [INFO] [sql_executor_service.py:run_query:81] SQL 실행 요청 수신
+[2026-04-07 16:27:51] [INFO] [sql_guard.py:validate_query_sql:59] SQL 검증 시작
+[2026-04-07 16:27:51] [INFO] [sql_guard.py:_normalize_sql_text:98] SQL 코드블록 래퍼를 제거하고 검증을 진행합니다.
+[2026-04-07 16:27:51] [INFO] [sql_guard.py:validate_query_sql:73] SQL 검증 완료
+[2026-04-07 16:27:51] [INFO] [sql_executor_service.py:run_query:83] MSSQL 조회 실행 시작
+[2026-04-07 16:27:51] [INFO] [mssql_client.py:execute_query:110] MSSQL 조회 시작: host=192.168.0.11, database=SVM3PRISM
+[2026-04-07 16:27:52] [ERROR] [mssql_client.py:execute_query:116] MSSQL 조회 실패
+Traceback (most recent call last):
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42S22', "[42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]열 이름 'ACTION'이(가) 유효하지 않습니다. (207) (SQLExecDirectW)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\services\sql\mssql_client.py", line 114, in execute_query
+    dataframe = pd.read_sql_query(sql=text(sql), con=connection)
+  File "C:\chat\Lib\site-packages\pandas\io\sql.py", line 528, in read_sql_query
+    return pandas_sql.read_query(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        sql,
+        ^^^^
+    ...<6 lines>...
+        dtype_backend=dtype_backend,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\pandas\io\sql.py", line 1848, in read_query
+    result = self.execute(sql, params)
+  File "C:\chat\Lib\site-packages\pandas\io\sql.py", line 1672, in execute
+    return self.con.execute(sql, *args)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\chat\Lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.ProgrammingError: (pyodbc.ProgrammingError) ('42S22', "[42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]열 이름 'ACTION'이(가) 유효하지 않습니다. (207) (SQLExecDirectW)")
+[SQL: SELECT 
+    EQPID,
+    MIN(EVENTTIME) AS FIRST_ERROR_TIME,
+    MAX(EVENTTIME) AS LAST_ERROR_TIME,
+    COUNT(*) AS ERROR_COUNT
+FROM 
+    EVENT_LOG_DATA
+WHERE 
+    ACTION = 'ERROR' AND 
+    EVENTTIME >= DATEADD(DAY, -30, GETDATE())
+GROUP BY 
+    EQPID]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+[2026-04-07 16:27:52] [INFO] [mssql_client.py:close:128] MSSQL 엔진 자원 해제 완료
+[2026-04-07 16:27:52] [ERROR] [sql_execution_hook.py:append_sql_execution_result:70] 생성 SQL 실행 실패
+Traceback (most recent call last):
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42S22', "[42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]열 이름 'ACTION'이(가) 유효하지 않습니다. (207) (SQLExecDirectW)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\services\sql\mssql_client.py", line 114, in execute_query
+    dataframe = pd.read_sql_query(sql=text(sql), con=connection)
+  File "C:\chat\Lib\site-packages\pandas\io\sql.py", line 528, in read_sql_query
+    return pandas_sql.read_query(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        sql,
+        ^^^^
+    ...<6 lines>...
+        dtype_backend=dtype_backend,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\pandas\io\sql.py", line 1848, in read_query
+    result = self.execute(sql, params)
+  File "C:\chat\Lib\site-packages\pandas\io\sql.py", line 1672, in execute
+    return self.con.execute(sql, *args)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\chat\Lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.ProgrammingError: (pyodbc.ProgrammingError) ('42S22', "[42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]열 이름 'ACTION'이(가) 유효하지 않습니다. (207) (SQLExecDirectW)")
+[SQL: SELECT 
+    EQPID,
+    MIN(EVENTTIME) AS FIRST_ERROR_TIME,
+    MAX(EVENTTIME) AS LAST_ERROR_TIME,
+    COUNT(*) AS ERROR_COUNT
+FROM 
+    EVENT_LOG_DATA
+WHERE 
+    ACTION = 'ERROR' AND 
+    EVENTTIME >= DATEADD(DAY, -30, GETDATE())
+GROUP BY 
+    EQPID]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\services\sql\sql_execution_hook.py", line 63, in append_sql_execution_result
+    dataframe = run_generated_sql_with_config_path(
+        generated_sql=generated_sql,
+        config_path=config_path,
+    )
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\services\sql\sql_execution_integration.py", line 104, in run_generated_sql_with_config_path
+    return run_generated_sql_with_executor(generated_sql=generated_sql, executor=executor)
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\services\sql\sql_execution_integration.py", line 45, in run_generated_sql_with_executor
+    dataframe = executor.run_query(generated_sql)
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\services\sql\sql_executor_service.py", line 84, in run_query
+    dataframe = self.mssql_client.execute_query(validated_sql)
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\services\sql\mssql_client.py", line 117, in execute_query
+    raise RuntimeError("MSSQL 조회 실행 중 오류가 발생했습니다.") from error
+RuntimeError: MSSQL 조회 실행 중 오류가 발생했습니다.
+[2026-04-07 16:27:52] [INFO] [sql_execution_output.py:render_execution_preview:71] 
+===== MSSQL Execution Preview =====
+row_count=0, preview_rows=0
+(no columns)
+[2026-04-07 17:18:34] [INFO] [prompt_manager.py:_load_prompts:57] 프롬프트 파일 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\prompts\prompt_templates.yaml
+[2026-04-07 17:18:34] [INFO] [prompt_manager.py:_load_prompts:70] 프롬프트 파일 로드 완료: prompt_count=4
+[2026-04-07 17:18:34] [INFO] [stream_orchestrator.py:run_request:110] STREAM 실행 시작: mode=rag_prompt_llm
+[2026-04-07 17:18:34] [INFO] [mode_rag_prompt_llm.py:run_rag_prompt_llm_mode:76] mode 실행 시작: rag_prompt_llm
+[2026-04-07 17:19:28] [INFO] [prompt_manager.py:_load_prompts:57] 프롬프트 파일 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\prompts\prompt_templates.yaml
+[2026-04-07 17:19:28] [INFO] [prompt_manager.py:_load_prompts:70] 프롬프트 파일 로드 완료: prompt_count=4
+[2026-04-07 17:19:28] [INFO] [stream_orchestrator.py:run_request:110] STREAM 실행 시작: mode=rag_prompt_llm
+[2026-04-07 17:19:28] [INFO] [mode_rag_prompt_llm.py:run_rag_prompt_llm_mode:76] mode 실행 시작: rag_prompt_llm
+[2026-04-07 17:19:40] [INFO] [embedding_service.py:_get_model:69] 임베딩 모델 로드 시작: model=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-07 17:19:44] [INFO] [embedding_service.py:_get_model:73] 임베딩 모델 로드 완료: model=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-07 17:19:44] [INFO] [embedding_service.py:embed_query:97] 질의 임베딩 시작: text_length=62
+[2026-04-07 17:19:46] [INFO] [chroma_retriever.py:_get_collection:79] Chroma 컬렉션 연결 시작: path=C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\data\chroma, collection=doc_chunks
+[2026-04-07 17:19:46] [INFO] [chroma_retriever.py:retrieve:121] RAG 검색 시작: top_k=3
+[2026-04-07 17:19:46] [INFO] [chroma_retriever.py:retrieve:165] RAG 검색 완료: result_count=3, sample_ids=644bd73a26fb279f_chunk_0002, 644bd73a26fb279f_chunk_0006, 644bd73a26fb279f_chunk_0009
+[2026-04-07 17:19:46] [INFO] [ollama_client.py:generate:122] Ollama 호출 시작: model=qwen2.5:14b, endpoint=http://192.168.0.74:11434/api/chat
+[2026-04-07 17:19:53] [INFO] [ollama_client.py:generate:170] Ollama 호출 완료: output_length=261
+[2026-04-07 17:19:53] [INFO] [mode_rag_prompt_llm.py:run_rag_prompt_llm_mode:166] mode 실행 완료: rag_prompt_llm
+[2026-04-07 17:19:53] [INFO] [stream_orchestrator.py:run_request:175] STREAM 실행 완료: mode=rag_prompt_llm
+[2026-04-07 17:19:53] [INFO] [main.py:main:59] SQL 생성 완료
+[2026-04-07 17:19:53] [INFO] [main.py:main:60] ```sql
+SELECT 
+    EQPID,
+    MIN(EVENTTIME) AS FIRST_ERROR_TIME,
+    MAX(EVENTTIME) AS LAST_ERROR_TIME,
+    COUNT(*) AS ERROR_COUNT
+FROM 
+    EVENT_LOG_DATA
+WHERE 
+    ACTION = 'ERROR' AND 
+    EVENTTIME >= DATEADD(DAY, -30, GETDATE())
+GROUP BY 
+    EQPID;
+```
+[2026-04-07 17:19:53] [INFO] [sql_execution_hook.py:append_sql_execution_result:46] 생성 SQL 실행 시작
+[2026-04-07 17:19:54] [INFO] [config_loader.py:load_config:38] 설정 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\config\config.yaml
+[2026-04-07 17:19:54] [INFO] [config_loader.py:load_config:51] 설정 로드 완료
+[2026-04-07 17:19:54] [INFO] [sql_executor_service.py:from_config:59] SQL 실행 서비스 생성 완료: allow_only_select=True, max_rows=1000
+[2026-04-07 17:19:54] [INFO] [sql_execution_integration.py:run_generated_sql_with_executor:44] 생성 SQL 실행 연결 시작
+[2026-04-07 17:19:54] [INFO] [sql_executor_service.py:run_query:81] SQL 실행 요청 수신
+[2026-04-07 17:19:54] [INFO] [sql_guard.py:validate_query_sql:59] SQL 검증 시작
+[2026-04-07 17:19:54] [INFO] [sql_guard.py:_normalize_sql_text:98] SQL 코드블록 래퍼를 제거하고 검증을 진행합니다.
+[2026-04-07 17:19:54] [INFO] [sql_guard.py:validate_query_sql:73] SQL 검증 완료
+[2026-04-07 17:19:54] [INFO] [sql_executor_service.py:run_query:83] MSSQL 조회 실행 시작
+[2026-04-07 17:19:54] [INFO] [mssql_client.py:execute_query:110] MSSQL 조회 시작: host=192.168.0.11, database=SVM3PRISM
+[2026-04-07 17:19:54] [ERROR] [mssql_client.py:execute_query:116] MSSQL 조회 실패
+Traceback (most recent call last):
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42S22', "[42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]열 이름 'ACTION'이(가) 유효하지 않습니다. (207) (SQLExecDirectW)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\services\sql\mssql_client.py", line 114, in execute_query
+    dataframe = pd.read_sql_query(sql=text(sql), con=connection)
+  File "C:\chat\Lib\site-packages\pandas\io\sql.py", line 528, in read_sql_query
+    return pandas_sql.read_query(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        sql,
+        ^^^^
+    ...<6 lines>...
+        dtype_backend=dtype_backend,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\pandas\io\sql.py", line 1848, in read_query
+    result = self.execute(sql, params)
+  File "C:\chat\Lib\site-packages\pandas\io\sql.py", line 1672, in execute
+    return self.con.execute(sql, *args)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\chat\Lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.ProgrammingError: (pyodbc.ProgrammingError) ('42S22', "[42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]열 이름 'ACTION'이(가) 유효하지 않습니다. (207) (SQLExecDirectW)")
+[SQL: SELECT 
+    EQPID,
+    MIN(EVENTTIME) AS FIRST_ERROR_TIME,
+    MAX(EVENTTIME) AS LAST_ERROR_TIME,
+    COUNT(*) AS ERROR_COUNT
+FROM 
+    EVENT_LOG_DATA
+WHERE 
+    ACTION = 'ERROR' AND 
+    EVENTTIME >= DATEADD(DAY, -30, GETDATE())
+GROUP BY 
+    EQPID]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+[2026-04-07 17:19:54] [INFO] [mssql_client.py:close:128] MSSQL 엔진 자원 해제 완료
+[2026-04-07 17:19:54] [ERROR] [sql_execution_hook.py:append_sql_execution_result:70] 생성 SQL 실행 실패
+Traceback (most recent call last):
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42S22', "[42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]열 이름 'ACTION'이(가) 유효하지 않습니다. (207) (SQLExecDirectW)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\services\sql\mssql_client.py", line 114, in execute_query
+    dataframe = pd.read_sql_query(sql=text(sql), con=connection)
+  File "C:\chat\Lib\site-packages\pandas\io\sql.py", line 528, in read_sql_query
+    return pandas_sql.read_query(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        sql,
+        ^^^^
+    ...<6 lines>...
+        dtype_backend=dtype_backend,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\pandas\io\sql.py", line 1848, in read_query
+    result = self.execute(sql, params)
+  File "C:\chat\Lib\site-packages\pandas\io\sql.py", line 1672, in execute
+    return self.con.execute(sql, *args)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\chat\Lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\chat\Lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.ProgrammingError: (pyodbc.ProgrammingError) ('42S22', "[42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]열 이름 'ACTION'이(가) 유효하지 않습니다. (207) (SQLExecDirectW)")
+[SQL: SELECT 
+    EQPID,
+    MIN(EVENTTIME) AS FIRST_ERROR_TIME,
+    MAX(EVENTTIME) AS LAST_ERROR_TIME,
+    COUNT(*) AS ERROR_COUNT
+FROM 
+    EVENT_LOG_DATA
+WHERE 
+    ACTION = 'ERROR' AND 
+    EVENTTIME >= DATEADD(DAY, -30, GETDATE())
+GROUP BY 
+    EQPID]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\services\sql\sql_execution_hook.py", line 63, in append_sql_execution_result
+    dataframe = run_generated_sql_with_config_path(
+        generated_sql=generated_sql,
+        config_path=config_path,
+    )
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\services\sql\sql_execution_integration.py", line 104, in run_generated_sql_with_config_path
+    return run_generated_sql_with_executor(generated_sql=generated_sql, executor=executor)
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\services\sql\sql_execution_integration.py", line 45, in run_generated_sql_with_executor
+    dataframe = executor.run_query(generated_sql)
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\services\sql\sql_executor_service.py", line 84, in run_query
+    dataframe = self.mssql_client.execute_query(validated_sql)
+  File "C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\services\sql\mssql_client.py", line 117, in execute_query
+    raise RuntimeError("MSSQL 조회 실행 중 오류가 발생했습니다.") from error
+RuntimeError: MSSQL 조회 실행 중 오류가 발생했습니다.
+[2026-04-07 17:19:54] [INFO] [sql_execution_output.py:render_execution_preview:71] 
+===== MSSQL Execution Preview =====
+row_count=0, preview_rows=0
+(no columns)
+[2026-04-07 17:20:10] [INFO] [prompt_manager.py:_load_prompts:57] 프롬프트 파일 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\prompts\prompt_templates.yaml
+[2026-04-07 17:20:10] [INFO] [prompt_manager.py:_load_prompts:70] 프롬프트 파일 로드 완료: prompt_count=4
+[2026-04-07 17:20:10] [INFO] [stream_orchestrator.py:run_request:110] STREAM 실행 시작: mode=rag_prompt_llm
+[2026-04-07 17:20:10] [INFO] [mode_rag_prompt_llm.py:run_rag_prompt_llm_mode:76] mode 실행 시작: rag_prompt_llm
+[2026-04-07 17:20:21] [INFO] [embedding_service.py:_get_model:69] 임베딩 모델 로드 시작: model=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-07 17:20:25] [INFO] [embedding_service.py:_get_model:73] 임베딩 모델 로드 완료: model=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+[2026-04-07 17:20:25] [INFO] [embedding_service.py:embed_query:97] 질의 임베딩 시작: text_length=62
+[2026-04-07 17:20:42] [INFO] [chroma_retriever.py:_get_collection:79] Chroma 컬렉션 연결 시작: path=C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Ingest\data\chroma, collection=doc_chunks
+[2026-04-07 17:21:29] [INFO] [chroma_retriever.py:retrieve:121] RAG 검색 시작: top_k=3
+[2026-04-07 17:24:06] [INFO] [chroma_retriever.py:retrieve:165] RAG 검색 완료: result_count=3, sample_ids=644bd73a26fb279f_chunk_0002, 644bd73a26fb279f_chunk_0006, 644bd73a26fb279f_chunk_0009
+[2026-04-07 17:33:57] [INFO] [ollama_client.py:generate:122] Ollama 호출 시작: model=qwen2.5:14b, endpoint=http://192.168.0.74:11434/api/chat
+[2026-04-07 17:35:16] [INFO] [ollama_client.py:generate:170] Ollama 호출 완료: output_length=261
