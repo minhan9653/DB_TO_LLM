@@ -1,4 +1,6 @@
-mode: rag_prompt_llm
+
+#rag_prompt_llm , natural_llm , prompt_llm
+mode: natural_llm
 llm_provider: ollama
 
 paths:
@@ -41,7 +43,7 @@ database:
   port: 1433
   database: "SVM3PRISM"
   username: "prismadm"
-  password: "admin"
+  password: "prism@2025"
   driver: "ODBC Driver 17 for SQL Server"
   encrypt: false
   trust_server_certificate: true

@@ -14,6 +14,32 @@
       ],
       "console": "integratedTerminal",
       "justMyCode": true
+    },
+    {
+      "name": "Debug STREAM Server",
+      "type": "python",
+      "request": "launch",
+      "module": "uvicorn",
+      "cwd": "${workspaceFolder}",
+      "args": [
+        "Root_Stream.server.api_app:app",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "8000",
+        "--reload"
+      ],
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "Debug STREAM Server Client",
+      "type": "python",
+      "request": "launch",
+      "module": "Root_Stream.server.debug_client",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true
     }
   ]
 }
