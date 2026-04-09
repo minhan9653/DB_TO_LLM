@@ -70,7 +70,9 @@ def run_prompt_llm_mode(
 
     system_prompt = prompt_manager.get_prompt("default_system_prompt")
 
-    user_prompt = prompt_manager.render_prompt(prompt_key, {"question": request.question})
+    prompt_values = _build_prompt_values(config=config, question=request.question)
+
+    user_prompt = prompt_manager.render_prompt(prompt_key, prompt_values)
 
     query = llm_client.generate(system_prompt=system_prompt, user_prompt=user_prompt)
 
@@ -98,3 +100,16 @@ def run_prompt_llm_mode(
 
     logger.info("mode 실행 완료: prompt_llm")
     return result
+
+
+def _build_prompt_values(*, config: dict[str, Any], question: str) -> dict[str, str]:
+    """
+    prompt_llm 템플릿에 주입할 질문/스키마/업무 규칙/추가 제약 값을 구성합니다.
+    """
+    prompts_config = config.get("prompts", {})
+    return {
+        "question": question,
+        "schema_context": str(prompts_config.get("schema_context", "")),
+        "business_rules": str(prompts_config.get("business_rules", "")),
+        "additional_constraints": str(prompts_config.get("additional_constraints", "")),
+    }

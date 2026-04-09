@@ -3985,3 +3985,89 @@ S1JOA06Z | S1JOA06Z_NHTU_XB01 | 0           | 5768
 S1JOA07I | S1JOA07I_NHTU_XB01 | 0           | 5768         
 S1JOA03F | S1JOA03F_NHTU_XB01 | 0           | 5774         
 S1JOA09K | S1JOA09K_NHTU_XB01 | 0           | 5769         
+[2026-04-09 11:02:26] [INFO] [prompt_manager.py:_load_prompts:57] 프롬프트 파일 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\prompts\prompt_templates.yaml
+[2026-04-09 11:02:26] [INFO] [prompt_manager.py:_load_prompts:70] 프롬프트 파일 로드 완료: prompt_count=5
+[2026-04-09 11:02:26] [INFO] [planner_service.py:__init__:44] PlannerService 초기화 완료: config=C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\config\config.yaml, llm_provider=ollama
+[2026-04-09 11:02:28] [INFO] [planner_service.py:plan_question:71] Planner 실행 시작: question_length=38
+[2026-04-09 11:02:28] [INFO] [ollama_client.py:generate:122] Ollama 호출 시작: model=qwen2.5:14b, endpoint=http://192.168.0.74:11434/api/chat
+[2026-04-09 11:02:38] [INFO] [ollama_client.py:generate:170] Ollama 호출 완료: output_length=348
+[2026-04-09 11:02:38] [INFO] [planner_service.py:plan_question:89] Planner 실행 완료: query_type=DB_THEN_RAG, step_count=2
+[2026-04-09 11:02:50] [INFO] [planner_service.py:plan_question:71] Planner 실행 시작: question_length=25
+[2026-04-09 11:02:50] [INFO] [ollama_client.py:generate:122] Ollama 호출 시작: model=qwen2.5:14b, endpoint=http://192.168.0.74:11434/api/chat
+[2026-04-09 11:02:54] [INFO] [ollama_client.py:generate:170] Ollama 호출 완료: output_length=189
+[2026-04-09 11:02:54] [INFO] [planner_service.py:plan_question:89] Planner 실행 완료: query_type=DB_ONLY, step_count=1
+[2026-04-09 11:02:54] [INFO] [planner_service.py:plan_question:71] Planner 실행 시작: question_length=16
+[2026-04-09 11:02:54] [INFO] [ollama_client.py:generate:122] Ollama 호출 시작: model=qwen2.5:14b, endpoint=http://192.168.0.74:11434/api/chat
+[2026-04-09 11:02:57] [INFO] [ollama_client.py:generate:170] Ollama 호출 완료: output_length=201
+[2026-04-09 11:02:57] [INFO] [planner_service.py:plan_question:89] Planner 실행 완료: query_type=RAG_ONLY, step_count=1
+[2026-04-09 11:02:57] [INFO] [planner_service.py:plan_question:71] Planner 실행 시작: question_length=38
+[2026-04-09 11:02:57] [INFO] [ollama_client.py:generate:122] Ollama 호출 시작: model=qwen2.5:14b, endpoint=http://192.168.0.74:11434/api/chat
+[2026-04-09 11:03:04] [INFO] [ollama_client.py:generate:170] Ollama 호출 완료: output_length=348
+[2026-04-09 11:03:04] [INFO] [planner_service.py:plan_question:89] Planner 실행 완료: query_type=DB_THEN_RAG, step_count=2
+[2026-04-09 11:03:04] [INFO] [planner_service.py:plan_question:71] Planner 실행 시작: question_length=16
+[2026-04-09 11:03:04] [INFO] [ollama_client.py:generate:122] Ollama 호출 시작: model=qwen2.5:14b, endpoint=http://192.168.0.74:11434/api/chat
+[2026-04-09 11:03:08] [INFO] [ollama_client.py:generate:170] Ollama 호출 완료: output_length=198
+[2026-04-09 11:03:08] [INFO] [planner_service.py:plan_question:89] Planner 실행 완료: query_type=RAG_ONLY, step_count=1
+[2026-04-09 11:03:38] [INFO] [prompt_manager.py:_load_prompts:57] 프롬프트 파일 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\prompts\prompt_templates.yaml
+[2026-04-09 11:03:38] [INFO] [prompt_manager.py:_load_prompts:70] 프롬프트 파일 로드 완료: prompt_count=5
+[2026-04-09 11:03:38] [INFO] [planner_service.py:__init__:44] PlannerService 초기화 완료: config=C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\config\config.yaml, llm_provider=ollama
+[2026-04-09 11:03:38] [INFO] [planner_service.py:plan_question:71] Planner 실행 시작: question_length=25
+[2026-04-09 11:03:38] [INFO] [ollama_client.py:generate:122] Ollama 호출 시작: model=qwen2.5:14b, endpoint=http://192.168.0.74:11434/api/chat
+[2026-04-09 11:03:42] [INFO] [ollama_client.py:generate:170] Ollama 호출 완료: output_length=189
+[2026-04-09 11:03:42] [INFO] [planner_service.py:plan_question:89] Planner 실행 완료: query_type=DB_ONLY, step_count=1
+[2026-04-09 11:03:42] [INFO] [planner_service.py:plan_question:71] Planner 실행 시작: question_length=16
+[2026-04-09 11:03:42] [INFO] [ollama_client.py:generate:122] Ollama 호출 시작: model=qwen2.5:14b, endpoint=http://192.168.0.74:11434/api/chat
+[2026-04-09 11:03:46] [INFO] [ollama_client.py:generate:170] Ollama 호출 완료: output_length=201
+[2026-04-09 11:03:46] [INFO] [planner_service.py:plan_question:89] Planner 실행 완료: query_type=RAG_ONLY, step_count=1
+[2026-04-09 11:03:46] [INFO] [planner_service.py:plan_question:71] Planner 실행 시작: question_length=38
+[2026-04-09 11:03:46] [INFO] [ollama_client.py:generate:122] Ollama 호출 시작: model=qwen2.5:14b, endpoint=http://192.168.0.74:11434/api/chat
+[2026-04-09 11:03:52] [INFO] [ollama_client.py:generate:170] Ollama 호출 완료: output_length=348
+[2026-04-09 11:03:52] [INFO] [planner_service.py:plan_question:89] Planner 실행 완료: query_type=DB_THEN_RAG, step_count=2
+[2026-04-09 11:03:52] [INFO] [planner_service.py:plan_question:71] Planner 실행 시작: question_length=16
+[2026-04-09 11:03:52] [INFO] [ollama_client.py:generate:122] Ollama 호출 시작: model=qwen2.5:14b, endpoint=http://192.168.0.74:11434/api/chat
+[2026-04-09 11:03:56] [INFO] [ollama_client.py:generate:170] Ollama 호출 완료: output_length=198
+[2026-04-09 11:03:56] [INFO] [planner_service.py:plan_question:89] Planner 실행 완료: query_type=RAG_ONLY, step_count=1
+[2026-04-09 11:03:56] [INFO] [debug_planner.py:main:80] Planner 디버그 실행 완료
+[2026-04-09 11:04:47] [INFO] [prompt_manager.py:_load_prompts:57] 프롬프트 파일 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\prompts\prompt_templates.yaml
+[2026-04-09 11:04:47] [INFO] [prompt_manager.py:_load_prompts:70] 프롬프트 파일 로드 완료: prompt_count=5
+[2026-04-09 11:04:47] [INFO] [planner_service.py:__init__:44] PlannerService 초기화 완료: config=C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\config\config.yaml, llm_provider=ollama
+[2026-04-09 11:04:53] [INFO] [planner_service.py:plan_question:71] Planner 실행 시작: question_length=25
+[2026-04-09 11:04:53] [INFO] [ollama_client.py:generate:122] Ollama 호출 시작: model=qwen2.5:14b, endpoint=http://192.168.0.74:11434/api/chat
+[2026-04-09 11:04:57] [INFO] [ollama_client.py:generate:170] Ollama 호출 완료: output_length=189
+[2026-04-09 11:04:57] [INFO] [planner_service.py:plan_question:89] Planner 실행 완료: query_type=DB_ONLY, step_count=1
+[2026-04-09 11:07:13] [INFO] [planner_service.py:plan_question:71] Planner 실행 시작: question_length=16
+[2026-04-09 11:07:13] [INFO] [ollama_client.py:generate:122] Ollama 호출 시작: model=qwen2.5:14b, endpoint=http://192.168.0.74:11434/api/chat
+[2026-04-09 11:07:17] [INFO] [ollama_client.py:generate:170] Ollama 호출 완료: output_length=201
+[2026-04-09 11:07:17] [INFO] [planner_service.py:plan_question:89] Planner 실행 완료: query_type=RAG_ONLY, step_count=1
+[2026-04-09 11:07:27] [INFO] [planner_service.py:plan_question:71] Planner 실행 시작: question_length=38
+[2026-04-09 11:07:55] [INFO] [ollama_client.py:generate:122] Ollama 호출 시작: model=qwen2.5:14b, endpoint=http://192.168.0.74:11434/api/chat
+[2026-04-09 11:08:02] [INFO] [ollama_client.py:generate:170] Ollama 호출 완료: output_length=348
+[2026-04-09 11:08:13] [INFO] [planner_service.py:plan_question:89] Planner 실행 완료: query_type=DB_THEN_RAG, step_count=2
+[2026-04-09 11:08:22] [INFO] [planner_service.py:plan_question:71] Planner 실행 시작: question_length=16
+[2026-04-09 11:08:22] [INFO] [ollama_client.py:generate:122] Ollama 호출 시작: model=qwen2.5:14b, endpoint=http://192.168.0.74:11434/api/chat
+[2026-04-09 11:08:25] [INFO] [ollama_client.py:generate:170] Ollama 호출 완료: output_length=198
+[2026-04-09 11:08:25] [INFO] [planner_service.py:plan_question:89] Planner 실행 완료: query_type=RAG_ONLY, step_count=1
+[2026-04-09 11:08:27] [INFO] [debug_planner.py:main:80] Planner 디버그 실행 완료
+[2026-04-09 11:24:50] [INFO] [prompt_manager.py:_load_prompts:57] 프롬프트 파일 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\prompts\prompt_templates.yaml
+[2026-04-09 11:24:50] [INFO] [prompt_manager.py:_load_prompts:70] 프롬프트 파일 로드 완료: prompt_count=5
+[2026-04-09 11:24:50] [INFO] [planner_service.py:__init__:44] PlannerService 초기화 완료: config=C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\config\config.yaml, llm_provider=ollama
+[2026-04-09 11:24:53] [INFO] [planner_service.py:plan_question:71] Planner 실행 시작: question_length=38
+[2026-04-09 11:24:53] [INFO] [ollama_client.py:generate:122] Ollama 호출 시작: model=qwen2.5:14b, endpoint=http://192.168.0.74:11434/api/chat
+[2026-04-09 11:25:08] [INFO] [ollama_client.py:generate:170] Ollama 호출 완료: output_length=348
+[2026-04-09 11:25:08] [INFO] [planner_service.py:plan_question:89] Planner 실행 완료: query_type=DB_THEN_RAG, step_count=2
+[2026-04-09 13:17:00] [INFO] [planner_service.py:plan_question:71] Planner 실행 시작: question_length=38
+[2026-04-09 13:17:00] [INFO] [ollama_client.py:generate:122] Ollama 호출 시작: model=qwen2.5:14b, endpoint=http://192.168.0.74:11434/api/chat
+[2026-04-09 13:17:21] [INFO] [ollama_client.py:generate:170] Ollama 호출 완료: output_length=348
+[2026-04-09 13:17:21] [INFO] [planner_service.py:plan_question:89] Planner 실행 완료: query_type=DB_THEN_RAG, step_count=2
+[2026-04-09 13:18:00] [INFO] [prompt_manager.py:_load_prompts:57] 프롬프트 파일 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\prompts\prompt_templates.yaml
+[2026-04-09 13:18:00] [INFO] [prompt_manager.py:_load_prompts:70] 프롬프트 파일 로드 완료: prompt_count=5
+[2026-04-09 13:18:00] [INFO] [stream_orchestrator.py:run_request:43] STREAM 실행 시작: mode=rag_prompt_llm
+[2026-04-09 13:18:00] [INFO] [mode_rag_prompt_llm.py:run_rag_prompt_llm_mode:76] mode 실행 시작: rag_prompt_llm
+[2026-04-09 13:18:28] [INFO] [prompt_manager.py:_load_prompts:57] 프롬프트 파일 로드 시작: C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\prompts\prompt_templates.yaml
+[2026-04-09 13:18:28] [INFO] [prompt_manager.py:_load_prompts:70] 프롬프트 파일 로드 완료: prompt_count=5
+[2026-04-09 13:18:28] [INFO] [planner_service.py:__init__:44] PlannerService 초기화 완료: config=C:\Users\김민한\Desktop\개발\DB_to_LLM\Root_Stream\config\config.yaml, llm_provider=ollama
+[2026-04-09 13:18:28] [INFO] [planner_service.py:plan_question:71] Planner 실행 시작: question_length=46
+[2026-04-09 13:18:28] [INFO] [ollama_client.py:generate:122] Ollama 호출 시작: model=qwen2.5:14b, endpoint=http://192.168.0.74:11434/api/chat
+[2026-04-09 13:18:42] [INFO] [ollama_client.py:generate:170] Ollama 호출 완료: output_length=326
+[2026-04-09 13:18:42] [INFO] [planner_service.py:plan_question:89] Planner 실행 완료: query_type=DB_THEN_RAG, step_count=2
+[2026-04-09 13:19:41] [INFO] [debug_planner.py:main:75] Planner 디버그 실행 완료

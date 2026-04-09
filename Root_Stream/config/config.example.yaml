@@ -32,6 +32,18 @@ retrieval:
 
 prompts:
   active_prompt: query_generation_prompt
+  schema_context: |
+    # 예시:
+    # table: alarm_history(alarm_code, occurred_at, severity, equip_id)
+    # table: alarm_definition(alarm_code, title, cause, action_guide)
+  business_rules: |
+    # 예시:
+    # - 최근 30일 기준은 GETDATE()와 DATEADD(day, -30, GETDATE())를 사용한다.
+    # - 알람 건수 집계는 alarm_history 기준으로 계산한다.
+  additional_constraints: |
+    # 예시:
+    # - 불필요한 SELECT * 사용 금지
+    # - TOP 사용 시 ORDER BY를 함께 사용
 
 api:
   endpoint: "https://example.com/query-source"

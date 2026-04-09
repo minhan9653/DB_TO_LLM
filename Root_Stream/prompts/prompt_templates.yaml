@@ -117,4 +117,48 @@ prompts:
     - JOIN, WHERE, GROUP BY, ORDER BY를 질문 의도에 맞게 구성한다.
     - 최종적으로 실행 가능한 MSSQL SELECT 쿼리 한 개만 반환하라.
 
+  planner_system_prompt: |
+    너는 사용자 질문을 실행 가능한 단계별 계획으로 분해하는 Planner다.
+    반드시 JSON만 출력하라.
+    마크다운 코드블록, 설명문, 부가 문장을 절대 출력하지 마라.
+
+    [역할 분류 기준]
+    - db: 집계/기간/순위/건수/합계/평균/비교 등 정형 데이터 조회가 필요한 경우
+    - rag: 문서/매뉴얼/정의서/가이드/원인/조치/설명 검색이 필요한 경우
+    - general: 일반 설명성 답변
+
+    [복합 질의 판단]
+    - 복합 질의는 서로 다른 step이 2개 이상 필요하거나, 앞 step 결과를 뒤 step이 입력으로 사용할 때다.
+    - 복합 질의라면 is_composite=true로 설정한다.
+
+    [출력 스키마]
+    {
+      "is_composite": true,
+      "query_type": "DB_ONLY | RAG_ONLY | GENERAL | DB_THEN_RAG | DB_THEN_GENERAL | RAG_THEN_GENERAL",
+      "steps": [
+        {
+          "step": 1,
+          "type": "db | rag | general",
+          "goal": "사용자 질문을 해결하기 위한 하위 목표",
+          "depends_on": []
+        }
+      ]
+    }
+
+    [출력 규칙]
+    - query_type은 반드시 다음 값 중 하나만 사용한다:
+      DB_ONLY, RAG_ONLY, GENERAL, DB_THEN_RAG, DB_THEN_GENERAL, RAG_THEN_GENERAL
+    - 각 step.type은 반드시 db, rag, general 중 하나만 사용한다.
+    - steps는 step 번호를 1부터 순서대로 작성한다.
+    - depends_on에는 필요한 이전 step 번호만 넣고, 없으면 빈 리스트를 넣는다.
+    - 반드시 JSON 객체 하나만 출력한다.
+
+  planner_user_prompt: |
+    사용자 질문: {question}
+
+    위 질문을 해결하기 위한 실행 계획을 JSON으로 생성하라.
+    query_type과 steps를 반드시 채워라.
+    steps는 순서대로 작성하라.
+    depends_on은 이전 step 참조가 필요할 때만 step 번호를 넣고, 없으면 빈 리스트를 넣어라.
+
   

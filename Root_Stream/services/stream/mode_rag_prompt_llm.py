@@ -119,17 +119,17 @@ def run_rag_prompt_llm_mode(
 
     prompt_key = "rag_query_generation_prompt"
 
+    prompt_values = _build_prompt_values(
+        config=config,
+        question=request.question,
+        retrieved_context=context_block,
+    )
+
     user_prompt = prompt_manager.render_prompt(
 
         prompt_key,
 
-        {
-
-            "question": request.question,
-
-            "retrieved_context": context_block,
-
-        },
+        prompt_values,
 
     )
 
@@ -197,3 +197,17 @@ def _build_context_block(contexts: list[RetrievedContext]) -> str:
         lines.append("")
 
     return "\n".join(lines).strip()
+
+
+def _build_prompt_values(*, config: dict[str, Any], question: str, retrieved_context: str) -> dict[str, str]:
+    """
+    rag_prompt_llm 템플릿에 주입할 질문/검색 컨텍스트/스키마/업무 규칙/추가 제약 값을 구성합니다.
+    """
+    prompts_config = config.get("prompts", {})
+    return {
+        "question": question,
+        "retrieved_context": retrieved_context,
+        "schema_context": str(prompts_config.get("schema_context", "")),
+        "business_rules": str(prompts_config.get("business_rules", "")),
+        "additional_constraints": str(prompts_config.get("additional_constraints", "")),
+    }
