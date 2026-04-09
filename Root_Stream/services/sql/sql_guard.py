@@ -29,6 +29,7 @@ FORBIDDEN_KEYWORDS = (
 
 FORBIDDEN_PATTERN = re.compile(r"\b(" + "|".join(FORBIDDEN_KEYWORDS) + r")\b", re.IGNORECASE)
 SELECT_INTO_PATTERN = re.compile(r"\bSELECT\b[\s\S]*\bINTO\b", re.IGNORECASE)
+CODE_BLOCK_PATTERN = re.compile(r"```(?P<lang>[^\n`]*)\s*\n(?P<body>[\s\S]*?)\n?```", re.IGNORECASE)
 
 
 class SqlGuard:
@@ -79,6 +80,11 @@ class SqlGuard:
         if not stripped_sql:
             return ""
 
+        fenced_sql = self._extract_sql_code_block(stripped_sql)
+        if fenced_sql is not None:
+            logger.info("SQL code block wrapper removed before validation.")
+            return fenced_sql
+
         if not stripped_sql.startswith("```"):
             return stripped_sql
 
@@ -97,6 +103,29 @@ class SqlGuard:
 
         logger.info("SQL 코드블록 래퍼를 제거하고 검증을 진행합니다.")
         return unwrapped_sql
+
+
+    def _extract_sql_code_block(self, raw_text: str) -> str | None:
+        """Find and return SQL body from the first markdown code block."""
+        matches = list(CODE_BLOCK_PATTERN.finditer(raw_text))
+        for match in reversed(matches):
+            language = match.group("lang").strip().lower()
+            body = match.group("body").strip()
+            if not body:
+                continue
+
+            upper_body = body.lstrip().upper()
+            is_sql_language = language in {"sql", "tsql", "mssql"}
+            looks_like_sql_query = upper_body.startswith("SELECT") or upper_body.startswith("WITH")
+            if is_sql_language or looks_like_sql_query:
+                return body
+
+        if raw_text.startswith("```"):
+            first_fence = CODE_BLOCK_PATTERN.search(raw_text)
+            if first_fence and not first_fence.group("body").strip():
+                raise ValueError("SQL validation failed: code block is empty.")
+
+        return None
 
     def _validate_query_start(self, statement: str) -> None:
         """조회용 SQL 시작 구문(SELECT/WITH)인지 확인한다."""

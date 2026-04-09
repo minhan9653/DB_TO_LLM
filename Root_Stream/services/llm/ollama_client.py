@@ -21,7 +21,7 @@ class OllamaClient(BaseLLMClient):
 
     provider_name = "ollama"
 
-    def __init__(self, model: str, base_url: str, request_timeout: int = 60) -> None:
+    def __init__(self, model: str, base_url: str, request_timeout: int = 300) -> None:
         """
         역할:
         Ollama 호출에 필요한 초기 속성과 의존성을 설정합니다.

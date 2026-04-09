@@ -10,7 +10,7 @@
       "args": [
         "--execute-sql",
         "--question",
-        "최근 30일 동안 각 설비별 첫 오류 발생 시각과 마지막 오류 발생 시각, 그리고 총 오류 건수를 함께 보여줘."
+        "최근 7일 동안 설비와 모듈 기준으로 오류와 경고를 합쳐 총 몇 건이 발생했는지 보여줘."
       ],
       "console": "integratedTerminal",
       "justMyCode": true

@@ -41,7 +41,7 @@ def create_llm_client(config: dict[str, Any]) -> BaseLLMClient:
 
             base_url=str(ollama_config.get("base_url", "http://localhost:11434")),
 
-            request_timeout=int(ollama_config.get("request_timeout", 60)),
+            request_timeout=int(ollama_config.get("request_timeout", 300)),
 
         )
 
