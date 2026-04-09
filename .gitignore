@@ -20,7 +20,8 @@ venv/
 .ipynb_checkpoints/
 
 # Editor settings
-.vscode/
+.vscode/*
+!.vscode/launch.json
 
 # Databases
 *.sqlite3
@@ -33,4 +34,5 @@ Root_Ingest/data/chroma/
 Root_Ingest/data/chunks/
 Root_Ingest/data/embeddings/
 Root_Ingest/data/parsed/
+Root_Ingest/data_rag/
 tests/root_stream/tmp*/

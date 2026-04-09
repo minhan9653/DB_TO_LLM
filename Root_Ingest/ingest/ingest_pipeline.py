@@ -4,6 +4,7 @@
 # Downstream chunking/embedding/vector logic is intentionally preserved.
 
 from __future__ import annotations
+import argparse
 from pathlib import Path
 from typing import Any
 from Root_Ingest.ingest.chunk_service import chunk_documents
@@ -162,5 +163,12 @@ def _resolve_parsing_config(config: dict[str, Any]) -> tuple[str, dict[str, Any]
     return parser_name, parser_options
 
 if __name__ == "__main__":
-    default_config_path = Path(__file__).resolve().parent.parent / "config" / "config.yaml"
-    run_ingest_pipeline(default_config_path)
+    parser = argparse.ArgumentParser(description="Run Root_Ingest pipeline")
+    parser.add_argument(
+        "--config",
+        type=str,
+        default=str(Path(__file__).resolve().parent.parent / "config" / "config.yaml"),
+        help="Path to ingest config yaml",
+    )
+    args = parser.parse_args()
+    run_ingest_pipeline(Path(args.config).resolve())

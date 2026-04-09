@@ -1,0 +1,123 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Planner: debug_planner (single question)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "Planner.debug_planner",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "justMyCode": true,
+      "envFile": "${workspaceFolder}/.env",
+      "env": {
+        "STREAM_MODE": "${input:streamMode}"
+      },
+      "args": [
+        "--config",
+        "${workspaceFolder}/Root_Stream/config/config.yaml",
+        "--question",
+        "find the most frequent alarm in the last 30 days"
+      ]
+    },
+    {
+      "name": "Root_Stream: main (generate SQL)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "Root_Stream.main",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "justMyCode": true,
+      "envFile": "${workspaceFolder}/.env",
+      "env": {
+        "STREAM_MODE": "${input:streamMode}"
+      },
+      "args": [
+        "--config",
+        "${workspaceFolder}/Root_Stream/config/config.yaml",
+        "--question",
+        "show error counts by equipment for the last 30 days"
+      ]
+    },
+    {
+      "name": "Root_Stream: main (generate + execute SQL)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "Root_Stream.main",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "justMyCode": true,
+      "envFile": "${workspaceFolder}/.env",
+      "env": {
+        "STREAM_MODE": "${input:streamMode}"
+      },
+      "args": [
+        "--config",
+        "${workspaceFolder}/Root_Stream/config/config.yaml",
+        "--execute-sql",
+        "--question",
+        "show error counts by equipment for the last 30 days"
+      ]
+    },
+    {
+      "name": "Root_Stream: FastAPI server (uvicorn)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "uvicorn",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "justMyCode": true,
+      "envFile": "${workspaceFolder}/.env",
+      "args": [
+        "Root_Stream.server.api_app:app",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "8000",
+        "--reload"
+      ]
+    },
+    {
+      "name": "Root_Stream: API debug client",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "Root_Stream.server.debug_client",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "justMyCode": true,
+      "envFile": "${workspaceFolder}/.env",
+      "args": [
+        "--endpoint",
+        "http://127.0.0.1:8000/api/query/generate",
+        "--mode",
+        "${input:publicMode}",
+        "--question",
+        "show error counts by equipment for the last 30 days"
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "id": "streamMode",
+      "type": "pickString",
+      "description": "Select Root_Stream internal mode",
+      "options": [
+        "natural_llm",
+        "prompt_llm",
+        "rag_prompt_llm"
+      ],
+      "default": "rag_prompt_llm"
+    },
+    {
+      "id": "publicMode",
+      "type": "pickString",
+      "description": "Select API public mode",
+      "options": [
+        "natural",
+        "prompt",
+        "rag_prompt"
+      ],
+      "default": "rag_prompt"
+    }
+  ]
+}

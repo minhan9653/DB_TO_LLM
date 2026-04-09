@@ -67,3 +67,12 @@ python -m unittest discover -s tests -p "test_*.py"
 - Stream ìƒì„¸: `Root_Stream/README.md`
 - Ingest ìƒì„¸: `Root_Ingest/README.md`
 - ê°œë°œ ê·œì¹™: `Rule.md`
+
+## RAG ¹®¼­ ºĞ¸® ÀûÀç
+RAG Àü¿ë ¹®¼­¸¦ º°µµ Æú´õ·Î ¿î¿µÇÏ·Á¸é `Root_Ingest/doc_rag`¿¡ ¹®¼­¸¦ ³Ö°í ¾Æ·¡Ã³·³ ½ÇÇàÇÕ´Ï´Ù.
+
+```bash
+python -m Root_Ingest.ingest.ingest_pipeline --config Root_Ingest/config/config.rag.yaml
+```
+
+ÀÌ ¼³Á¤Àº `data_rag/*`¿Í `rag_chunks` ÄÃ·º¼ÇÀ» »ç¿ëÇÕ´Ï´Ù.
