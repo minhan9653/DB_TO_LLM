@@ -1,0 +1,63 @@
+﻿전체 변경 요약
+
+문서/설정/코드 정합성 중심으로 정리했고, api_result는 B안(현재 미사용 기능으로 간주, 문서/설정/코드 잔재 제거) 을 선택했습니다.
+설정 로딩은 *_env 간접참조 방식 없이, config.yaml 기본값 + 환경변수 override 방식으로 통일했습니다.
+.vscode, __pycache__, 로그/임베딩/chroma 산출물 등 저장소에 추적되면 안 되는 항목을 제거/무시 처리했습니다.
+PromptManager, config_loader를 단순화했고, 최소 자동 테스트(unittest)를 추가했습니다.
+검증: python -m unittest discover -s tests -p "test_*.py" -v 통과(9개), python -m compileall Root_Stream Root_Ingest Planner tests 실행 완료.
+
+삭제한 파일/폴더 목록과 삭제 이유
+.vscode/launch.json, .vscode/settings.json
+이유: 개인 IDE 설정 파일, 저장소 추적 불필요.
+Api_test/api_test_client.py
+이유: 현재 구조 기준 유지가치 낮고 역할 중복.
+Root_Stream/services/api/ (모듈 파일 포함)
+이유: api_result 제거 결정(B안)에 따라 미사용 경로 정리.
+Root_Stream/**/__pycache__, Root_Ingest/**/__pycache__, *.pyc 다수
+이유: 빌드 캐시/자동생성 산출물.
+Root_Stream/data/logs/stream.log, Root_Ingest/data/logs/ingest.log, Root_Ingest/data/chroma/chroma.sqlite3, Root_Ingest/data/{chunks,embeddings,parsed}/*
+이유: 실행 산출물/로컬 데이터, 버전관리 대상 아님.
+
+이동/이름 변경한 항목 목록
+이번 작업에서 이동/rename은 없음.
+대신 불필요 항목 삭제 + 문서/설정 정리 중심으로 진행.
+
+수정한 핵심 파일 목록
+루트 문서/설정
+README.md
+.env.example
+.gitignore
+Stream
+Root_Stream/README.md
+Root_Stream/config/config.example.yaml
+Root_Stream/utils/config_loader.py
+Root_Stream/prompts/prompt_manager.py
+Root_Stream/notebooks/02_prompt_llm.ipynb
+Root_Stream/services/init.py
+Ingest
+Root_Ingest/README.md
+Root_Ingest/utils/config_loader.py
+
+테스트(신규)
+tests/root_stream/test_config_loader.py
+tests/root_stream/test_prompt_manager.py
+tests/root_stream/test_sql_guard.py
+tests/root_stream/test_mode_resolution.py
+tests/init.py
+tests/root_stream/init.py
+
+문서-코드 정합성 문제 해결 방식
+api_result 정합성
+선택: B안
+처리: 지원 모드 문서에서 제거/비지원 명시, 관련 미사용 서비스 코드 정리.
+
+모드 정합성
+문서의 지원 모드를 실제 orchestrator 기준(natural_llm, prompt_llm, rag_prompt_llm)으로 통일.
+
+설정 정합성
+config.example.yaml과 로더 동작을 맞춤.
+Root_Stream/Root_Ingest 로더 모두 config 기본값 + env override로 정리.
+.env 로딩은 저장소 루트 .env 우선(모듈 로컬 .env fallback)으로 통일.
+
+노트북 정합성
+02_prompt_llm.ipynb의 api_result 잔여 키 제거.

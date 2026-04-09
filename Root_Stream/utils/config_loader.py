@@ -1,136 +1,115 @@
-# 이 파일은 STREAM 설정 파일과 환경 변수를 로딩하는 역할을 담당합니다.
-
-# 기본 설정은 config.yaml에서 읽고, 필요한 값만 환경 변수로 덮어씁니다.
-
-# 민감 정보(API Key)는 코드 하드코딩 대신 환경 변수 사용을 기본으로 합니다.
-
-# 설정 로딩 과정도 로깅해 실행 시점의 설정 상태를 추적할 수 있게 합니다.
+# 이 파일은 Root_Stream 설정 파일(config.yaml)과 환경변수를 함께 로드한다.
+# 기본값은 YAML에서 읽고, 배포/개발 환경별 차이는 환경변수로 덮어쓴다.
+# 민감정보는 코드 하드코딩 대신 .env 또는 OS 환경변수로 주입하는 것을 기본으로 한다.
+# 오케스트레이터/서버/CLI가 같은 로더를 재사용하도록 단일 진입점으로 유지한다.
 
 from __future__ import annotations
+
 import os
 from pathlib import Path
 from typing import Any
+
 import yaml
+
 from Root_Stream.utils.logger import get_logger
 
 logger = get_logger(__name__)
 
 
 def load_config(config_path: Path) -> dict[str, Any]:
-    """
-    역할:
-    STREAM 설정 로드에서 파일/설정을 읽어 메모리 객체로 변환합니다.
-    
-    Args:
-    config_path (Path):
-    역할: 로드할 설정 파일 위치를 지정합니다.
-    값: `Path` 형식의 파일 경로입니다.
-    전달 출처: CLI `--config` 값 또는 상위 실행 코드에서 전달됩니다.
-    주의사항: 상대 경로일 때 실행 위치에 따라 다른 파일을 읽을 수 있어 `resolve()` 결과 확인이 필요합니다.
-    
-    Returns:
-    dict[str, Any]: STREAM 설정 로드 단계에서 후속 처리에 바로 사용할 매핑 데이터를 반환합니다.
-    
-    Raises:
-    FileNotFoundError: 내부 검증 실패 또는 하위 호출 오류 상황에서 발생할 수 있습니다.
-    """
-
+    """config 파일을 읽고 환경변수 오버라이드를 적용한다."""
     logger.info("설정 로드 시작: %s", config_path)
     if not config_path.exists():
-        logger.error("설정 파일을 찾을 수 없습니다: %s", config_path)
-
         raise FileNotFoundError(f"설정 파일이 없습니다: {config_path}")
 
     with config_path.open("r", encoding="utf-8") as file:
         config: dict[str, Any] = yaml.safe_load(file) or {}
 
     _safe_load_dotenv(config_path)
-    # 환경 변수 오버라이드는 명시적으로 호출하여 어떤 값이 덮어씌워졌는지 로그에 남길 수 있게 합니다.
     _apply_env_overrides(config)
-
     logger.info("설정 로드 완료")
     return config
 
 
 def _safe_load_dotenv(config_path: Path) -> None:
-    """
-    역할:
-    STREAM 설정 로드 문맥에서 `_safe_load_dotenv` 기능을 수행합니다.
-    
-    Args:
-    config_path (Path):
-    역할: 로드할 설정 파일 위치를 지정합니다.
-    값: `Path` 형식의 파일 경로입니다.
-    전달 출처: CLI `--config` 값 또는 상위 실행 코드에서 전달됩니다.
-    주의사항: 상대 경로일 때 실행 위치에 따라 다른 파일을 읽을 수 있어 `resolve()` 결과 확인이 필요합니다.
-    
-    Returns:
-    None: 반환값 없이 내부 상태 업데이트, 로깅, 파일 저장 같은 부수효과를 수행합니다.
-    
-    Raises:
-    Exception: 명시적 raise가 없어도 파일 I/O, 네트워크, 외부 라이브러리 예외가 전파될 수 있습니다.
-    """
-
-    dotenv_path = config_path.parent.parent / ".env"
+    """프로젝트 루트(.env)를 읽어 환경변수로 로드한다."""
     try:
         from dotenv import load_dotenv
-
     except Exception:
         logger.warning("python-dotenv 모듈이 없어 .env 로드를 건너뜁니다.")
         return
-
-    load_dotenv(dotenv_path=dotenv_path, override=False)
+    repo_root_dotenv = config_path.resolve().parents[2] / ".env"
+    module_dotenv = config_path.resolve().parents[1] / ".env"
+    if repo_root_dotenv.exists():
+        load_dotenv(dotenv_path=repo_root_dotenv, override=False)
+    elif module_dotenv.exists():
+        load_dotenv(dotenv_path=module_dotenv, override=False)
 
 
 def _apply_env_overrides(config: dict[str, Any]) -> None:
-    """
-    역할:
-    STREAM 설정 로드 문맥에서 `_apply_env_overrides` 기능을 수행합니다.
-    
-    Args:
-    config (dict[str, Any]):
-    역할: 모드, provider, 경로, retrieval 등 런타임 설정을 참조합니다.
-    값: YAML과 환경변수 오버라이드가 반영된 `dict[str, Any]`입니다.
-    전달 출처: `load_config()` 결과가 전달됩니다.
-    주의사항: 필수 키 누락 시 `KeyError` 또는 `ValueError`가 발생할 수 있습니다.
-    
-    Returns:
-    None: 반환값 없이 내부 상태 업데이트, 로깅, 파일 저장 같은 부수효과를 수행합니다.
-    
-    Raises:
-    Exception: 명시적 raise가 없어도 파일 I/O, 네트워크, 외부 라이브러리 예외가 전파될 수 있습니다.
-    """
+    """정의된 환경변수 값을 config dict에 반영한다."""
+    _set_if_env(config, "mode", "STREAM_MODE")
+    _set_if_env(config, "llm_provider", "LLM_PROVIDER")
 
-    mode = os.getenv("STREAM_MODE")
+    _set_nested_if_env(config, ("ollama", "model"), "OLLAMA_MODEL")
+    _set_nested_if_env(config, ("ollama", "base_url"), "OLLAMA_BASE_URL")
 
-    llm_provider = os.getenv("LLM_PROVIDER")
+    _set_nested_if_env(config, ("openai", "model"), "OPENAI_MODEL")
+    _set_nested_if_env(config, ("openai", "api_key"), "OPENAI_API_KEY")
 
-    ollama_model = os.getenv("OLLAMA_MODEL")
+    _set_nested_if_env(config, ("logging", "level"), "LOG_LEVEL")
 
-    ollama_base_url = os.getenv("OLLAMA_BASE_URL")
+    _set_nested_if_env(config, ("database", "host"), "DB_HOST")
+    _set_nested_if_env(config, ("database", "database"), "DB_NAME")
+    _set_nested_if_env(config, ("database", "username"), "DB_USER")
+    _set_nested_if_env(config, ("database", "password"), "DB_PASSWORD")
+    _set_nested_if_env(config, ("database", "driver"), "DB_DRIVER")
 
-    openai_model = os.getenv("OPENAI_MODEL")
+    _set_nested_if_env(config, ("database", "port"), "DB_PORT", caster=int)
+    _set_nested_if_env(config, ("database", "timeout"), "DB_TIMEOUT", caster=int)
+    _set_nested_if_env(config, ("database", "encrypt"), "DB_ENCRYPT", caster=_parse_bool)
+    _set_nested_if_env(
+        config,
+        ("database", "trust_server_certificate"),
+        "DB_TRUST_SERVER_CERTIFICATE",
+        caster=_parse_bool,
+    )
 
-    openai_api_key = os.getenv("OPENAI_API_KEY")
 
-    log_level = os.getenv("LOG_LEVEL")
-    if mode:
-        config["mode"] = mode
+def _set_if_env(config: dict[str, Any], key: str, env_name: str) -> None:
+    """환경변수가 있으면 config 최상위 키를 덮어쓴다."""
+    value = os.getenv(env_name)
+    if value is not None and value != "":
+        config[key] = value
 
-    if llm_provider:
-        config["llm_provider"] = llm_provider
 
-    if ollama_model:
-        config.setdefault("ollama", {})["model"] = ollama_model
+def _set_nested_if_env(
+    config: dict[str, Any],
+    key_path: tuple[str, str],
+    env_name: str,
+    caster: type | None = None,
+) -> None:
+    """환경변수가 있으면 config 중첩 키를 덮어쓴다."""
+    raw_value = os.getenv(env_name)
+    if raw_value is None or raw_value == "":
+        return
 
-    if ollama_base_url:
-        config.setdefault("ollama", {})["base_url"] = ollama_base_url
+    value: Any = raw_value
+    if caster is not None:
+        try:
+            value = caster(raw_value)
+        except Exception as error:
+            raise ValueError(f"환경변수 값 형식이 올바르지 않습니다: {env_name}={raw_value}") from error
 
-    if openai_model:
-        config.setdefault("openai", {})["model"] = openai_model
+    section, key = key_path
+    config.setdefault(section, {})[key] = value
 
-    if openai_api_key:
-        config.setdefault("openai", {})["api_key"] = openai_api_key
 
-    if log_level:
-        config.setdefault("logging", {})["level"] = log_level
+def _parse_bool(raw_value: str) -> bool:
+    """문자열 bool 값을 파싱한다."""
+    normalized = raw_value.strip().lower()
+    if normalized in {"1", "true", "yes", "y", "on"}:
+        return True
+    if normalized in {"0", "false", "no", "n", "off"}:
+        return False
+    raise ValueError(f"지원하지 않는 bool 값입니다: {raw_value}")
