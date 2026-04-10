@@ -1,0 +1,15 @@
+[
+  {
+    "EQPID": "EQP-01",
+    "error_count": 12
+  },
+  {
+    "EQPID": "EQP-03",
+    "error_count": 8
+  },
+  {
+    "EQPID": "EQP-07",
+    "error_count": 4
+  }
+]
+

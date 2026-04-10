@@ -1,5 +1,20 @@
 """
-RAG Architecture Overview .pptx 생성 스크립트
+DB_TO_LLM — 전체 아키텍처 & 워크플로우 발표용 PPT 생성 스크립트
+슬라이드 구성 (13장):
+ 1  표지
+ 2  전체 시스템 개요
+ 3  프로젝트 폴더 구조
+ 4  공통 실행 구조
+ 5  Planner 워크플로우
+ 6  natural_llm 워크플로우
+ 7  prompt_llm 워크플로우
+ 8  rag_prompt_llm 워크플로우
+ 9  API_SERVER 워크플로우
+10  End-to-End 시퀀스
+11  실행 명령 / 운영 방법
+12  현재 구현 범위 / 한계 / TODO
+13  결론
+
 실행: python make_pptx.py
 """
 from __future__ import annotations
@@ -133,520 +148,1147 @@ def arrow_v(slide, x, y_start, y_end, color=C_ACCENT):
     add_arrow(slide, x, y_start, x, y_end, color=color)
 
 
+def add_key_message(slide, msg: str, y=None):
+    """하단 핵심 메시지 바."""
+    if y is None:
+        y = SLIDE_H - Cm(1.6)
+    add_rect(slide, Cm(0), y, SLIDE_W, Cm(1.5),
+             fill=C_BLUE1)
+    add_textbox(slide, f"💡 핵심 메시지: {msg}",
+                Cm(0.7), y + Cm(0.15), SLIDE_W - Cm(1.4), Cm(1.2),
+                font_size=9, bold=True, color=C_WHITE, align=PP_ALIGN.LEFT)
+
 # ──────────────────────────────────────────────
 # 슬라이드 생성 함수들
 # ──────────────────────────────────────────────
 
+# ───────── 슬라이드 01: 표지 ─────────
 def slide_01_title(prs: Presentation):
-    """슬라이드 1: 제목."""
-    slide = prs.slides.add_slide(prs.slide_layouts[6])  # blank
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
     set_slide_bg(slide, C_WHITE)
 
-    # 상단 짙은 바
-    add_rect(slide, Cm(0), Cm(0), SLIDE_W, Cm(1.2), fill=C_BLUE1)
+    add_rect(slide, Cm(0), Cm(0), SLIDE_W, Cm(1.0), fill=C_BLUE1)
+    add_rect(slide, Cm(1.5), Cm(1.8), SLIDE_W - Cm(3), Cm(8.5), fill=C_BLUE1, radius=True)
 
-    # 중앙 블루 배경 박스
-    add_rect(slide, Cm(1.5), Cm(2.5), SLIDE_W - Cm(3), Cm(8.0), fill=C_BLUE1, radius=True)
+    add_textbox(slide, "DB_TO_LLM",
+                Cm(2.0), Cm(2.5), SLIDE_W - Cm(4), Cm(2.8),
+                font_size=44, bold=True, color=C_WHITE, align=PP_ALIGN.CENTER)
 
-    # 제목
-    add_textbox(slide, "RAG Architecture Overview",
-                Cm(2.0), Cm(3.5), SLIDE_W - Cm(4), Cm(2.5),
-                font_size=36, bold=True, color=C_WHITE, align=PP_ALIGN.CENTER)
-
-    # 부제
     add_textbox(slide,
-                "Root_Ingest / Root_Stream 기반\n자연어 처리 및 SQL 응답 생성 워크플로우",
-                Cm(2.0), Cm(6.2), SLIDE_W - Cm(4), Cm(2.0),
-                font_size=16, bold=False, color=C_ACCENT, align=PP_ALIGN.CENTER)
+                "Planner / Stream / RAG / API Server\n아키텍처 및 워크플로우",
+                Cm(2.0), Cm(5.6), SLIDE_W - Cm(4), Cm(2.2),
+                font_size=18, bold=False, color=C_ACCENT, align=PP_ALIGN.CENTER)
 
-    # 구분선
-    add_rect(slide, Cm(8), Cm(8.7), Cm(18), Cm(0.07), fill=C_ACCENT)
+    add_rect(slide, Cm(7), Cm(7.9), Cm(20), Cm(0.08), fill=C_ACCENT)
 
-    # 메타 정보
-    add_textbox(slide, "DB_TO_LLM  |  기술 리뷰 & 내부 공유용  |  2026",
-                Cm(2.0), Cm(9.0), SLIDE_W - Cm(4), Cm(0.8),
+    add_textbox(slide, "자연어 질문 → Planner 분기 → SQL/RAG/LLM → 최종 답변",
+                Cm(2.0), Cm(8.2), SLIDE_W - Cm(4), Cm(0.9),
                 font_size=11, color=RGBColor(0xCC, 0xE5, 0xFF), align=PP_ALIGN.CENTER)
 
-    # 하단 구분 바
+    add_textbox(slide, "발표용  |  소스 기반 분석  |  2026",
+                Cm(2.0), Cm(9.3), SLIDE_W - Cm(4), Cm(0.8),
+                font_size=10, color=RGBColor(0xCC, 0xE5, 0xFF), align=PP_ALIGN.CENTER)
+
+    add_rect(slide, Cm(0), Cm(0), Cm(0.4), SLIDE_H, fill=C_ACCENT)
+
     add_rect(slide, Cm(0), SLIDE_H - Cm(1.0), SLIDE_W, Cm(1.0), fill=C_BLUE1)
-    add_textbox(slide, "Confidential  –  Internal Use Only",
+    add_textbox(slide, "Internal Use Only",
                 Cm(1), SLIDE_H - Cm(0.9), SLIDE_W - Cm(2), Cm(0.8),
                 font_size=9, color=C_WHITE, align=PP_ALIGN.RIGHT)
 
-    # 사이드 강조선
-    add_rect(slide, Cm(0), Cm(1.2), Cm(0.4), Cm(16.85), fill=C_ACCENT)
-
-    add_notes(slide, "이 발표자료는 DB_TO_LLM 프로젝트의 RAG 아키텍처를 기술 리뷰 및 내부 공유 목적으로 정리한 자료입니다. Root_Ingest(문서 수집/임베딩)와 Root_Stream(질의 응답 처리) 두 축의 역할과 상호작용을 설명합니다.")
+    add_notes(slide, "DB_TO_LLM 프로젝트의 전체 아키텍처와 5개 워크플로우(Planner, natural_llm, prompt_llm, rag_prompt_llm, API Server)를 한눈에 이해하기 위한 발표 자료입니다.")
 
 
-def slide_02_overview(prs: Presentation):
-    """슬라이드 2: 전체 아키텍처 개요."""
+# ───────── 슬라이드 02: 전체 시스템 개요 ─────────
+def slide_02_system_overview(prs: Presentation):
     slide = prs.slides.add_slide(prs.slide_layouts[6])
     set_slide_bg(slide, C_WHITE)
-    add_title_bar(slide, "전체 아키텍처 개요",
-                  "오프라인 지식 준비(Root_Ingest) ↔ 온라인 질의 응답(Root_Stream)")
+    add_title_bar(slide, "전체 시스템 개요",
+                  "Root_Ingest / Root_Stream / Planner 관계 및 외부 의존성")
 
-    # ── 영역 구분 ──
-    ingest_x, stream_x = Cm(0.7), Cm(17.5)
-    col_w = Cm(15.5)
-    row_y = Cm(3.2)
-
-    # 왼쪽 Ingest 박스
-    add_rect(slide, ingest_x, row_y, col_w, Cm(13.5),
+    # 세 영역: Planner(상단 우), Root_Ingest(좌), Root_Stream(우)
+    # Root_Ingest 박스
+    add_rect(slide, Cm(0.5), Cm(3.2), Cm(9.5), Cm(10.5),
              fill=RGBColor(0xE8, 0xF7, 0xEE), line_color=C_INGEST, radius=True)
-    add_textbox(slide, "📥  Root_Ingest  (오프라인 파이프라인)",
-                ingest_x + Cm(0.3), row_y + Cm(0.2), col_w - Cm(0.6), Cm(0.8),
-                font_size=12, bold=True, color=C_INGEST)
+    add_textbox(slide, "📥 Root_Ingest\n(오프라인 파이프라인)",
+                Cm(0.8), Cm(3.4), Cm(9.0), Cm(1.0),
+                font_size=11, bold=True, color=C_INGEST)
+    ingest_steps = [
+        "📂  문서 수집 (doc/)",
+        "🔍  Parser / Loader",
+        "✂️  Chunking (chunk_service)",
+        "🧮  Embedding 생성",
+        "🗄️  ChromaDB 적재",
+    ]
+    for i, s in enumerate(ingest_steps):
+        flow_box(slide, s, Cm(0.9), Cm(4.6) + i * Cm(1.7),
+                 w=Cm(9.0), h=Cm(1.3), fill=C_INGEST, font_size=8)
+        if i < len(ingest_steps) - 1:
+            arrow_v(slide, Cm(5.4), Cm(4.6) + i * Cm(1.7) + Cm(1.3),
+                    Cm(4.6) + (i + 1) * Cm(1.7), color=C_INGEST)
 
-    # 오른쪽 Stream 박스
-    add_rect(slide, stream_x, row_y, col_w, Cm(13.5),
+    # Root_Stream 박스
+    add_rect(slide, Cm(11.0), Cm(3.2), Cm(12.5), Cm(10.5),
              fill=C_LITE, line_color=C_BLUE1, radius=True)
-    add_textbox(slide, "📤  Root_Stream  (온라인 서빙)",
-                stream_x + Cm(0.3), row_y + Cm(0.2), col_w - Cm(0.6), Cm(0.8),
-                font_size=12, bold=True, color=C_BLUE1)
-
-    # ── Ingest 단계 박스들 ──
-    ig_steps = [
-        ("①  Source Docs / SQL", C_INGEST),
-        ("②  Parser / Loader", RGBColor(0x2E, 0x9E, 0x5E)),
-        ("③  Chunking", RGBColor(0x27, 0x8A, 0x52)),
-        ("④  Embedding 생성", RGBColor(0x1F, 0x76, 0x46)),
-        ("⑤  Vector Store 적재", RGBColor(0x16, 0x63, 0x3A)),
-    ]
-    ig_bx, ig_w, ig_h = ingest_x + Cm(1.0), Cm(13.5), Cm(1.5)
-    for i, (label, col) in enumerate(ig_steps):
-        yy = row_y + Cm(1.4) + i * Cm(2.2)
-        flow_box(slide, label, ig_bx, yy, w=ig_w, h=ig_h, fill=col, font_size=10)
-        if i < len(ig_steps) - 1:
-            arrow_v(slide, ig_bx + ig_w / 2, yy + ig_h, yy + ig_h + Cm(0.7), color=C_INGEST)
-
-    # ── Stream 단계 박스들 ──
-    st_steps = [
-        ("①  사용자 자연어 입력", C_STREAM),
-        ("②  질의 임베딩", RGBColor(0x00, 0x52, 0x9B)),
-        ("③  Vector DB 검색", RGBColor(0x00, 0x46, 0x85)),
-        ("④  Prompt 조합", RGBColor(0x00, 0x3A, 0x70)),
-        ("⑤  LLM 추론 & 응답", RGBColor(0x00, 0x2E, 0x5B)),
-    ]
-    st_bx, st_w, st_h = stream_x + Cm(1.0), Cm(13.5), Cm(1.5)
-    for i, (label, col) in enumerate(st_steps):
-        yy = row_y + Cm(1.4) + i * Cm(2.2)
-        flow_box(slide, label, st_bx, yy, w=st_w, h=st_h, fill=col, font_size=10)
-        if i < len(st_steps) - 1:
-            arrow_v(slide, st_bx + st_w / 2, yy + st_h, yy + st_h + Cm(0.7), color=C_STREAM)
-
-    # ── 공통 Vector Store 연결 화살표 ──
-    vs_y = row_y + Cm(1.4) + 4 * Cm(2.2) + Cm(0.75)  # Ingest 마지막 박스 중간
-    retrieval_y = row_y + Cm(1.4) + 2 * Cm(2.2) + Cm(0.75)  # Stream retrieval 중간
-
-    # (화살표: Ingest Vector Store → Stream Vector DB 검색)
-    # 우측 화살표: 좌→우
-    add_arrow(slide, ingest_x + col_w, vs_y, stream_x, retrieval_y, color=C_YELLOW, width=2)
-    add_textbox(slide, "ChromaDB\n(공유 Vector Store)",
-                Cm(15.8), (vs_y + retrieval_y) / 2 - Cm(0.5), Cm(2.0), Cm(1.0),
-                font_size=7, bold=True, color=C_YELLOW, align=PP_ALIGN.CENTER)
-
-    add_notes(slide, "왼쪽(Root_Ingest)은 오프라인으로 문서를 처리해 Vector DB에 저장합니다. 오른쪽(Root_Stream)은 사용자 질문을 받아 온라인으로 검색·응답합니다. 두 파이프라인은 ChromaDB를 공유합니다.")
-
-
-def slide_03_ingest(prs: Presentation):
-    """슬라이드 3: Root_Ingest 워크플로우 상세."""
-    slide = prs.slides.add_slide(prs.slide_layouts[6])
-    set_slide_bg(slide, C_WHITE)
-    add_title_bar(slide, "Root_Ingest 워크플로우 상세",
-                  "문서 수집 → 파싱 → 청킹 → 임베딩 → Vector DB 적재",
-                  bar_color=C_INGEST)
-
-    steps = [
-        ("📂\nSource\nDocuments\n(SQL/PDF/…)", "원천 데이터 수집\n(SQL DDL, 문서)"),
-        ("🔍\nParser /\nLoader", "다양한 포맷\n파싱·정제"),
-        ("✂️\nChunking", "chunk_size=800\noverlap=100"),
-        ("🧮\nEmbedding\n생성", "sentence-transformers\nmultilingual"),
-        ("🗄️\nVector\nStore 적재", "ChromaDB\nPersistentClient"),
-        ("🏷️\nMetadata\n저장", "chunk_id, 출처,\n페이지 정보"),
-    ]
-
-    step_w, step_h = Cm(4.4), Cm(4.8)
-    total_w = len(steps) * step_w + (len(steps) - 1) * Cm(0.9)
-    start_x = (SLIDE_W - total_w) / 2
-    box_y = Cm(4.2)
-
-    for i, (icon_label, desc) in enumerate(steps):
-        bx = start_x + i * (step_w + Cm(0.9))
-        # 박스
-        col = RGBColor(
-            max(0x1B - i * 5, 0x00),
-            max(0x7F - i * 8, 0x30),
-            max(0x4D - i * 5, 0x00))
-        flow_box(slide, icon_label, bx, box_y, w=step_w, h=Cm(3.0), fill=col, font_size=8)
-        # 설명
-        add_textbox(slide, desc, bx, box_y + Cm(3.2), step_w, Cm(1.4),
-                    font_size=8, color=C_GRAY, align=PP_ALIGN.CENTER)
-        # 화살표
-        if i < len(steps) - 1:
-            arrow_h(slide, bx + step_w, bx + step_w + Cm(0.9),
-                    box_y + Cm(1.5), color=C_INGEST)
-
-    # 하단 인사이트 박스
-    add_rect(slide, Cm(1.0), Cm(11.5), SLIDE_W - Cm(2), Cm(1.8),
-             fill=RGBColor(0xE8, 0xF7, 0xEE), line_color=C_INGEST, radius=True)
-    add_textbox(slide,
-                "💡  Ingest 품질이 Retrieval 품질을 결정합니다  —  "
-                "chunk 단위·overlap·embedding 모델 선택이 답변 정확도에 직접적 영향을 줍니다.",
-                Cm(1.5), Cm(11.7), SLIDE_W - Cm(3), Cm(1.3),
-                font_size=10, bold=False, color=C_INGEST)
-
-    # 파이프라인 오케스트레이터 설명
-    add_textbox(slide, "🔧  ingest_pipeline.py  →  collect → parse → chunk → embed → upsert",
-                Cm(1.0), Cm(9.5), SLIDE_W - Cm(2), Cm(0.7),
-                font_size=9, color=C_GRAY, align=PP_ALIGN.CENTER)
-
-    add_notes(slide, "Root_Ingest는 ingest_pipeline.py → document_loader → parser → chunk_service → embedding_service → vector_store_service 순서로 실행됩니다. config.yaml로 chunk_size(800), overlap(100), embedding 모델을 조정합니다.")
-
-
-def slide_04_stream(prs: Presentation):
-    """슬라이드 4: Root_Stream 워크플로우 상세."""
-    slide = prs.slides.add_slide(prs.slide_layouts[6])
-    set_slide_bg(slide, C_WHITE)
-    add_title_bar(slide, "Root_Stream 워크플로우 상세",
-                  "자연어 입력 → 임베딩 → 벡터 검색 → 프롬프트 → LLM → 응답")
-
-    # 세로 스텝 (좌측)
-    steps = [
-        ("① 사용자 자연어 입력", "StreamRequest\n(question, mode)", C_BLUE1),
-        ("② 모드 라우팅", "natural | prompt | rag_prompt\n→ StreamOrchestrator", C_BLUE1),
-        ("③ 질의 임베딩", "embed_query()\n→ list[float]", RGBColor(0x00, 0x52, 0x9B)),
-        ("④ Vector DB 검색", "ChromaRetriever.retrieve()\n→ top-k chunks", RGBColor(0x00, 0x46, 0x85)),
-        ("⑤ Prompt 조합", "PromptManager.render_prompt()\n→ system + user prompt", RGBColor(0x00, 0x3A, 0x70)),
-        ("⑥ LLM 추론", "Ollama / OpenAI client\n→ SQL 생성", RGBColor(0x00, 0x2E, 0x5B)),
-        ("⑦ 응답 반환", "StreamResult → HTTPResponse\nor CLI 출력", RGBColor(0x00, 0x22, 0x46)),
-    ]
-
-    step_w, step_h = Cm(4.5), Cm(1.3)
-    desc_w = Cm(8.5)
-    lx = Cm(1.2)
-    desc_x = lx + step_w + Cm(0.6)
-    start_y = Cm(3.2)
-    gap = Cm(1.8)
-
-    for i, (label, desc, col) in enumerate(steps):
-        yy = start_y + i * gap
-        flow_box(slide, label, lx, yy, w=step_w, h=step_h, fill=col, font_size=9)
-        add_textbox(slide, desc, desc_x, yy + Cm(0.15), desc_w, step_h,
-                    font_size=8, color=C_GRAY)
-        if i < len(steps) - 1:
-            arrow_v(slide, lx + step_w / 2,
-                    yy + step_h, yy + step_h + Cm(0.5), color=C_STREAM)
-
-    # 오른쪽 컴포넌트 그림
-    comp_x = Cm(16.5)
-    components = [
-        ("mode_natural_llm.py", RGBColor(0x3A, 0x86, 0xFF)),
-        ("mode_prompt_llm.py", RGBColor(0x3A, 0x86, 0xFF)),
-        ("mode_rag_prompt_llm.py", RGBColor(0x00, 0x5F, 0xB5)),
-        ("embedding_service.py", RGBColor(0x00, 0x52, 0x9B)),
-        ("chroma_retriever.py", RGBColor(0x00, 0x46, 0x85)),
-        ("prompt_manager.py", RGBColor(0x00, 0x3A, 0x70)),
-        ("ollama_client.py\nopenai_client.py", RGBColor(0x00, 0x2E, 0x5B)),
-    ]
-    add_textbox(slide, "🧩  핵심 모듈",
-                comp_x, Cm(3.0), Cm(15.5), Cm(0.7),
+    add_textbox(slide, "📤 Root_Stream\n(온라인 서빙)",
+                Cm(11.3), Cm(3.4), Cm(12.0), Cm(1.0),
                 font_size=11, bold=True, color=C_BLUE1)
-    for i, (name, col) in enumerate(components):
-        yy = Cm(3.8) + i * Cm(1.8)
-        flow_box(slide, name, comp_x, yy, w=Cm(15.5), h=Cm(1.3), fill=col, font_size=8)
+    stream_steps = [
+        "❓  자연어 질문 입력",
+        "🔀  mode 분기 (Orchestrator)",
+        "🔍  Vector 검색 (RAG 모드)",
+        "🧩  Prompt 조합 (PromptManager)",
+        "🤖  LLM 호출 (Ollama / OpenAI)",
+    ]
+    for i, s in enumerate(stream_steps):
+        flow_box(slide, s, Cm(11.3), Cm(4.6) + i * Cm(1.7),
+                 w=Cm(11.8), h=Cm(1.3), fill=C_BLUE1, font_size=8)
+        if i < len(stream_steps) - 1:
+            arrow_v(slide, Cm(17.2), Cm(4.6) + i * Cm(1.7) + Cm(1.3),
+                    Cm(4.6) + (i + 1) * Cm(1.7), color=C_BLUE1)
 
-    add_notes(slide, "Root_Stream의 핵심은 StreamOrchestrator가 모드를 선택하고, RAG 모드에서는 embedding → ChromaDB 검색 → Prompt 조합 → LLM 순서로 실행됩니다. FastAPI 서버와 CLI 두 가지 진입점이 존재합니다.")
+    # Planner 박스 (상단 중앙)
+    add_rect(slide, Cm(10.2), Cm(3.2), Cm(0.6), Cm(10.5),
+             fill=RGBColor(0xDD, 0xDD, 0xDD))
+
+    # ChromaDB 공유 화살표
+    add_textbox(slide, "ChromaDB\n(공유)",
+                Cm(9.7), Cm(7.2), Cm(1.8), Cm(1.3),
+                font_size=8, bold=True, color=C_YELLOW, align=PP_ALIGN.CENTER)
+    add_arrow(slide, Cm(10.0), Cm(8.0), Cm(10.0), Cm(6.2), color=C_YELLOW, width=2)
+    add_arrow(slide, Cm(10.0), Cm(6.2), Cm(11.0), Cm(6.2), color=C_YELLOW, width=2)
+
+    # Planner 버블 (우측 상단)
+    add_rect(slide, Cm(24.5), Cm(3.2), Cm(9.0), Cm(4.5),
+             fill=RGBColor(0xFF, 0xF3, 0xE0), line_color=RGBColor(0xFF, 0x8F, 0x00), radius=True)
+    add_textbox(slide, "🧠 Planner",
+                Cm(24.8), Cm(3.4), Cm(8.5), Cm(0.8),
+                font_size=11, bold=True, color=RGBColor(0xFF, 0x8F, 0x00))
+    planner_items = [
+        "질문 분석 → query_type 결정",
+        "DB_ONLY / RAG_ONLY / GENERAL",
+        "DB_THEN_RAG / DB_THEN_GENERAL",
+        "RAG_THEN_GENERAL",
+    ]
+    for i, s in enumerate(planner_items):
+        add_textbox(slide, f"• {s}", Cm(25.0), Cm(4.4) + i * Cm(0.7), Cm(8.0), Cm(0.65),
+                    font_size=8, color=RGBColor(0x55, 0x40, 0x00))
+
+    # 외부 의존성 박스
+    add_rect(slide, Cm(24.5), Cm(8.2), Cm(9.0), Cm(5.5),
+             fill=RGBColor(0xF3, 0xEE, 0xFF), line_color=RGBColor(0x6A, 0x00, 0x8E), radius=True)
+    add_textbox(slide, "🔌 외부 의존성",
+                Cm(24.8), Cm(8.4), Cm(8.5), Cm(0.7),
+                font_size=10, bold=True, color=RGBColor(0x6A, 0x00, 0x8E))
+    ext_deps = [
+        ("LLM", "Ollama (qwen2.5:14b) / OpenAI"),
+        ("VectorDB", "ChromaDB PersistentClient"),
+        ("RDBMS", "MSSQL (pymssql)"),
+        ("Server", "FastAPI (uvicorn)"),
+        ("임베딩", "sentence-transformers (multilingual)"),
+    ]
+    for i, (k, v) in enumerate(ext_deps):
+        add_textbox(slide, f"• {k}: {v}",
+                    Cm(25.0), Cm(9.2) + i * Cm(0.8), Cm(8.0), Cm(0.7),
+                    font_size=8, color=RGBColor(0x40, 0x00, 0x60))
+
+    add_key_message(slide, "Root_Ingest가 지식을 준비하고, Root_Stream이 실시간으로 응답한다. Planner는 질문 유형을 분류해 흐름을 결정한다.")
+    add_notes(slide, "Root_Ingest(오프라인)와 Root_Stream(온라인)이 ChromaDB를 공유합니다. Planner는 질문을 분석해 query_type을 결정하고, Root_Stream이 해당 유형에 맞게 SQL/RAG/LLM을 실행합니다.")
 
 
-def slide_05_e2e(prs: Presentation):
-    """슬라이드 5: End-to-End 시퀀스."""
+# ───────── 슬라이드 03: 폴더 구조 ─────────
+def slide_03_folder_structure(prs: Presentation):
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    set_slide_bg(slide, C_WHITE)
+    add_title_bar(slide, "프로젝트 폴더 구조 요약",
+                  "각 모듈의 역할과 책임 범위")
+
+    folders = [
+        {
+            "name": "Planner/",
+            "color": RGBColor(0xFF, 0x8F, 0x00),
+            "bg": RGBColor(0xFF, 0xF3, 0xE0),
+            "desc": "질문 분석 & 실행 계획 수립",
+            "files": [
+                "planner_service.py  — PlannerService 진입점",
+                "models.py           — PlannerPlan / PlannerStep dataclass",
+                "planner_prompt.py   — prompt_templates.yaml 키 바인딩",
+                "plan_validator.py   — JSON 구조 최소 검증",
+                "debug_planner.py    — CLI 디버그 실행",
+            ],
+        },
+        {
+            "name": "Root_Ingest/",
+            "color": C_INGEST,
+            "bg": RGBColor(0xE8, 0xF7, 0xEE),
+            "desc": "문서 수집 → 파싱 → 청킹 → 임베딩 → ChromaDB 적재",
+            "files": [
+                "ingest/ingest_pipeline.py  — 전체 파이프라인 오케스트레이터",
+                "ingest/document_loader.py  — 파일 수집·인덱싱",
+                "ingest/parser_service.py   — SQL DDL / 문서 파싱",
+                "ingest/chunk_service.py    — 청킹 (size=800, overlap=100)",
+                "ingest/embedding_service.py — SentenceTransformer 임베딩",
+                "ingest/vector_store_service.py — ChromaDB upsert",
+            ],
+        },
+        {
+            "name": "Root_Stream/",
+            "color": C_BLUE1,
+            "bg": C_LITE,
+            "desc": "자연어 질문 → SQL 생성 → 응답 반환 (3가지 mode)",
+            "files": [
+                "orchestrator/stream_orchestrator.py — mode 분기 총괄",
+                "services/stream/mode_natural_llm.py — 직접 LLM 호출",
+                "services/stream/mode_prompt_llm.py  — 템플릿 기반 SQL 생성",
+                "services/stream/mode_rag_prompt_llm.py — RAG + LLM",
+                "services/sql/sql_guard.py           — SELECT-only 안전 검증",
+                "services/sql/sql_executor_service.py — MSSQL 실행",
+                "services/e2e/planner_flow_runner.py — E2E 흐름 오케스트레이션",
+                "server/api_app.py + routes.py       — FastAPI 서버",
+                "prompts/prompt_templates.yaml       — 프롬프트 템플릿 저장소",
+            ],
+        },
+        {
+            "name": "docs/ & tests/",
+            "color": C_GRAY,
+            "bg": RGBColor(0xF5, 0xF5, 0xF5),
+            "desc": "SQL 스키마 문서 및 단위·통합 테스트",
+            "files": [
+                "doc/ALL_LOG_TABLES_cleaned.sql — DB 스키마 DDL",
+                "tests/root_stream/             — config_loader, SQL guard 테스트",
+            ],
+        },
+    ]
+
+    col_w = (SLIDE_W - Cm(1.2)) / 2 - Cm(0.3)
+    positions = [(Cm(0.5), Cm(3.2)), (Cm(0.5 + col_w + 0.6), Cm(3.2)),
+                 (Cm(0.5), Cm(10.0)), (Cm(0.5 + col_w + 0.6), Cm(10.0))]
+
+    for (gx, gy), folder in zip(positions, folders):
+        box_h = Cm(6.5)
+        add_rect(slide, gx, gy, col_w, box_h,
+                 fill=folder["bg"], line_color=folder["color"], radius=True)
+        # 헤더
+        add_rect(slide, gx, gy, col_w, Cm(1.1), fill=folder["color"], radius=True)
+        add_textbox(slide, folder["name"],
+                    gx + Cm(0.3), gy + Cm(0.1), col_w - Cm(0.4), Cm(0.6),
+                    font_size=11, bold=True, color=C_WHITE)
+        add_textbox(slide, folder["desc"],
+                    gx + Cm(0.3), gy + Cm(0.7), col_w - Cm(0.4), Cm(0.5),
+                    font_size=8, color=folder["color"])
+        for i, f in enumerate(folder["files"]):
+            add_textbox(slide, f"  {f}",
+                        gx + Cm(0.2), gy + Cm(1.3) + i * Cm(0.78), col_w - Cm(0.3), Cm(0.72),
+                        font_size=7.5, color=RGBColor(0x33, 0x33, 0x33))
+
+    add_key_message(slide, "폴더 = 책임 단위. Planner/Root_Ingest/Root_Stream이 독립적으로 분리되어 있고, Root_Stream이 나머지를 통합 호출한다.")
+    add_notes(slide, "각 폴더는 책임이 명확히 분리됩니다. Planner와 Root_Ingest는 Root_Stream이 임포트해 사용하는 의존성입니다.")
+
+
+# ───────── 슬라이드 04: 공통 실행 구조 ─────────
+def slide_04_common_structure(prs: Presentation):
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    set_slide_bg(slide, C_WHITE)
+    add_title_bar(slide, "공통 실행 구조",
+                  "모든 실행 경로가 공유하는 공통 컴포넌트 관계도")
+
+    # 공통 컴포넌트 레이아웃 (가로 배치)
+    components = [
+        ("config.yaml\n+ .env",       "설정 주입\n(mode, provider, paths)",   RGBColor(0x5C, 0x6B, 0xC0)),
+        ("prompt_templates\n.yaml",   "프롬프트 키·템플릿\n저장소",           RGBColor(0x5C, 0x6B, 0xC0)),
+        ("PromptManager",             "get_prompt(key)\nrender_prompt(key,{})", C_BLUE1),
+        ("LLM Client\n(Factory)",     "OllamaClient\nOpenAIClient",            RGBColor(0x8B, 0x00, 0x00)),
+        ("Retrieval\n(RAG 전용)",     "SentenceTransformer\n+ ChromaRetriever", C_INGEST),
+        ("SQL Guard",                 "SELECT-only 검증\n금지 키워드 차단",     RGBColor(0xE6, 0x37, 0x00)),
+        ("DB Execution\n(선택적)",    "SqlExecutorService\n→ MssqlClient",      RGBColor(0x55, 0x55, 0x55)),
+    ]
+
+    comp_w = Cm(4.1)
+    comp_h = Cm(2.8)
+    total_w = len(components) * comp_w + (len(components) - 1) * Cm(0.5)
+    start_x = (SLIDE_W - total_w) / 2
+    box_y = Cm(3.5)
+
+    centers = []
+    for i, (title, desc, col) in enumerate(components):
+        bx = start_x + i * (comp_w + Cm(0.5))
+        add_rect(slide, bx, box_y, comp_w, comp_h,
+                 fill=col, line_color=col, radius=True)
+        add_textbox(slide, title, bx, box_y + Cm(0.2), comp_w, Cm(1.0),
+                    font_size=9, bold=True, color=C_WHITE, align=PP_ALIGN.CENTER)
+        add_rect(slide, bx + Cm(0.1), box_y + Cm(1.3), comp_w - Cm(0.2), Cm(1.3),
+                 fill=RGBColor(0xFF, 0xFF, 0xFF))
+        add_textbox(slide, desc, bx + Cm(0.15), box_y + Cm(1.35), comp_w - Cm(0.3), Cm(1.2),
+                    font_size=7.5, color=RGBColor(0x33, 0x33, 0x33), align=PP_ALIGN.CENTER)
+        cx = bx + comp_w / 2
+        centers.append(cx)
+        if i < len(components) - 1:
+            arrow_h(slide, bx + comp_w, bx + comp_w + Cm(0.5), box_y + comp_h / 2, color=C_GRAY)
+
+    # 관계 설명 박스들
+    relations = [
+        ("load_config(config.yaml)", C_BLUE1),
+        ("→ PromptManager(prompt_file)", RGBColor(0x5C, 0x6B, 0xC0)),
+        ("→ create_llm_client(config)", RGBColor(0x8B, 0x00, 0x00)),
+        ("→ (RAG) embed + retrieve", C_INGEST),
+        ("→ SqlGuard.validate()", RGBColor(0xE6, 0x37, 0x00)),
+        ("→ SqlExecutorService.execute()", RGBColor(0x55, 0x55, 0x55)),
+    ]
+    add_textbox(slide, "공통 초기화 흐름:",
+                Cm(0.7), Cm(7.0), Cm(5.0), Cm(0.6),
+                font_size=10, bold=True, color=C_BLUE1)
+    for i, (rel_txt, col) in enumerate(relations):
+        add_textbox(slide, rel_txt,
+                    Cm(0.9), Cm(7.7) + i * Cm(0.85), Cm(18.0), Cm(0.8),
+                    font_size=9, color=col)
+
+    # config.yaml 주요 키 설명
+    add_rect(slide, Cm(20.0), Cm(7.0), Cm(13.3), Cm(9.0),
+             fill=RGBColor(0xF8, 0xF8, 0xFF), line_color=C_BLUE1, radius=True)
+    add_textbox(slide, "config.yaml 주요 설정",
+                Cm(20.3), Cm(7.2), Cm(13.0), Cm(0.7),
+                font_size=10, bold=True, color=C_BLUE1)
+    cfg_items = [
+        "mode: natural_llm | prompt_llm | rag_prompt_llm",
+        "llm_provider: ollama | openai",
+        "ollama.model: qwen2.5:14b",
+        "retrieval.enabled: true",
+        "retrieval.chroma_path: ../Root_Ingest/data/chroma",
+        "retrieval.collection_name: doc_chunks",
+        "retrieval.top_k: 3",
+        "prompts.active_prompt: query_generation_prompt",
+        "database.host / .database / .port",
+        "sql.allow_only_select: true",
+    ]
+    for i, item in enumerate(cfg_items):
+        add_textbox(slide, f"  {item}",
+                    Cm(20.3), Cm(8.0) + i * Cm(0.76), Cm(12.8), Cm(0.72),
+                    font_size=8, color=RGBColor(0x33, 0x33, 0x33))
+
+    add_key_message(slide, "모든 모드는 config.yaml → PromptManager → LLMClient 초기화를 동일하게 거친다. 차이점은 Retrieval과 DB 실행 여부뿐이다.")
+    add_notes(slide, "config.yaml이 모든 실행 경로의 중심입니다. mode 값으로 natural_llm/prompt_llm/rag_prompt_llm을 선택하고, Planner는 query_type으로 DB/RAG/LLM 경로를 추가로 결정합니다.")
+
+
+# ───────── 슬라이드 05: Planner 워크플로우 ─────────
+def slide_05_planner(prs: Presentation):
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    set_slide_bg(slide, C_WHITE)
+    add_title_bar(slide, "Planner 워크플로우",
+                  "질문 → JSON 실행 계획 생성 → query_type 결정")
+
+    planner_color = RGBColor(0xFF, 0x8F, 0x00)
+    planner_bg = RGBColor(0xFF, 0xF3, 0xE0)
+    done_color = C_INGEST
+    todo_color = C_GRAY
+
+    # 메인 플로우 (수평, 4개 주요 단계)
+    steps = [
+        ("① 질문 입력\n(question)", "run_planner_step()\n← 04_end_to_end\n  planner_flow.ipynb", planner_color),
+        ("② Planner 프롬프트\n조합", "planner_prompt.py\nbuild_planner_prompts()\nplanner_system_prompt\n+ planner_user_prompt", planner_color),
+        ("③ LLM 호출\n(온도=0.0)", "PlannerService\n.plan_question()\ncreate_llm_client(config)\n→ generate()", planner_color),
+        ("④ JSON 파싱\n& 형식 검증", "PlannerJsonParseError\nplan_validator.py\nvalidate_plan_payload()\nPlannerPlan.from_dict()", done_color),
+    ]
+
+    step_w, step_h = Cm(7.5), Cm(4.0)
+    total_w = len(steps) * step_w + (len(steps) - 1) * Cm(0.8)
+    sx = (SLIDE_W - total_w) / 2
+    sy = Cm(3.3)
+
+    for i, (title, desc, col) in enumerate(steps):
+        bx = sx + i * (step_w + Cm(0.8))
+        add_rect(slide, bx, sy, step_w, step_h, fill=col, radius=True)
+        add_textbox(slide, title, bx, sy + Cm(0.2), step_w, Cm(1.0),
+                    font_size=10, bold=True, color=C_WHITE, align=PP_ALIGN.CENTER)
+        add_rect(slide, bx + Cm(0.1), sy + Cm(1.2), step_w - Cm(0.2), Cm(2.5),
+                 fill=C_WHITE)
+        add_textbox(slide, desc, bx + Cm(0.2), sy + Cm(1.3), step_w - Cm(0.3), Cm(2.3),
+                    font_size=7.5, color=RGBColor(0x33, 0x33, 0x33), align=PP_ALIGN.LEFT)
+        if i < len(steps) - 1:
+            arrow_h(slide, bx + step_w, bx + step_w + Cm(0.8), sy + step_h / 2, color=planner_color)
+
+    # 출력: query_type 분기
+    add_rect(slide, Cm(0.5), Cm(8.3), SLIDE_W - Cm(1.0), Cm(3.8),
+             fill=planner_bg, line_color=planner_color, radius=True)
+    add_textbox(slide, "Planner 출력: query_type 분기",
+                Cm(0.8), Cm(8.5), Cm(10.0), Cm(0.7),
+                font_size=10, bold=True, color=planner_color)
+
+    qt_items = [
+        ("DB_ONLY", "SQL 생성 + DB 실행만 수행", done_color),
+        ("RAG_ONLY", "문서 RAG 검색 중심으로 답변", done_color),
+        ("GENERAL", "DB/RAG 없이 LLM 직접 답변", done_color),
+        ("DB_THEN_RAG", "DB 결과 → 문서 RAG 추가 수행", done_color),
+        ("DB_THEN_GENERAL", "DB 결과 → 일반 설명 마무리", done_color),
+        ("RAG_THEN_GENERAL", "문서 RAG 먼저 → 일반 설명 마무리", done_color),
+    ]
+    qt_w = (SLIDE_W - Cm(2.0)) / len(qt_items) - Cm(0.3)
+    for i, (qt, desc, col) in enumerate(qt_items):
+        gx = Cm(0.8) + i * (qt_w + Cm(0.3))
+        flow_box(slide, qt, gx, Cm(9.3), w=qt_w, h=Cm(0.9), fill=col, font_size=8)
+        add_textbox(slide, desc, gx, Cm(10.3), qt_w, Cm(0.8),
+                    font_size=7, color=C_GRAY, align=PP_ALIGN.CENTER)
+
+    # 현재 구현 / 미구현 표시
+    add_rect(slide, Cm(0.5), Cm(12.4), Cm(16.0), Cm(4.7),
+             fill=RGBColor(0xE8, 0xF7, 0xEE), line_color=done_color, radius=True)
+    add_textbox(slide, "✅ 현재 구현됨",
+                Cm(0.8), Cm(12.6), Cm(15.5), Cm(0.6),
+                font_size=9, bold=True, color=done_color)
+    impl_items = [
+        "PlannerService.plan_question() — LLM → JSON 파싱 → 검증",
+        "PlannerPlan / PlannerStep dataclass (models.py)",
+        "plan_validator.py — query_type, steps 최소 구조 검증",
+        "planner_prompt.py — prompt_templates.yaml 키 바인딩",
+        "planner_flow_runner.py — run_planner_step() E2E 연계",
+    ]
+    for i, item in enumerate(impl_items):
+        add_textbox(slide, f"  • {item}",
+                    Cm(0.9), Cm(13.3) + i * Cm(0.7), Cm(15.5), Cm(0.65),
+                    font_size=8, color=RGBColor(0x1B, 0x5E, 0x20))
+
+    add_rect(slide, Cm(17.0), Cm(12.4), Cm(16.3), Cm(4.7),
+             fill=RGBColor(0xFF, 0xF3, 0xE0), line_color=todo_color, radius=True)
+    add_textbox(slide, "⚠️ 현재 제외 / TODO",
+                Cm(17.3), Cm(12.6), Cm(16.0), Cm(0.6),
+                font_size=9, bold=True, color=todo_color)
+    todo_items = [
+        "Planner 독립 API 엔드포인트 — 미구현",
+        "Planner 결과의 자동 캐싱 — 미구현",
+        "query_type별 자동 라우팅 직접 연결 — 별도 E2E 함수로만 구현",
+        "streaming 응답 지원 — 미구현",
+    ]
+    for i, item in enumerate(todo_items):
+        add_textbox(slide, f"  • {item}",
+                    Cm(17.4), Cm(13.3) + i * Cm(0.7), Cm(16.0), Cm(0.65),
+                    font_size=8, color=RGBColor(0x99, 0x60, 0x00))
+
+    add_key_message(slide, "Planner는 질문을 JSON 실행 계획(query_type + steps 배열)으로 변환한다. DB/RAG/LLM 중 어떤 경로를 쓸지 결정하는 라우터 역할이다.")
+    add_notes(slide, "Planner는 Planner/planner_service.py의 PlannerService.plan_question()이 핵심입니다. LLM을 호출해 JSON을 받고, plan_validator로 검증 후 PlannerPlan으로 변환합니다. DB/RAG/LLM 실행은 포함하지 않습니다.")
+
+
+# ───────── 슬라이드 06: natural_llm 워크플로우 ─────────
+def slide_06_natural_llm(prs: Presentation):
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    set_slide_bg(slide, C_WHITE)
+    add_title_bar(slide, "natural_llm 워크플로우",
+                  "최소 처리 — 질문을 LLM에 직접 전달해 SQL 생성")
+
+    nat_color = RGBColor(0x3A, 0x86, 0xFF)
+    bg_color = RGBColor(0xEE, 0xF4, 0xFF)
+
+    # 플로우 다이어그램 (수직 + 설명 오른쪽)
+    steps_data = [
+        ("① 사용자 질문 입력",
+         "StreamRequest(question=...) 생성",
+         "stream_orchestrator.py → run(question)"),
+        ("② mode 확인",
+         "config.mode = 'natural_llm'",
+         "StreamOrchestrator._resolve_mode() → 'natural_llm'"),
+        ("③ default_system_prompt 로딩",
+         "prompt_manager.get_prompt('default_system_prompt')",
+         "MSSQL 전용 Text-to-SQL 전문가 지시문"),
+        ("④ user_prompt = question.strip()",
+         "별도 템플릿 없음 — 질문 그대로 전달",
+         "schema_context / business_rules 없음"),
+        ("⑤ LLM 호출",
+         "llm_client.generate(system_prompt, user_prompt)",
+         "Ollama(qwen2.5:14b) 또는 OpenAI"),
+        ("⑥ StreamResult 반환",
+         "mode='natural_llm', query=생성된SQL",
+         "CLI → JSON 출력 / FastAPI → HTTP 200"),
+    ]
+
+    box_w, box_h = Cm(4.5), Cm(1.1)
+    desc_x = Cm(5.5)
+    desc_w = Cm(13.0)
+    src_x = Cm(19.0)
+    src_w = Cm(14.3)
+    sy = Cm(3.3)
+    gap = Cm(1.9)
+
+    for i, (label, desc, src) in enumerate(steps_data):
+        yy = sy + i * gap
+        flow_box(slide, label, Cm(0.5), yy, w=box_w, h=box_h, fill=nat_color, font_size=8)
+        add_textbox(slide, desc, desc_x, yy + Cm(0.1), desc_w, box_h,
+                    font_size=9, bold=True, color=C_BLUE1)
+        add_textbox(slide, src, src_x, yy + Cm(0.1), src_w, box_h,
+                    font_size=8, color=C_GRAY)
+        if i < len(steps_data) - 1:
+            arrow_v(slide, Cm(0.5) + box_w / 2,
+                    yy + box_h, yy + box_h + Cm(0.8), color=nat_color)
+
+    # 특징과 한계 박스
+    add_rect(slide, Cm(0.5), Cm(15.3), Cm(15.5), Cm(3.0),
+             fill=bg_color, line_color=nat_color, radius=True)
+    add_textbox(slide, "✅  natural_llm 특징",
+                Cm(0.8), Cm(15.5), Cm(15.0), Cm(0.6),
+                font_size=9, bold=True, color=nat_color)
+    nat_pros = [
+        "• 구현 단순 — 프롬프트 키 'default_system_prompt' 하나만 사용",
+        "• 추가 데이터 없이 즉시 실행 가능 (ChromaDB 불필요)",
+        "• 테스트/프로토타이핑에 적합",
+    ]
+    for i, s in enumerate(nat_pros):
+        add_textbox(slide, s, Cm(0.9), Cm(16.2) + i * Cm(0.65), Cm(15.0), Cm(0.6),
+                    font_size=8, color=RGBColor(0x1B, 0x5E, 0x20))
+
+    add_rect(slide, Cm(17.0), Cm(15.3), Cm(16.3), Cm(3.0),
+             fill=RGBColor(0xFF, 0xF3, 0xE0), line_color=C_GRAY, radius=True)
+    add_textbox(slide, "⚠️  한계",
+                Cm(17.3), Cm(15.5), Cm(16.0), Cm(0.6),
+                font_size=9, bold=True, color=C_GRAY)
+    nat_cons = [
+        "• 스키마 컨텍스트 없음 → 없는 테이블명 생성 가능성",
+        "• RAG 검색 없음 → 도메인 지식 활용 불가",
+        "• 실제 운영보다는 빠른 확인용으로 권장",
+    ]
+    for i, s in enumerate(nat_cons):
+        add_textbox(slide, s, Cm(17.4), Cm(16.2) + i * Cm(0.65), Cm(16.0), Cm(0.6),
+                    font_size=8, color=C_GRAY)
+
+    add_key_message(slide, "natural_llm = 가장 단순한 경로. 스키마 없이 LLM에 질문을 그대로 전달한다. 빠른 테스트 용도에 적합하다.")
+    add_notes(slide, "natural_llm은 Root_Stream/services/stream/mode_natural_llm.py에 구현됩니다. system_prompt는 MSSQL Text-to-SQL 지시문이고, user_prompt는 사용자 질문 그대로입니다. schema_context가 없으므로 정확도 제한이 있습니다.")
+
+
+# ───────── 슬라이드 07: prompt_llm 워크플로우 ─────────
+def slide_07_prompt_llm(prs: Presentation):
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    set_slide_bg(slide, C_WHITE)
+    add_title_bar(slide, "prompt_llm 워크플로우",
+                  "스키마·업무 규칙을 템플릿에 결합해 SQL 생성 품질 향상")
+
+    prompt_color = RGBColor(0x6A, 0x00, 0x8E)
+    prompt_bg = RGBColor(0xF3, 0xEE, 0xFF)
+
+    steps_data = [
+        ("① 질문 입력",
+         "StreamRequest(question=...)",
+         "stream_orchestrator.py → mode='prompt_llm'"),
+        ("② active_prompt 키 읽기",
+         "config.prompts.active_prompt\n= 'query_generation_prompt'",
+         "mode_prompt_llm.py\n→ prompts_config.get('active_prompt')"),
+        ("③ 템플릿 변수 구성",
+         "_build_prompt_values() 호출",
+         "question / schema_context\nbusiness_rules / additional_constraints"),
+        ("④ 프롬프트 렌더링",
+         "prompt_manager.render_prompt(\n  'query_generation_prompt', values)",
+         "prompt_templates.yaml 내\n{question} {schema_context} 치환"),
+        ("⑤ LLM 호출",
+         "llm_client.generate(\n  system_prompt, user_prompt)",
+         "Ollama(qwen2.5:14b) / OpenAI"),
+        ("⑥ StreamResult 반환",
+         "mode='prompt_llm'\nprompt_key='query_generation_prompt'",
+         "CLI → JSON / FastAPI → HTTP 200"),
+    ]
+
+    box_w, box_h = Cm(4.5), Cm(1.1)
+    desc_x = Cm(5.5)
+    desc_w = Cm(13.0)
+    src_x = Cm(19.0)
+    src_w = Cm(14.3)
+    sy = Cm(3.3)
+    gap = Cm(1.85)
+
+    for i, (label, desc, src) in enumerate(steps_data):
+        yy = sy + i * gap
+        flow_box(slide, label, Cm(0.5), yy, w=box_w, h=box_h, fill=prompt_color, font_size=8)
+        add_textbox(slide, desc, desc_x, yy + Cm(0.05), desc_w, box_h + Cm(0.2),
+                    font_size=8.5, bold=False, color=prompt_color)
+        add_textbox(slide, src, src_x, yy + Cm(0.05), src_w, box_h + Cm(0.2),
+                    font_size=8, color=C_GRAY)
+        if i < len(steps_data) - 1:
+            arrow_v(slide, Cm(0.5) + box_w / 2,
+                    yy + box_h, yy + box_h + Cm(0.75), color=prompt_color)
+
+    # 템플릿 변수 설명 박스
+    add_rect(slide, Cm(0.5), Cm(15.0), Cm(15.5), Cm(3.5),
+             fill=prompt_bg, line_color=prompt_color, radius=True)
+    add_textbox(slide, "query_generation_prompt 변수",
+                Cm(0.8), Cm(15.2), Cm(15.0), Cm(0.6),
+                font_size=9, bold=True, color=prompt_color)
+    tpl_vars = [
+        ("{question}", "사용자 자연어 질문"),
+        ("{schema_context}", "ERROR_LOG_DATA / EVENT_LOG_DATA / WARNING_LOG_DATA 테이블 설명"),
+        ("{business_rules}", "분석 규칙 (EQPID 기준, ALARMID+TEXT 함께 반환 등)"),
+        ("{additional_constraints}", "추가 제약 (기본값: 빈 문자열)"),
+    ]
+    for i, (var, desc) in enumerate(tpl_vars):
+        add_textbox(slide, f"  {var}", Cm(0.9), Cm(15.9) + i * Cm(0.65), Cm(5.5), Cm(0.6),
+                    font_size=8.5, bold=True, color=prompt_color)
+        add_textbox(slide, desc, Cm(6.5), Cm(15.9) + i * Cm(0.65), Cm(9.0), Cm(0.6),
+                    font_size=8, color=C_GRAY)
+
+    add_rect(slide, Cm(17.0), Cm(15.0), Cm(16.3), Cm(3.5),
+             fill=RGBColor(0xE8, 0xF7, 0xEE), line_color=C_INGEST, radius=True)
+    add_textbox(slide, "✅  natural_llm 대비 개선점",
+                Cm(17.3), Cm(15.2), Cm(16.0), Cm(0.6),
+                font_size=9, bold=True, color=C_INGEST)
+    pros = [
+        "• schema_context 포함 → 실제 테이블/컬럼명 기반 SQL 생성",
+        "• business_rules 포함 → 도메인 분석 규칙 반영",
+        "• RAG 없이도 높은 정확도 가능 (스키마 명시적 제공 시)",
+        "• ChromaDB 불필요 — 빠른 응답",
+    ]
+    for i, s in enumerate(pros):
+        add_textbox(slide, s, Cm(17.4), Cm(15.9) + i * Cm(0.65), Cm(16.0), Cm(0.6),
+                    font_size=8, color=RGBColor(0x1B, 0x5E, 0x20))
+
+    add_key_message(slide, "prompt_llm = 스키마·업무 규칙을 프롬프트 템플릿에 주입해 SQL 품질을 높인다. RAG 없이 가장 현실적인 중간 단계이다.")
+    add_notes(slide, "prompt_llm은 Root_Stream/services/stream/mode_prompt_llm.py에 구현됩니다. config.yaml의 prompts 섹션에서 schema_context와 business_rules를 읽어 템플릿에 주입합니다.")
+
+
+# ───────── 슬라이드 08: rag_prompt_llm 워크플로우 ─────────
+def slide_08_rag_prompt_llm(prs: Presentation):
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    set_slide_bg(slide, C_WHITE)
+    add_title_bar(slide, "rag_prompt_llm 워크플로우",
+                  "ChromaDB 검색 결과를 프롬프트에 결합 → 가장 높은 SQL 정확도")
+
+    rag_color = RGBColor(0x00, 0x5F, 0xB5)
+    ingest_link_color = C_INGEST
+
+    steps_data = [
+        ("① 질문 입력",
+         "StreamRequest(question=...)",
+         "mode='rag_prompt_llm'\nretrieval.enabled=true 필요"),
+        ("② 질의 임베딩",
+         "SentenceTransformerEmbeddingService\n.embed_query(question)\n→ list[float]",
+         "embedding_model:\nparaphrase-multilingual\n-MiniLM-L12-v2"),
+        ("③ ChromaDB 검색",
+         "ChromaRetriever.retrieve(query_embedding)\ncollection='doc_chunks', top_k=3",
+         "← Root_Ingest가 적재한\nChromaDB 컬렉션 사용"),
+        ("④ context 블록 구성",
+         "_build_context_block(contexts)\n검색된 청크 텍스트 결합",
+         "RetrievedContext 리스트\n(chunk_id, text, score, metadata)"),
+        ("⑤ 프롬프트 렌더링",
+         "prompt_manager.render_prompt(\n  'rag_query_generation_prompt', values)",
+         "{question} + {retrieved_context}\n+ schema_context + constraints"),
+        ("⑥ LLM 호출",
+         "llm_client.generate(system, user)\n→ SQL 반환",
+         "Ollama(qwen2.5:14b) / OpenAI"),
+        ("⑦ StreamResult 반환",
+         "mode='rag_prompt_llm'\nretrieved_contexts=[...] 포함",
+         "검색 근거 추적 가능\n(디버깅·설명 가능성↑)"),
+    ]
+
+    box_w, box_h = Cm(4.2), Cm(1.1)
+    desc_x = Cm(5.0)
+    desc_w = Cm(13.5)
+    src_x = Cm(18.8)
+    src_w = Cm(14.5)
+    sy = Cm(3.3)
+    gap = Cm(1.72)
+
+    for i, (label, desc, src) in enumerate(steps_data):
+        yy = sy + i * gap
+        col = ingest_link_color if i == 2 else rag_color
+        flow_box(slide, label, Cm(0.5), yy, w=box_w, h=box_h, fill=col, font_size=8)
+        add_textbox(slide, desc, desc_x, yy + Cm(0.02), desc_w, box_h + Cm(0.2),
+                    font_size=8.2, color=rag_color)
+        add_textbox(slide, src, src_x, yy + Cm(0.02), src_w, box_h + Cm(0.2),
+                    font_size=7.8, color=C_GRAY)
+        if i < len(steps_data) - 1:
+            arrow_v(slide, Cm(0.5) + box_w / 2,
+                    yy + box_h, yy + box_h + Cm(0.62), color=col)
+
+    # Root_Ingest 연결 강조 박스
+    add_rect(slide, Cm(0.5), Cm(15.7), Cm(15.5), Cm(2.5),
+             fill=RGBColor(0xE8, 0xF7, 0xEE), line_color=ingest_link_color, radius=True)
+    add_textbox(slide, "Root_Ingest 연결 관계",
+                Cm(0.8), Cm(15.9), Cm(15.0), Cm(0.6),
+                font_size=9, bold=True, color=ingest_link_color)
+    link_items = [
+        "Root_Ingest/data/chroma  ──▶  retrieval.chroma_path 설정으로 rag_prompt_llm이 직접 읽음",
+        "Root_Ingest가 생성한 collection_name='doc_chunks'를 collection_name 설정으로 지정",
+        "임베딩 모델 일치 필수: Root_Ingest embedding.model_name == retrieval.embedding_model",
+    ]
+    for i, item in enumerate(link_items):
+        add_textbox(slide, f"  • {item}",
+                    Cm(0.9), Cm(16.6) + i * Cm(0.55), Cm(15.0), Cm(0.52),
+                    font_size=7.8, color=RGBColor(0x1B, 0x5E, 0x20))
+
+    # 성능 특징
+    add_rect(slide, Cm(17.0), Cm(15.7), Cm(16.3), Cm(2.5),
+             fill=RGBColor(0xE3, 0xF2, 0xFD), line_color=rag_color, radius=True)
+    add_textbox(slide, "✅  rag_prompt_llm 특징",
+                Cm(17.3), Cm(15.9), Cm(16.0), Cm(0.6),
+                font_size=9, bold=True, color=rag_color)
+    rag_pros = [
+        "• ChromaDB top-k 청크로 테이블 DDL·설명 동적 제공",
+        "• 동적 컨텍스트 → 스키마 업데이트 시 자동 반영",
+        "• retrieved_contexts 포함 → 응답 근거 추적 가능",
+    ]
+    for i, s in enumerate(rag_pros):
+        add_textbox(slide, s, Cm(17.4), Cm(16.6) + i * Cm(0.55), Cm(16.0), Cm(0.52),
+                    font_size=7.8, color=rag_color)
+
+    add_key_message(slide, "rag_prompt_llm = Root_Ingest가 만든 ChromaDB를 검색해 동적 컨텍스트를 주입한다. 현재 config.yaml의 기본 mode이다.")
+    add_notes(slide, "rag_prompt_llm은 Root_Stream/services/stream/mode_rag_prompt_llm.py에 구현됩니다. retrieval.enabled=true 필요. Root_Ingest가 적재한 ChromaDB 컬렉션을 직접 읽습니다.")
+
+
+# ───────── 슬라이드 09: API_SERVER 워크플로우 ─────────
+def slide_09_api_server(prs: Presentation):
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    set_slide_bg(slide, C_WHITE)
+    add_title_bar(slide, "API_SERVER 워크플로우",
+                  "FastAPI 서버 — HTTP 요청 → mode 처리 → SQL 생성 응답")
+
+    api_color = RGBColor(0x00, 0x96, 0x88)
+    api_bg = RGBColor(0xE0, 0xF7, 0xFA)
+
+    # 좌측: 서버 컴포넌트 구조
+    add_rect(slide, Cm(0.5), Cm(3.3), Cm(13.0), Cm(12.5),
+             fill=api_bg, line_color=api_color, radius=True)
+    add_textbox(slide, "FastAPI 서버 구조",
+                Cm(0.8), Cm(3.5), Cm(12.5), Cm(0.7),
+                font_size=10, bold=True, color=api_color)
+
+    server_layers = [
+        ("api_app.py", "FastAPI 앱 생성 + /health 엔드포인트", api_color),
+        ("routes.py", "POST /api/query/generate\nQueryGenerateRequest → response_model", api_color),
+        ("query_service.py", "generate_stream_query(question, mode)\n→ StreamOrchestrator 위임", RGBColor(0x00, 0x52, 0x9B)),
+        ("stream_orchestrator.py", "mode 선택 → natural/prompt/rag 실행", RGBColor(0x00, 0x46, 0x85)),
+    ]
+    for i, (name, desc, col) in enumerate(server_layers):
+        flow_box(slide, name, Cm(0.8), Cm(4.3) + i * Cm(2.3),
+                 w=Cm(12.5), h=Cm(1.0), fill=col, font_size=9)
+        add_textbox(slide, desc,
+                    Cm(0.9), Cm(5.4) + i * Cm(2.3), Cm(12.3), Cm(0.8),
+                    font_size=8, color=C_GRAY)
+        if i < len(server_layers) - 1:
+            arrow_v(slide, Cm(7.05), Cm(4.3) + i * Cm(2.3) + Cm(1.0),
+                    Cm(4.3) + (i + 1) * Cm(2.3), color=api_color)
+
+    # mode alias 매핑
+    add_rect(slide, Cm(0.8), Cm(13.0), Cm(12.5), Cm(2.5),
+             fill=RGBColor(0xF8, 0xFD, 0xFF), line_color=api_color, radius=True)
+    add_textbox(slide, "mode 별칭 매핑 (query_service.py)",
+                Cm(1.0), Cm(13.2), Cm(12.0), Cm(0.6),
+                font_size=8.5, bold=True, color=api_color)
+    aliases = [
+        "'natural'   → 'natural_llm'",
+        "'prompt'    → 'prompt_llm'",
+        "'rag_prompt'→ 'rag_prompt_llm'",
+    ]
+    for i, a in enumerate(aliases):
+        add_textbox(slide, a, Cm(1.2), Cm(13.9) + i * Cm(0.55), Cm(12.0), Cm(0.5),
+                    font_size=8, color=C_GRAY)
+
+    # 우측: Request/Response 예시
+    add_rect(slide, Cm(14.0), Cm(3.3), Cm(19.3), Cm(7.5),
+             fill=RGBColor(0x1A, 0x1A, 0x2E), radius=True)
+    add_textbox(slide, "Sample Request / Response",
+                Cm(14.3), Cm(3.5), Cm(18.8), Cm(0.6),
+                font_size=9, bold=True, color=C_ACCENT)
+    req_text = (
+        "POST /api/query/generate\n"
+        "{\n"
+        '  "question": "최근 30일 각 설비별 에러 건수는?",\n'
+        '  "mode": "rag_prompt"\n'
+        "}"
+    )
+    add_textbox(slide, req_text,
+                Cm(14.3), Cm(4.2), Cm(18.8), Cm(3.0),
+                font_size=8.5, color=RGBColor(0xA8, 0xFF, 0xC4))
+
+    add_rect(slide, Cm(14.0), Cm(7.3), Cm(19.3), Cm(3.2),
+             fill=RGBColor(0x12, 0x12, 0x20), radius=True)
+    resp_text = (
+        "HTTP 200 OK\n"
+        "{\n"
+        '  "success": true,\n'
+        '  "mode": "rag_prompt",\n'
+        '  "question": "최근 30일 각 설비별 에러 건수는?",\n'
+        '  "generated_query": "SELECT EQPID, COUNT(*) ..."\n'
+        "}"
+    )
+    add_textbox(slide, resp_text,
+                Cm(14.3), Cm(7.5), Cm(18.8), Cm(2.8),
+                font_size=8, color=RGBColor(0xFF, 0xE0, 0x82))
+
+    # debug_client 설명
+    add_rect(slide, Cm(14.0), Cm(11.0), Cm(19.3), Cm(4.8),
+             fill=api_bg, line_color=api_color, radius=True)
+    add_textbox(slide, "debug_client.py — 디버그 클라이언트",
+                Cm(14.3), Cm(11.2), Cm(19.0), Cm(0.6),
+                font_size=9, bold=True, color=api_color)
+    debug_items = [
+        "• 고정 질문을 서버에 POST — VS Code 브레이크포인트 확인용",
+        "• STREAM_SERVER_ENDPOINT 환경변수로 대상 지정",
+        "• STREAM_SERVER_MODE로 mode 설정 (기본: 'prompt')",
+        "• python -m Root_Stream.server.debug_client 로 실행",
+        "• response.json() 전체를 로거로 출력해 응답 확인",
+        "• 현재 구현됨: GET /health + POST /api/query/generate",
+        "• TODO: SQL 실행 결과 포함 엔드포인트 미구현",
+    ]
+    for i, item in enumerate(debug_items):
+        add_textbox(slide, item, Cm(14.4), Cm(11.9) + i * Cm(0.56), Cm(18.8), Cm(0.52),
+                    font_size=7.8, color=RGBColor(0x33, 0x33, 0x33))
+
+    add_key_message(slide, "API_SERVER = FastAPI로 HTTP 인터페이스를 제공. mode 별칭으로 외부 클라이언트가 쉽게 접근하고, debug_client로 빠른 브레이크포인트 테스트가 가능하다.")
+    add_notes(slide, "서버는 Root_Stream/server/api_app.py(FastAPI 앱) + routes.py(엔드포인트) + query_service.py(오케스트레이터 위임) 구조입니다. uvicorn으로 실행하고 debug_client.py로 테스트합니다.")
+
+
+# ───────── 슬라이드 10: End-to-End 시퀀스 ─────────
+def slide_10_e2e_sequence(prs: Presentation):
     slide = prs.slides.add_slide(prs.slide_layouts[6])
     set_slide_bg(slide, C_WHITE)
     add_title_bar(slide, "End-to-End 시퀀스 다이어그램",
-                  "사용자 질문 입력 → 최종 SQL 응답 생성까지")
+                  "사용자 질문 → Planner → Stream mode 분기 → SQL Guard → DB 실행 → 답변")
 
-    actors = ["사용자", "API / CLI", "StreamOrchestrator", "EmbeddingService", "ChromaDB", "LLM"]
-    actor_cols = [C_YELLOW, C_BLUE1, RGBColor(0x00, 0x52, 0x9B),
-                  C_INGEST, RGBColor(0x00, 0x46, 0x85), RGBColor(0x8B, 0x00, 0x00)]
-
+    # 액터 정의
+    actors = [
+        ("사용자", C_YELLOW),
+        ("API/CLI", RGBColor(0x00, 0x96, 0x88)),
+        ("Planner", RGBColor(0xFF, 0x8F, 0x00)),
+        ("Orchestrator", C_BLUE1),
+        ("EmbedSvc", C_INGEST),
+        ("ChromaDB", RGBColor(0x00, 0x46, 0x85)),
+        ("LLM", RGBColor(0x8B, 0x00, 0x00)),
+        ("SQL Guard", RGBColor(0xE6, 0x37, 0x00)),
+        ("MSSQL", RGBColor(0x55, 0x55, 0x55)),
+    ]
     n = len(actors)
-    col_gap = (SLIDE_W - Cm(2)) / n
+    margin_l = Cm(0.4)
+    margin_r = Cm(0.4)
+    usable_w = SLIDE_W - margin_l - margin_r
+    col_gap = usable_w / n
     actor_y = Cm(3.0)
-    actor_h = Cm(1.0)
-    actor_w = Cm(4.0)
+    actor_h = Cm(0.9)
+    actor_w = Cm(3.4)
     life_y_start = actor_y + actor_h
-    life_y_end = SLIDE_H - Cm(2.5)
+    life_y_end = SLIDE_H - Cm(2.0)
 
     actor_centers = []
-    for i, (name, col) in enumerate(zip(actors, actor_cols)):
-        cx = Cm(1.0) + i * col_gap + col_gap / 2 - actor_w / 2
-        flow_box(slide, name, cx, actor_y, w=actor_w, h=actor_h, fill=col, font_size=8)
+    for i, (name, col) in enumerate(actors):
+        cx = margin_l + i * col_gap + col_gap / 2 - actor_w / 2
+        flow_box(slide, name, cx, actor_y, w=actor_w, h=actor_h, fill=col, font_size=7.5)
         center_x = cx + actor_w / 2
         actor_centers.append(center_x)
-        # 생명선
         add_rect(slide, center_x - Cm(0.04), life_y_start, Cm(0.08),
                  life_y_end - life_y_start, fill=RGBColor(0xCC, 0xCC, 0xCC))
 
     # 메시지 시퀀스
     msgs = [
-        (0, 1, Cm(4.5), "질문 입력 (question, mode='rag_prompt')"),
-        (1, 2, Cm(5.6), "generate_stream_query() 라우팅"),
-        (2, 3, Cm(6.7), "embed_query(question) 호출"),
-        (3, 2, Cm(7.8), "query_embedding: list[float] 반환"),
-        (2, 4, Cm(8.9), "collection.query(embeddings, top_k=3)"),
-        (4, 2, Cm(10.0), "top-k 청크 + distance 반환"),
-        (2, 2, Cm(11.1), "render_prompt(context, question)"),   # self
-        (2, 5, Cm(12.2), "generate(system_prompt, user_prompt)"),
-        (5, 2, Cm(13.3), "생성된 SQL 반환"),
-        (2, 1, Cm(14.4), "StreamResult 반환"),
-        (1, 0, Cm(15.5), "HTTP 응답 / CLI 출력"),
+        (0, 1, Cm(4.2), "① 질문 입력 (question, mode, use_planner)", C_BLUE1),
+        (1, 2, Cm(5.1), "② run_planner_step(question) [선택]", RGBColor(0xFF, 0x8F, 0x00)),
+        (2, 1, Cm(6.0), "③ query_type 반환 (예: DB_THEN_RAG)", RGBColor(0xFF, 0x8F, 0x00)),
+        (1, 3, Cm(6.9), "④ generate_stream_query(question, mode)", C_BLUE1),
+        (3, 4, Cm(7.8), "⑤ embed_query(question) [RAG 모드]", C_INGEST),
+        (4, 3, Cm(8.7), "⑥ query_embedding 반환", C_INGEST),
+        (3, 5, Cm(9.6), "⑦ collection.query(embedding, top_k=3)", RGBColor(0x00, 0x46, 0x85)),
+        (5, 3, Cm(10.5), "⑧ top-k chunks 반환", RGBColor(0x00, 0x46, 0x85)),
+        (3, 6, Cm(11.4), "⑨ generate(system_prompt + context + question)", RGBColor(0x8B, 0x00, 0x00)),
+        (6, 3, Cm(12.3), "⑩ 생성된 SQL 반환", RGBColor(0x8B, 0x00, 0x00)),
+        (3, 7, Cm(13.2), "⑪ validate_query_sql(sql) — SELECT-only 검증", RGBColor(0xE6, 0x37, 0x00)),
+        (7, 3, Cm(14.1), "⑫ 검증 통과 SQL 반환", RGBColor(0xE6, 0x37, 0x00)),
+        (3, 8, Cm(15.0), "⑬ execute(sql) [--execute-sql 옵션 시]", RGBColor(0x55, 0x55, 0x55)),
+        (8, 3, Cm(15.9), "⑭ rows 반환", RGBColor(0x55, 0x55, 0x55)),
+        (3, 1, Cm(16.5), "⑮ StreamResult / E2E 최종 답변", C_BLUE1),
+        (1, 0, Cm(17.1), "⑯ HTTP 응답 / CLI JSON 출력", C_YELLOW),
     ]
 
-    msg_colors = [C_BLUE1, C_BLUE1, C_INGEST, C_INGEST,
-                  RGBColor(0x00, 0x46, 0x85), RGBColor(0x00, 0x46, 0x85),
-                  C_GRAY, RGBColor(0x8B, 0x00, 0x00), RGBColor(0x8B, 0x00, 0x00),
-                  C_BLUE1, C_YELLOW]
-
-    for idx, (src, dst, yy, label) in enumerate(msgs):
-        col = msg_colors[idx]
+    for src, dst, yy, label, col in msgs:
         x1 = actor_centers[src]
-        if src == dst:
-            # self-call 루프 (작은 박스로 표현)
-            add_rect(slide, x1 + Cm(0.1), yy, Cm(3.5), Cm(0.5),
-                     fill=RGBColor(0xE8, 0xF7, 0xFF), line_color=col, radius=True)
-            add_textbox(slide, label, x1 + Cm(0.2), yy + Cm(0.05), Cm(3.3), Cm(0.45),
-                        font_size=6.5, color=col)
-        else:
-            x2 = actor_centers[dst]
-            add_arrow(slide, x1, yy, x2, yy, color=col, width=1)
-            mx = min(x1, x2) + abs(x2 - x1) / 2 - Cm(1)
-            add_textbox(slide, label, mx - Cm(2.5), yy - Cm(0.38), Cm(5.0), Cm(0.4),
-                        font_size=6, color=col, align=PP_ALIGN.CENTER)
+        x2 = actor_centers[dst]
+        add_arrow(slide, x1, yy, x2, yy, color=col, width=1)
+        mx = (min(x1, x2) + max(x1, x2)) / 2
+        add_textbox(slide, label,
+                    mx - Cm(3.2), yy - Cm(0.38), Cm(6.4), Cm(0.38),
+                    font_size=6, color=col, align=PP_ALIGN.CENTER)
 
-    add_notes(slide, "시퀀스: 사용자 → API → Orchestrator → EmbeddingService(임베딩) → ChromaDB(검색) → PromptManager(프롬프트 렌더) → LLM(SQL 생성) → 사용자 응답. RAG 모드 기준 흐름입니다.")
+    add_key_message(slide, "Planner(선택) → Stream mode 분기 → RAG 검색 → LLM → SQL Guard → DB 실행 → 답변. SQL Guard는 SELECT-only 안전 게이트이다.")
+    add_notes(slide, "전체 시퀀스: Planner는 선택적 단계입니다. rag_prompt_llm 모드에서는 embed→ChromaDB 검색→LLM 경로를 거칩니다. SQL Guard가 항상 중간에 개입합니다. DB 실행은 --execute-sql 옵션 또는 E2E 함수 호출 시 실행됩니다.")
 
 
-def slide_06_compare(prs: Presentation):
-    """슬라이드 6: Ingest vs Stream 비교."""
+# ───────── 슬라이드 11: 실행 명령 / 운영 방법 ─────────
+def slide_11_operations(prs: Presentation):
     slide = prs.slides.add_slide(prs.slide_layouts[6])
     set_slide_bg(slide, C_WHITE)
-    add_title_bar(slide, "Root_Ingest vs Root_Stream 비교",
-                  "오프라인 지식 준비 파이프라인 vs 온라인 실시간 서빙 파이프라인")
+    add_title_bar(slide, "실행 명령 / 운영 방법",
+                  "CLI / SQL 실행 / RAG 사용 / FastAPI 서버 실행 예시")
 
-    headers = ["구분", "Root_Ingest\n(오프라인)", "Root_Stream\n(온라인)"]
-    rows = [
-        ("목적",           "문서를 임베딩해 Vector DB에 적재",   "사용자 질문에 실시간 응답"),
-        ("실행 시점",      "데이터 변경 시 배치 실행",            "사용자 요청마다 즉시 실행"),
-        ("주요 입력",      "SQL DDL·문서 파일",                   "자연어 질문 (question)"),
-        ("주요 출력",      "ChromaDB 벡터 인덱스",                "생성된 SQL / 자연어 응답"),
-        ("핵심 성능 관심", "임베딩 품질·청킹 전략",              "Retrieval 정확도·LLM 응답 품질"),
-        ("실행 주체",      "배치 스크립트 / 노트북",              "FastAPI 서버 / CLI"),
-        ("대표 모듈",      "ingest_pipeline.py",                  "stream_orchestrator.py"),
+    code_bg = RGBColor(0x1A, 0x1A, 0x2E)
+    code_color = RGBColor(0xA8, 0xFF, 0xC4)
+    comment_color = RGBColor(0x88, 0xBB, 0x88)
+    label_color = C_BLUE1
+
+    sections = [
+        {
+            "title": "1) CLI — natural_llm / prompt_llm",
+            "code": (
+                "# Root_Stream/config/config.yaml에서 mode 설정 후 실행\n"
+                "python -m Root_Stream.main \\\n"
+                "  --config Root_Stream/config/config.yaml \\\n"
+                "  --question \"최근 에러 TOP 5를 보여줘\"\n"
+                "\n"
+                "# mode: natural_llm  →  스키마 없이 직접 LLM 호출\n"
+                "# mode: prompt_llm   →  schema_context + business_rules 주입"
+            ),
+        },
+        {
+            "title": "2) CLI — SQL 실행 포함 (MSSQL 연결 필요)",
+            "code": (
+                "python -m Root_Stream.main \\\n"
+                "  --question \"설비별 에러 건수를 조회해줘\" \\\n"
+                "  --execute-sql\n"
+                "\n"
+                "# --execute-sql: 생성된 SQL을 MSSQL에서 실제 실행\n"
+                "# config.yaml database.host / .database / .password 설정 필요"
+            ),
+        },
+        {
+            "title": "3) RAG 사용 (rag_prompt_llm)",
+            "code": (
+                "# config.yaml에서 mode: rag_prompt_llm 설정\n"
+                "# retrieval.chroma_path: ../Root_Ingest/data/chroma\n"
+                "# retrieval.collection_name: doc_chunks\n"
+                "\n"
+                "# Root_Ingest 실행 먼저 (ChromaDB 생성)\n"
+                "python -m Root_Ingest.ingest.ingest_pipeline \\\n"
+                "  --config Root_Ingest/config/config.yaml"
+            ),
+        },
+        {
+            "title": "4) FastAPI 서버 실행",
+            "code": (
+                "# 서버 시작\n"
+                "uvicorn Root_Stream.server.api_app:app \\\n"
+                "  --host 0.0.0.0 --port 8000 --reload\n"
+                "\n"
+                "# 헬스 체크\n"
+                "curl http://localhost:8000/health\n"
+                "\n"
+                "# 디버그 클라이언트 실행\n"
+                "python -m Root_Stream.server.debug_client \\\n"
+                "  --mode rag_prompt --question \"에러 로그 조회\""
+            ),
+        },
     ]
 
-    # 헤더
-    col_widths = [Cm(4.5), Cm(13.5), Cm(13.5)]
-    col_starts = [Cm(0.7), Cm(5.3), Cm(19.0)]
-    header_y = Cm(3.3)
-    header_h = Cm(1.2)
-    header_fills = [C_BLUE1, C_INGEST, C_BLUE1]
-
-    for j, (hname, cx, cw, cf) in enumerate(zip(headers, col_starts, col_widths, header_fills)):
-        flow_box(slide, hname, cx, header_y, w=cw, h=header_h, fill=cf, font_size=9)
-
-    # 데이터 행
-    row_h = Cm(1.45)
-    for ri, row in enumerate(rows):
-        yy = header_y + header_h + ri * row_h
-        bg = C_LITE if ri % 2 == 0 else C_WHITE
-        for j, (cell, cx, cw) in enumerate(zip(row, col_starts, col_widths)):
-            fc = C_GRAY if j == 0 else (C_INGEST if j == 1 else C_BLUE1)
-            add_rect(slide, cx, yy, cw, row_h, fill=bg, line_color=RGBColor(0xCC, 0xCC, 0xCC))
-            bold_flag = (j == 0)
-            add_textbox(slide, cell, cx + Cm(0.2), yy + Cm(0.2), cw - Cm(0.4), row_h - Cm(0.2),
-                        font_size=8.5, bold=bold_flag, color=fc)
-
-    # 하단 포인트
-    add_rect(slide, Cm(0.7), Cm(16.0), SLIDE_W - Cm(1.4), Cm(1.2),
-             fill=C_LITE, line_color=C_ACCENT, radius=True)
-    add_textbox(slide,
-                "💡  Ingest 품질이 낮으면 Stream의 Retrieval 품질도 저하됩니다. "
-                "두 파이프라인을 함께 관리하는 것이 고품질 응답의 핵심입니다.",
-                Cm(1.2), Cm(16.1), SLIDE_W - Cm(2.4), Cm(1.0),
-                font_size=9, color=C_BLUE1)
-
-    add_notes(slide, "두 파이프라인은 ChromaDB를 공유합니다. Ingest가 잘못되면 Stream 검색 결과도 나빠집니다. 실무에서는 데이터 변경 시 Ingest를 재실행하고, Stream은 항상 최신 Vector DB를 바라보게 설정하는 것이 중요합니다.")
-
-
-def slide_07_example(prs: Presentation):
-    """슬라이드 7: 예시 질의 처리 흐름."""
-    slide = prs.slides.add_slide(prs.slide_layouts[6])
-    set_slide_bg(slide, C_WHITE)
-    add_title_bar(slide, "예시 질의 처리 흐름",
-                  "실제 자연어 질문이 SQL로 변환되는 과정")
-
-    # 질문 박스
-    add_rect(slide, Cm(1.0), Cm(3.2), SLIDE_W - Cm(2), Cm(1.5),
-             fill=RGBColor(0xFF, 0xF9, 0xE6), line_color=C_YELLOW, radius=True)
-    add_textbox(slide, "❓  사용자 질문:",
-                Cm(1.4), Cm(3.3), Cm(4), Cm(0.6),
-                font_size=9, bold=True, color=RGBColor(0x99, 0x60, 0x00))
-    add_textbox(slide, '"최근 30일 동안 각 설비별 첫 오류 발생 시각과 마지막 오류 발생 시각, 그리고 총 오류 건수를 함께 보여줘."',
-                Cm(5.5), Cm(3.35), SLIDE_W - Cm(6.5), Cm(1.2),
-                font_size=9, bold=True, color=C_BLACK)
-
-    # 단계 화살표 흐름 (좌→우, 3열 2행)
-    stages = [
-        [
-            ("🔢  임베딩 변환", "embed_query()\n→ 벡터 [0.12, -0.34, …] 생성", C_INGEST),
-            ("🔍  Vector 검색", "ChromaDB top-3 청크 검색\ndistance < 0.4인 문서 반환", C_BLUE1),
-            ("📋  Chunk 내용", "ERROR_LOG 테이블 DDL,\n컬럼 설명, 인덱스 정보 포함", RGBColor(0x00, 0x3A, 0x70)),
-        ],
-        [
-            ("🧩  Prompt 구성", "시스템 프롬프트 + Context +\n사용자 질문 조합", RGBColor(0x6A, 0x00, 0x8E)),
-            ("🤖  LLM 추론", "Ollama(qwen2.5-coder)\nSQL 생성 요청", RGBColor(0x8B, 0x00, 0x00)),
-            ("✅  최종 SQL 출력", "SELECT … FROM ERROR_LOG\nGROUP BY …", RGBColor(0x1B, 0x5E, 0x20)),
-        ],
+    col_w = (SLIDE_W - Cm(1.4)) / 2 - Cm(0.3)
+    positions = [
+        (Cm(0.5), Cm(3.3)),
+        (Cm(0.5 + col_w + 0.6), Cm(3.3)),
+        (Cm(0.5), Cm(10.3)),
+        (Cm(0.5 + col_w + 0.6), Cm(10.3)),
     ]
 
-    bw, bh = Cm(9.5), Cm(2.5)
-    for row_i, row in enumerate(stages):
-        gy = Cm(5.5) + row_i * Cm(4.2)
-        for col_i, (title, desc, col) in enumerate(row):
-            gx = Cm(1.0) + col_i * Cm(10.8)
-            flow_box(slide, title, gx, gy, w=bw, h=Cm(0.9), fill=col, font_size=9)
-            add_rect(slide, gx, gy + Cm(0.9), bw, Cm(1.6),
-                     fill=C_LITE, line_color=col, radius=False)
-            add_textbox(slide, desc, gx + Cm(0.2), gy + Cm(1.0), bw - Cm(0.4), Cm(1.5),
-                        font_size=8, color=C_GRAY)
-            # 화살표
-            if col_i < 2:
-                arrow_h(slide, gx + bw, gx + bw + Cm(1.3), gy + Cm(0.45), color=col)
-        # 행 사이 화살표
-        if row_i == 0:
-            # 오른쪽 끝에서 다음 행 시작으로 (우→하→좌)
-            add_textbox(slide, "↓", Cm(16.0), Cm(9.5), Cm(1), Cm(0.8),
-                        font_size=18, bold=True, color=C_GRAY, align=PP_ALIGN.CENTER)
-
-    # SQL 출력 샘플
-    sql_sample = (
-        "SELECT equipment_id,\n"
-        "       MIN(error_time) AS first_error,\n"
-        "       MAX(error_time) AS last_error,\n"
-        "       COUNT(*)        AS total_errors\n"
-        "FROM   ERROR_LOG\n"
-        "WHERE  error_time >= DATEADD(DAY,-30,GETDATE())\n"
-        "GROUP  BY equipment_id\n"
-        "ORDER  BY total_errors DESC;"
-    )
-    add_rect(slide, Cm(1.0), Cm(14.0), SLIDE_W - Cm(2), Cm(4.5),
-             fill=RGBColor(0x1A, 0x1A, 0x2E), radius=True)
-    add_textbox(slide, sql_sample,
-                Cm(1.4), Cm(14.1), SLIDE_W - Cm(2.8), Cm(4.2),
-                font_size=8.5, color=RGBColor(0xA8, 0xFF, 0xC4))
-
-    add_notes(slide, "이 예시는 실제 프로젝트에서 테스트한 질문입니다. Vector DB에서 ERROR_LOG 관련 청크가 검색되고, LLM이 해당 컨텍스트를 바탕으로 올바른 GROUP BY + DATE 필터 SQL을 생성합니다.")
-
-
-def slide_08_ops(prs: Presentation):
-    """슬라이드 8: 운영 관점 고려사항."""
-    slide = prs.slides.add_slide(prs.slide_layouts[6])
-    set_slide_bg(slide, C_WHITE)
-    add_title_bar(slide, "운영 관점 고려사항",
-                  "실무 체크포인트 — Latency · Quality · Safety · Observability")
-
-    items = [
-        ("⚡  Latency",          "임베딩·LLM은 네트워크·GPU 사용량에 민감\n→ 로컬 Ollama 사용으로 네트워크 제거",      RGBColor(0x3A, 0x86, 0xFF)),
-        ("🎯  Retrieval Quality","chunk_size, overlap, embedding 모델 선택이 검색 품질 결정\n→ 실험 노트북으로 파라미터 최적화",     C_INGEST),
-        ("🔒  SQL 안전성",       "SqlGuard: 금지 키워드(DROP/DELETE) 차단\n→ SELECT-Only 검증 적용",                    RGBColor(0xE6, 0x37, 0x00)),
-        ("🌀  Hallucination 방지","컨텍스트 기반 프롬프트 + 예시 SQL 포함\n→ LLM이 추론이 아닌 검색 결과에 의존하도록",  RGBColor(0x8B, 0x00, 0x00)),
-        ("💾  Caching",          "동일 질문 임베딩 재사용 고려\n→ Redis/In-memory 캐시 적용 가능",                     C_GRAY),
-        ("📊  Monitoring",       "로그 파일(data/logs/) 기록\n→ 응답 시간·오류율·Retrieval 개수 추적",                  RGBColor(0x6A, 0x00, 0x8E)),
-        ("🔄  Feedback Loop",    "잘못된 SQL은 재학습 데이터로 활용\n→ 저품질 청크 식별 후 Ingest 재실행",              C_YELLOW),
-        ("📦  Chunk 전략",       "너무 짧으면 정보 부족, 너무 길면 노이즈 증가\n→ chunk_size=800, overlap=100 기본 권장", C_BLUE1),
-    ]
-
-    cols = 2
-    bw, bh = (SLIDE_W - Cm(2.4)) / cols - Cm(0.5), Cm(2.2)
-    for i, (title, desc, col) in enumerate(items):
-        r, c = divmod(i, cols)
-        gx = Cm(0.7) + c * (bw + Cm(0.6))
-        gy = Cm(3.4) + r * (bh + Cm(0.35))
-        add_rect(slide, gx, gy, bw, bh, fill=C_LITE, line_color=col, radius=True)
-        add_textbox(slide, title, gx + Cm(0.3), gy + Cm(0.15), bw - Cm(0.3), Cm(0.7),
-                    font_size=9, bold=True, color=col)
-        add_textbox(slide, desc, gx + Cm(0.3), gy + Cm(0.75), bw - Cm(0.3), Cm(1.3),
-                    font_size=7.5, color=C_GRAY)
-
-    add_notes(slide, "운영 시 가장 중요한 것은 Retrieval 품질과 SQL 안전성입니다. Ingest 파라미터를 노트북에서 실험해 최적화하고, SqlGuard로 위험한 쿼리를 차단하세요.")
-
-
-def slide_09_summary(prs: Presentation):
-    """슬라이드 9: 최종 요약."""
-    slide = prs.slides.add_slide(prs.slide_layouts[6])
-    set_slide_bg(slide, C_WHITE)
-    add_title_bar(slide, "최종 요약", "Key Takeaways")
-
-    # 두 파이프라인 요약 박스
-    add_rect(slide, Cm(0.8), Cm(3.4), Cm(15.0), Cm(8.5),
-             fill=RGBColor(0xE8, 0xF7, 0xEE), line_color=C_INGEST, radius=True)
-    add_textbox(slide, "📥  Root_Ingest\n지식 준비 파이프라인",
-                Cm(1.2), Cm(3.7), Cm(14.0), Cm(1.2),
-                font_size=13, bold=True, color=C_INGEST)
-    for i, line in enumerate([
-        "•  문서 → 파싱 → 청킹 → 임베딩 → ChromaDB 저장",
-        "•  오프라인 배치 실행, 데이터 변경 시 재실행",
-        "•  chunk 전략이 응답 품질의 기반",
-    ]):
-        add_textbox(slide, line, Cm(1.4), Cm(5.1) + i * Cm(1.0), Cm(13.8), Cm(0.9),
-                    font_size=9, color=C_BLACK)
-
-    add_rect(slide, Cm(17.3), Cm(3.4), Cm(15.0), Cm(8.5),
-             fill=C_LITE, line_color=C_BLUE1, radius=True)
-    add_textbox(slide, "📤  Root_Stream\n실시간 질의 응답 파이프라인",
-                Cm(17.7), Cm(3.7), Cm(14.0), Cm(1.2),
-                font_size=13, bold=True, color=C_BLUE1)
-    for i, line in enumerate([
-        "•  자연어 → 임베딩 → 검색 → 프롬프트 → LLM → SQL",
-        "•  FastAPI 서버 + CLI 두 가지 진입점",
-        "•  RAG 모드로 컨텍스트 기반 정확도 향상",
-    ]):
-        add_textbox(slide, line, Cm(17.9), Cm(5.1) + i * Cm(1.0), Cm(13.8), Cm(0.9),
-                    font_size=9, color=C_BLACK)
-
-    # 중간 연결
-    add_textbox(slide, "⇄\nChromaDB\n공유", Cm(15.4), Cm(6.2), Cm(2.0), Cm(1.8),
-                font_size=8, bold=True, color=C_YELLOW, align=PP_ALIGN.CENTER)
-
-    # Key Takeaway 박스 3개
-    takeaways = [
-        ("1️⃣  Ingest = 지식의 품질",
-         "임베딩 모델·청킹 전략이\n모든 응답 품질의 기반",
-         C_INGEST),
-        ("2️⃣  Stream = 실시간 지성",
-         "Retrieval + Context + LLM으로\n자연어를 정확한 SQL로 변환",
-         C_BLUE1),
-        ("3️⃣  운영 = 지속적 개선",
-         "Monitoring + Feedback Loop으로\n품질을 지속적으로 향상",
-         RGBColor(0x6A, 0x00, 0x8E)),
-    ]
-    bw = (SLIDE_W - Cm(2.4)) / 3 - Cm(0.3)
-    for i, (title, desc, col) in enumerate(takeaways):
-        gx = Cm(0.7) + i * (bw + Cm(0.35))
-        gy = Cm(13.0)
-        add_rect(slide, gx, gy, bw, Cm(4.3), fill=col, radius=True)
-        add_textbox(slide, title, gx + Cm(0.3), gy + Cm(0.3), bw - Cm(0.4), Cm(0.9),
+    for (gx, gy), sec in zip(positions, sections):
+        box_h = Cm(6.7)
+        add_rect(slide, gx, gy, col_w, Cm(0.75), fill=C_BLUE1)
+        add_textbox(slide, sec["title"],
+                    gx + Cm(0.2), gy + Cm(0.08), col_w - Cm(0.3), Cm(0.6),
                     font_size=9, bold=True, color=C_WHITE)
-        add_textbox(slide, desc, gx + Cm(0.3), gy + Cm(1.3), bw - Cm(0.4), Cm(2.5),
+        add_rect(slide, gx, gy + Cm(0.75), col_w, Cm(5.8), fill=code_bg)
+        add_textbox(slide, sec["code"],
+                    gx + Cm(0.2), gy + Cm(0.9), col_w - Cm(0.3), Cm(5.5),
+                    font_size=7.8, color=code_color)
+
+    add_key_message(slide, "CLI, FastAPI, 노트북 모두 동일한 StreamOrchestrator를 재사용한다. 진입점만 다르다.")
+    add_notes(slide, "Root_Stream.main이 CLI 진입점이고, Root_Stream.server.api_app이 FastAPI 진입점입니다. 둘 다 build_stream_orchestrator()를 호출합니다.")
+
+
+# ───────── 슬라이드 12: 구현 범위 / 한계 / TODO ─────────
+def slide_12_scope_todo(prs: Presentation):
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    set_slide_bg(slide, C_WHITE)
+    add_title_bar(slide, "현재 구현 범위 / 한계 / TODO",
+                  "소스 기준 실제 구현됨 vs 미구현 / 향후 확장 포인트")
+
+    done_color = C_INGEST
+    limit_color = C_GRAY
+    todo_color = RGBColor(0x3A, 0x86, 0xFF)
+
+    # ── 구현됨 ──
+    add_rect(slide, Cm(0.5), Cm(3.2), Cm(10.3), Cm(13.5),
+             fill=RGBColor(0xE8, 0xF7, 0xEE), line_color=done_color, radius=True)
+    add_rect(slide, Cm(0.5), Cm(3.2), Cm(10.3), Cm(1.1), fill=done_color, radius=True)
+    add_textbox(slide, "✅ 현재 구현됨",
+                Cm(0.8), Cm(3.35), Cm(10.0), Cm(0.8),
+                font_size=11, bold=True, color=C_WHITE)
+    impl_items = [
+        "Planner: LLM → JSON 파싱 → 검증 → PlannerPlan",
+        "natural_llm: system_prompt + 질문 직접 LLM 전달",
+        "prompt_llm: 템플릿 + schema_context + business_rules",
+        "rag_prompt_llm: embed → ChromaDB → LLM",
+        "SQL Guard: SELECT-only, 금지 키워드 14종 차단",
+        "SqlExecutorService: MSSQL 실행 (pymssql)",
+        "StreamOrchestrator: mode 분기 통합 관리",
+        "FastAPI 서버: POST /api/query/generate + /health",
+        "debug_client.py: 서버 브레이크포인트 테스트",
+        "Root_Ingest 파이프라인: 수집→파싱→청킹→임베딩→ChromaDB",
+        "E2E runner: run_planner/db/rag/final_answer_step()",
+        "config.yaml 기반 완전한 설정 주입 구조",
+        "단위 테스트: config_loader, SQL guard, mode_resolution",
+        "노트북: 단계별 검증 (01~06, planner_flow)",
+    ]
+    for i, item in enumerate(impl_items):
+        add_textbox(slide, f"  • {item}",
+                    Cm(0.8), Cm(4.5) + i * Cm(0.82), Cm(10.0), Cm(0.75),
+                    font_size=8, color=RGBColor(0x1B, 0x5E, 0x20))
+
+    # ── 한계 / 미구현 ──
+    add_rect(slide, Cm(11.3), Cm(3.2), Cm(10.3), Cm(6.4),
+             fill=RGBColor(0xFF, 0xF3, 0xE0), line_color=limit_color, radius=True)
+    add_rect(slide, Cm(11.3), Cm(3.2), Cm(10.3), Cm(1.1), fill=limit_color, radius=True)
+    add_textbox(slide, "⚠️ 현재 미구현 / 제외됨",
+                Cm(11.6), Cm(3.35), Cm(10.0), Cm(0.8),
+                font_size=11, bold=True, color=C_WHITE)
+    limit_items = [
+        "Planner 독립 API 엔드포인트 없음",
+        "streaming 응답 (SSE/WebSocket) 미구현",
+        "SQL 실행 결과 포함 API 엔드포인트 없음",
+        "Planner 결과 캐싱 없음",
+        "임베딩 결과 캐싱 없음",
+        "인증/인가 (API Key, JWT 등) 없음",
+    ]
+    for i, item in enumerate(limit_items):
+        add_textbox(slide, f"  • {item}",
+                    Cm(11.6), Cm(4.5) + i * Cm(0.82), Cm(10.0), Cm(0.75),
+                    font_size=8, color=RGBColor(0x99, 0x60, 0x00))
+
+    # ── TODO / 향후 확장 ──
+    add_rect(slide, Cm(11.3), Cm(9.8), Cm(10.3), Cm(6.9),
+             fill=RGBColor(0xE3, 0xF2, 0xFD), line_color=todo_color, radius=True)
+    add_rect(slide, Cm(11.3), Cm(9.8), Cm(10.3), Cm(1.1), fill=todo_color, radius=True)
+    add_textbox(slide, "🚀 향후 확장 포인트",
+                Cm(11.6), Cm(9.95), Cm(10.0), Cm(0.8),
+                font_size=11, bold=True, color=C_WHITE)
+    todo_items = [
+        "Planner API 엔드포인트 추가",
+        "Streaming 응답 지원 (AsyncGenerator)",
+        "SQL 실행 결과 포함 E2E API",
+        "임베딩 / Planner 결과 Redis 캐싱",
+        "Fine-tuned LLM으로 교체 지원",
+        "피드백 루프: 잘못된 SQL 재학습 데이터 적재",
+        "멀티 컬렉션 RAG 검색",
+        "API Key 기반 인증 미들웨어",
+    ]
+    for i, item in enumerate(todo_items):
+        add_textbox(slide, f"  • {item}",
+                    Cm(11.6), Cm(11.1) + i * Cm(0.76), Cm(10.0), Cm(0.7),
+                    font_size=8, color=todo_color)
+
+    # ── 기술 스택 요약 ──
+    add_rect(slide, Cm(22.1), Cm(3.2), Cm(11.2), Cm(13.5),
+             fill=RGBColor(0xF8, 0xF8, 0xFF), line_color=C_BLUE1, radius=True)
+    add_rect(slide, Cm(22.1), Cm(3.2), Cm(11.2), Cm(1.1), fill=C_BLUE1, radius=True)
+    add_textbox(slide, "🔧 기술 스택",
+                Cm(22.4), Cm(3.35), Cm(11.0), Cm(0.8),
+                font_size=11, bold=True, color=C_WHITE)
+    tech_stack = [
+        ("언어", "Python 3.x"),
+        ("LLM", "Ollama (qwen2.5:14b) / OpenAI GPT"),
+        ("임베딩", "sentence-transformers multilingual"),
+        ("VectorDB", "ChromaDB (PersistentClient)"),
+        ("RDBMS", "MSSQL (pymssql)"),
+        ("서버", "FastAPI + uvicorn"),
+        ("설정", "YAML (config.yaml)"),
+        ("로깅", "Python logging → data/logs/"),
+        ("테스트", "pytest + 단위 테스트"),
+        ("노트북", "Jupyter Notebook (01~06 + E2E)"),
+        ("PPT", "python-pptx"),
+    ]
+    for i, (k, v) in enumerate(tech_stack):
+        add_textbox(slide, f"  {k}:",
+                    Cm(22.4), Cm(4.5) + i * Cm(0.82), Cm(3.0), Cm(0.75),
+                    font_size=8, bold=True, color=C_BLUE1)
+        add_textbox(slide, v,
+                    Cm(25.5), Cm(4.5) + i * Cm(0.82), Cm(7.5), Cm(0.75),
+                    font_size=8, color=C_GRAY)
+
+    add_key_message(slide, "핵심 기능은 모두 구현됨. 스트리밍·인증·캐싱·독립 Planner API가 주요 확장 포인트이다.")
+    add_notes(slide, "소스 기준으로 분석한 구현 범위입니다. 스트리밍, 인증, 캐싱은 아직 미구현 상태입니다.")
+
+
+# ───────── 슬라이드 13: 결론 ─────────
+def slide_13_conclusion(prs: Presentation):
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    set_slide_bg(slide, C_WHITE)
+    add_title_bar(slide, "결론",
+                  "핵심 포인트 요약 — Planner & Stream의 역할 차이 · RAG & API 위치")
+
+    # 상단 2개 핵심 박스 (Planner vs Stream)
+    left_w = Cm(15.5)
+    right_w = Cm(15.5)
+
+    add_rect(slide, Cm(0.5), Cm(3.3), left_w, Cm(6.5),
+             fill=RGBColor(0xFF, 0xF3, 0xE0), line_color=RGBColor(0xFF, 0x8F, 0x00), radius=True)
+    add_textbox(slide, "🧠 Planner의 역할",
+                Cm(0.8), Cm(3.5), left_w - Cm(0.5), Cm(0.8),
+                font_size=13, bold=True, color=RGBColor(0xFF, 0x8F, 0x00))
+    planner_points = [
+        "• 질문을 받아 query_type을 결정하는 라우터",
+        "• DB_ONLY / RAG_ONLY / GENERAL 등 6가지 타입",
+        "• 복합 질문(DB_THEN_RAG)을 steps 배열로 분해",
+        "• LLM → JSON 계획 → 검증까지만 담당",
+        "• DB 실행, RAG 검색, SQL 생성은 포함하지 않음",
+        "• planner_flow_runner.py가 E2E 흐름을 연결",
+    ]
+    for i, s in enumerate(planner_points):
+        add_textbox(slide, s, Cm(0.9), Cm(4.5) + i * Cm(0.8), left_w - Cm(0.8), Cm(0.72),
+                    font_size=9, color=RGBColor(0x55, 0x40, 0x00))
+
+    add_rect(slide, Cm(17.5), Cm(3.3), right_w, Cm(6.5),
+             fill=C_LITE, line_color=C_BLUE1, radius=True)
+    add_textbox(slide, "⚙️ Stream의 역할",
+                Cm(17.8), Cm(3.5), right_w - Cm(0.5), Cm(0.8),
+                font_size=13, bold=True, color=C_BLUE1)
+    stream_points = [
+        "• 실제 SQL 생성 & 응답 반환을 담당하는 실행 엔진",
+        "• 3가지 mode: natural / prompt / rag_prompt_llm",
+        "• SQL Guard로 DML/DDL 차단 (안전 게이트)",
+        "• MSSQL 실행 포함 (선택적 --execute-sql)",
+        "• FastAPI 서버와 CLI 두 가지 진입점 모두 지원",
+        "• config.yaml 한 곳에서 모든 동작 제어",
+    ]
+    for i, s in enumerate(stream_points):
+        add_textbox(slide, s, Cm(17.9), Cm(4.5) + i * Cm(0.8), right_w - Cm(0.8), Cm(0.72),
+                    font_size=9, color=RGBColor(0x00, 0x30, 0x60))
+
+    # 중간: RAG & API SERVER 위치
+    add_rect(slide, Cm(0.5), Cm(10.1), SLIDE_W - Cm(1.0), Cm(3.5),
+             fill=RGBColor(0xE8, 0xF4, 0xFF), line_color=C_ACCENT, radius=True)
+    add_textbox(slide, "🔍 RAG & API SERVER의 위치",
+                Cm(0.8), Cm(10.3), Cm(12.0), Cm(0.7),
+                font_size=11, bold=True, color=C_BLUE1)
+    loc_items = [
+        ("RAG (rag_prompt_llm)", "Root_Stream 내부 mode — Root_Ingest가 만든 ChromaDB를 읽어 동적 컨텍스트 제공. 최고 정확도의 SQL 생성 경로."),
+        ("API SERVER\n(api_app + routes)", "Root_Stream의 HTTP 인터페이스 — 동일한 StreamOrchestrator를 FastAPI로 감싼 것. CLI와 완전 동일한 로직을 HTTP로 노출."),
+    ]
+    for i, (k, v) in enumerate(loc_items):
+        add_textbox(slide, k, Cm(0.8), Cm(11.1) + i * Cm(1.1), Cm(5.5), Cm(1.0),
+                    font_size=9, bold=True, color=C_BLUE1)
+        add_textbox(slide, v, Cm(6.5), Cm(11.1) + i * Cm(1.1), SLIDE_W - Cm(7.5), Cm(1.0),
+                    font_size=9, color=C_GRAY)
+
+    # 하단 3개 핵심 메시지 카드
+    cards = [
+        ("1️⃣ Planner = 라우터",
+         "질문 유형을 분류해 DB/RAG/LLM\n어떤 경로를 쓸지 결정한다",
+         RGBColor(0xFF, 0x8F, 0x00)),
+        ("2️⃣ Stream = 실행 엔진",
+         "mode에 따라 SQL 생성/RAG/LLM을\n실제로 실행하고 결과를 반환한다",
+         C_BLUE1),
+        ("3️⃣ RAG + ChromaDB = 정확도의 열쇠",
+         "Root_Ingest 품질이 Root_Stream 답변\n품질을 직접 결정한다",
+         C_INGEST),
+    ]
+    card_w = (SLIDE_W - Cm(2.2)) / 3 - Cm(0.3)
+    for i, (title, msg, col) in enumerate(cards):
+        gx = Cm(0.7) + i * (card_w + Cm(0.35))
+        gy = Cm(14.0)
+        add_rect(slide, gx, gy, card_w, Cm(3.8), fill=col, radius=True)
+        add_textbox(slide, title,
+                    gx + Cm(0.3), gy + Cm(0.3), card_w - Cm(0.5), Cm(0.8),
+                    font_size=10, bold=True, color=C_WHITE)
+        add_textbox(slide, msg,
+                    gx + Cm(0.3), gy + Cm(1.2), card_w - Cm(0.5), Cm(2.2),
                     font_size=9, color=C_WHITE)
 
-    # 슬라이드 번호
-    add_textbox(slide, "DB_TO_LLM  RAG Architecture  |  2026",
-                Cm(1), SLIDE_H - Cm(0.9), SLIDE_W - Cm(2), Cm(0.7),
-                font_size=8, color=C_GRAY, align=PP_ALIGN.CENTER)
-
-    add_notes(slide, "핵심 요약: Ingest 없이는 좋은 Stream 응답 없음. 두 파이프라인을 함께 관리하고, 지속적인 모니터링과 피드백 루프로 품질을 높이는 것이 운영의 핵심입니다.")
+    add_key_message(slide, "Planner는 라우터, Stream은 실행 엔진, RAG는 정확도 향상 레이어, API Server는 HTTP 진입점이다.")
+    add_notes(slide, "핵심 정리: Planner가 경로를 결정하고 Stream이 실행합니다. RAG는 rag_prompt_llm mode에서 동작하며 Root_Ingest 품질에 의존합니다. API Server는 StreamOrchestrator를 그대로 HTTP로 노출한 것입니다.")
 
 
 # ──────────────────────────────────────────────
@@ -659,20 +1301,25 @@ def build_pptx(output_path: str) -> None:
     prs.slide_height = SLIDE_H
 
     slide_01_title(prs)
-    slide_02_overview(prs)
-    slide_03_ingest(prs)
-    slide_04_stream(prs)
-    slide_05_e2e(prs)
-    slide_06_compare(prs)
-    slide_07_example(prs)
-    slide_08_ops(prs)
-    slide_09_summary(prs)
+    slide_02_system_overview(prs)
+    slide_03_folder_structure(prs)
+    slide_04_common_structure(prs)
+    slide_05_planner(prs)
+    slide_06_natural_llm(prs)
+    slide_07_prompt_llm(prs)
+    slide_08_rag_prompt_llm(prs)
+    slide_09_api_server(prs)
+    slide_10_e2e_sequence(prs)
+    slide_11_operations(prs)
+    slide_12_scope_todo(prs)
+    slide_13_conclusion(prs)
 
     Path(output_path).parent.mkdir(parents=True, exist_ok=True)
     prs.save(output_path)
-    print(f"✅ 저장 완료: {output_path}")
+    print(f"저장 완료: {output_path}")
+    print(f"총 {len(prs.slides)}장 슬라이드")
 
 
 if __name__ == "__main__":
-    OUT = r"C:\Users\김민한\Desktop\docs\LLM\RAG_Architecture_Overview.pptx"
+    OUT = r"C:\Users\김민한\Desktop\docs\LLM\DB_TO_LLM_Architecture.pptx"
     build_pptx(OUT)

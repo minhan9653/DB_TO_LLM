@@ -1,15 +1,15 @@
-# 이 파일은 서버/CLI에서 공통으로 사용할 SQL 생성 진입점을 제공합니다.
-# 기존 StreamOrchestrator를 재사용해 중복 로직을 줄이고 영향 범위를 최소화합니다.
-# 요청 mode 별칭을 내부 mode 로 안전하게 변환합니다.
-# 기존 main.py, mode_*.py, notebooks 흐름은 수정하지 않습니다.
+# 이 파일은 기존 API/CLI가 사용하던 SQL 생성 진입점을 호환 유지하기 위한 래퍼다.
+# 내부 구현은 LangGraph runner를 호출해 단일 오케스트레이션 경로를 재사용한다.
+# 외부 모듈은 기존 함수명(generate_stream_query)을 그대로 사용할 수 있다.
+# mode 별 별칭 해석 규칙도 유지해 기존 클라이언트 변경 없이 동작하도록 한다.
 
 from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
 
-from Root_Stream.orchestrator.stream_orchestrator import build_stream_orchestrator
-from Root_Stream.utils.logger import get_logger
+from db_to_llm.stream.graph.runner import run_sql_generation_only
+from db_to_llm.common.logging.logger import get_logger
 
 logger = get_logger(__name__)
 
@@ -25,6 +25,9 @@ PUBLIC_TO_INTERNAL_MODE = {
 }
 
 INTERNAL_TO_PUBLIC_MODE = {
+    "natural": "natural",
+    "prompt": "prompt",
+    "rag_prompt": "rag_prompt",
     "natural_llm": "natural",
     "prompt_llm": "prompt",
     "rag_prompt_llm": "rag_prompt",
@@ -33,7 +36,7 @@ INTERNAL_TO_PUBLIC_MODE = {
 
 @dataclass
 class QueryGenerationResult:
-    """서버 응답으로 사용하기 위한 최소 SQL 생성 결과 모델입니다."""
+    """기존 API 스펙 호환용 SQL 생성 결과 모델."""
 
     success: bool
     mode: str
@@ -43,19 +46,31 @@ class QueryGenerationResult:
 
 def resolve_internal_mode(mode: str | None) -> str:
     """
-    요청 mode 값을 내부 orchestrator mode 값으로 변환합니다.
+    외부 mode 별칭을 내부 표준 mode로 변환한다.
+
+    Args:
+        mode: 요청 mode 문자열.
+
+    Returns:
+        str: 내부 mode(natural/prompt/rag_prompt).
     """
     requested_mode = (mode or "prompt").strip().lower()
     internal_mode = PUBLIC_TO_INTERNAL_MODE.get(requested_mode)
     if internal_mode is None:
         available_modes = ", ".join(sorted({"natural", "prompt", "rag_prompt"}))
-        raise ValueError(f"지원하지 않는 mode 입니다: {requested_mode}. 사용 가능 값: {available_modes}")
+        raise ValueError(f"지원하지 않는 mode입니다: {requested_mode}. 지원 모드: {available_modes}")
     return internal_mode
 
 
 def to_public_mode(internal_mode: str) -> str:
     """
-    내부 mode 값을 API 응답용 공개 mode 값으로 변환합니다.
+    내부 mode 문자열을 외부 API 응답용 mode로 변환한다.
+
+    Args:
+        internal_mode: 내부 mode 문자열.
+
+    Returns:
+        str: 외부 응답용 mode 문자열.
     """
     return INTERNAL_TO_PUBLIC_MODE.get(internal_mode, internal_mode)
 
@@ -67,28 +82,33 @@ def generate_stream_query(
     config_path: str | Path | None = None,
 ) -> QueryGenerationResult:
     """
-    기존 STREAM 오케스트레이터를 재사용해 질문을 SQL로 생성합니다.
+    LangGraph 기반 워크플로를 실행해 SQL 생성 결과를 반환한다.
+
+    Args:
+        question: 사용자 질문.
+        mode: 요청 모드.
+        config_path: stream config 경로.
+
+    Returns:
+        QueryGenerationResult: SQL 생성 결과 모델.
     """
     clean_question = question.strip()
     if not clean_question:
         raise ValueError("question 값은 비어 있을 수 없습니다.")
 
-    selected_internal_mode = resolve_internal_mode(mode)
+    selected_mode = resolve_internal_mode(mode)
     selected_config_path = Path(config_path or DEFAULT_CONFIG_PATH).resolve()
+    logger.info("query_service 실행: mode=%s, config=%s", selected_mode, selected_config_path)
 
-    logger.info(
-        "STREAM 공통 생성 실행: mode=%s, config=%s",
-        selected_internal_mode,
-        selected_config_path,
+    result = run_sql_generation_only(
+        question=clean_question,
+        config_path=selected_config_path,
+        mode=selected_mode,
     )
 
-    orchestrator = build_stream_orchestrator(selected_config_path)
-    orchestrator.config["mode"] = selected_internal_mode
-    stream_result = orchestrator.run(clean_question)
-
     return QueryGenerationResult(
-        success=True,
-        mode=to_public_mode(stream_result.mode),
-        question=stream_result.question,
-        generated_query=stream_result.query,
+        success=bool(result.get("success", False)),
+        mode=to_public_mode(str(result.get("mode", selected_mode))),
+        question=clean_question,
+        generated_query=str(result.get("generated_query", "")),
     )

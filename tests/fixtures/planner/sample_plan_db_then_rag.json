@@ -1,0 +1,19 @@
+{
+  "is_composite": true,
+  "query_type": "DB_THEN_RAG",
+  "steps": [
+    {
+      "step": 1,
+      "type": "db",
+      "goal": "최근 24시간 에러 빈도를 집계한다.",
+      "depends_on": []
+    },
+    {
+      "step": 2,
+      "type": "rag",
+      "goal": "집계 결과를 기준으로 관련 장애 문서를 조회한다.",
+      "depends_on": [1]
+    }
+  ]
+}
+
