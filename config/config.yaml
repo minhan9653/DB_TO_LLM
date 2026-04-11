@@ -1,0 +1,103 @@
+# DB_TO_LLM 프로젝트 통합 설정 파일
+# 이 파일 하나에서 ingest, stream, db, llm, retrieval, logging 설정을 모두 관리한다.
+# 민감정보(DB 비밀번호, API Key)는 .env 또는 OS 환경변수로 주입하는 것을 권장한다.
+# 환경변수 오버라이드 목록: 파일 하단 주석 참고
+
+# ────────────────────────────────────────
+# LLM 설정
+# ────────────────────────────────────────
+llm_provider: ollama  # ollama | openai
+
+ollama:
+  model: qwen2.5:14b
+  base_url: http://127.0.0.1:11434
+  request_timeout: 60
+
+openai:
+  model: gpt-4.1-mini
+  api_key: ""          # 환경변수 OPENAI_API_KEY 권장
+  request_timeout: 60
+
+# ────────────────────────────────────────
+# 데이터베이스 설정
+# ────────────────────────────────────────
+database:
+  type: mssql
+  host: 127.0.0.1
+  port: 1433
+  database: "<DB_NAME>"
+  username: "<DB_USER>"
+  password: "<DB_PASSWORD>"    # 환경변수 DB_PASSWORD 권장
+  driver: "ODBC Driver 17 for SQL Server"
+  encrypt: false
+  trust_server_certificate: true
+  timeout: 30
+
+sql:
+  allow_only_select: true      # SELECT 이외 구문 차단
+  max_rows: 1000               # 조회 결과 최대 행 수
+
+# ────────────────────────────────────────
+# RAG / 임베딩 설정
+# ────────────────────────────────────────
+retrieval:
+  enabled: true
+  embedding_model: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+  chroma_path: data/chroma           # 벡터 스토어 저장 경로 (프로젝트 루트 기준)
+  collection_name: doc_chunks
+  top_k: 3
+
+# ────────────────────────────────────────
+# Ingest 설정
+# ────────────────────────────────────────
+ingest:
+  doc_dir: data/doc                  # 원본 문서 디렉터리
+  output_dir: data/ingest_output     # 중간 결과 저장 디렉터리
+  supported_extensions:
+    - .pdf
+    - .docx
+    - .txt
+    - .md
+    - .sql
+  parser: simple                     # simple | docling | marker | unstructured
+  chunk_size: 800
+  chunk_overlap: 100
+
+# ────────────────────────────────────────
+# Stream / Planner 설정
+# ────────────────────────────────────────
+stream:
+  prompts:
+    prompt_file: src/db_to_llm/stream/prompts/prompt_templates.yaml
+    schema_context: |
+      # 여기에 DB 스키마 요약을 적는다.
+      # 예: TABLE_NAME (column1, column2, ...)
+    business_rules: |
+      # 여기에 도메인 규칙을 적는다.
+    additional_constraints: ""
+
+# ────────────────────────────────────────
+# 로깅 설정
+# ────────────────────────────────────────
+logging:
+  level: INFO
+  log_file: data/logs/db_to_llm.log  # 파일 로그 경로. 비워두면 콘솔만 출력
+
+# ────────────────────────────────────────
+# 환경변수 오버라이드 목록
+# ────────────────────────────────────────
+# LLM_PROVIDER          → llm_provider
+# OLLAMA_MODEL          → ollama.model
+# OLLAMA_BASE_URL       → ollama.base_url
+# OPENAI_MODEL          → openai.model
+# OPENAI_API_KEY        → openai.api_key
+# DB_HOST               → database.host
+# DB_PORT               → database.port
+# DB_NAME               → database.database
+# DB_USER               → database.username
+# DB_PASSWORD           → database.password
+# DB_DRIVER             → database.driver
+# DB_TIMEOUT            → database.timeout
+# DB_ENCRYPT            → database.encrypt
+# DB_TRUST_SERVER_CERTIFICATE → database.trust_server_certificate
+# LOG_LEVEL             → logging.level
