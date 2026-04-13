@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xargs wc:*)",
+      "Bash(xargs grep:*)",
+      "Bash(python -c \"from src.db_to_llm.shared.config.config_loader import load_config; print\\('config OK'\\)\")",
+      "Bash(python -c \"from src.db_to_llm.shared.config.config_loader import load_config; print\\('OK'\\)\")",
+      "Bash(python -c \"import sys; sys.path.insert\\(0, '.'\\); from src.db_to_llm.shared.config.config_loader import load_config; print\\('OK'\\)\")",
+      "Bash(py --version)"
+    ]
+  }
+}

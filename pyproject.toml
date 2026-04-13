@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "db-to-llm"
+version = "2.0.0"
+description = "자연어 질문을 Planner → LangGraph로 처리하는 DB/RAG 통합 응답 시스템"
+requires-python = ">=3.11"
+dependencies = [
+    "PyYAML>=6.0",
+    "python-dotenv>=1.0.0",
+    "sentence-transformers>=2.7.0",
+    "chromadb>=0.5.0",
+    "requests>=2.32.0",
+    "pyodbc>=5.1.0",
+    "fastapi>=0.116.0",
+    "uvicorn>=0.35.0",
+    "langgraph>=0.2.0",
+]
+
+[project.optional-dependencies]
+openai = ["openai>=1.40.0"]
+ingest-full = [
+    "docling>=2.84.0",
+    "pypdf>=4.2.0",
+    "python-docx>=1.1.0",
+    "pandas>=2.2.0",
+]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-mock>=3.14",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"

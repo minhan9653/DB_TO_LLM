@@ -1,0 +1,13 @@
+{
+  "is_composite": false,
+  "query_type": "DB_ONLY",
+  "steps": [
+    {
+      "step": 1,
+      "type": "db",
+      "goal": "장비별 최근 에러 건수를 조회한다.",
+      "depends_on": []
+    }
+  ]
+}
+

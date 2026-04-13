@@ -1,0 +1,38 @@
+# Ignore project config with credentials
+Root_Stream/config/config.yaml
+
+# Common Python ignores
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# Environments and caches
+.venv/
+venv/
+.env
+.tmp/
+.pytest_cache/
+.mypy_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Editor settings
+.vscode/*
+!.vscode/launch.json
+
+# Databases
+*.sqlite3
+.db
+
+# Generated data/log outputs
+Root_Stream/data/logs/
+Root_Ingest/data/logs/
+Root_Ingest/data/chroma/
+Root_Ingest/data/chunks/
+Root_Ingest/data/embeddings/
+Root_Ingest/data/parsed/
+Root_Ingest/data_rag/
+tests/root_stream/tmp*/

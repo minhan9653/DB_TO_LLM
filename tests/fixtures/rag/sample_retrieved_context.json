@@ -1,0 +1,19 @@
+[
+  {
+    "chunk_id": "rag-001",
+    "text": "ALM-1023 에러는 챔버 온도 급상승 시 발생할 수 있다.",
+    "score": 0.11,
+    "metadata": {
+      "source": "alarm_guide.docx"
+    }
+  },
+  {
+    "chunk_id": "rag-002",
+    "text": "최근 24시간 동일 장비 반복 알람은 냉각계통 점검을 권장한다.",
+    "score": 0.19,
+    "metadata": {
+      "source": "maintenance_note.md"
+    }
+  }
+]
+
