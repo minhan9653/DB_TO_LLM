@@ -24,8 +24,8 @@ class Tools:
         """Open WebUI에서 사용자가 설정할 수 있는 값."""
 
         server_url: str = Field(
-            default="http://localhost:8000",
-            description="DB_TO_LLM API 서버 주소 (예: http://192.168.0.10:8000)",
+            default="http://192.168.0.140:8000",
+            description="DB_TO_LLM API 서버 주소 (예: http://192.168.0.140:8000)",
         )
         timeout: int = Field(
             default=120,
